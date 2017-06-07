@@ -27,3 +27,4 @@ nbdist/
 *.swp
 node_modules
 build
+/bin/
