@@ -8,15 +8,15 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("snp")
-public class DaeguApplication extends SpringBootServletInitializer {
+public class SocialApplication extends SpringBootServletInitializer {
 
 	@Override
 	public SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		System.setProperty("file.encoding", "UTF-8");
-		return application.sources(DaeguApplication.class);
+		return application.sources(SocialApplication.class);
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(DaeguApplication.class, args);
+		SpringApplication.run(SocialApplication.class, args);
 	}
 }
