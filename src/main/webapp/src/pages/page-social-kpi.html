@@ -1,0 +1,55 @@
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/src/pages/corp-kpi/social-kpi-view.html">
+
+<dom-module id="page-social-kpi">
+<template>
+	<app-route route="{{route}}"
+		   pattern="/app/social-kpi/:mode/:id"
+		   data="{{routeData}}"
+		   active>
+	</app-route>
+
+	<div class="page-header">
+		<h2>사회적기업 성과지표 조회 <small>SocialEnterprise KPI</small></h2>
+	</div>
+
+	<iron-pages id="center-status" selected="[[mode]]" attr-for-selected="name">
+		<social-kpi-list name="list"></social-kpi-list>
+		<social-kpi-view name="view" id="{{id}}" admin-mode="true"></social-kpi-view>
+	</iron-pages>
+
+</template>
+<script>
+Polymer({
+	is: 'page-social-kpi',
+
+	properties: {
+		mode: {
+			type: String,
+			value: 'list',
+			observer: '_importHTML'
+		},
+		id: Number,
+	},
+
+	observers: [
+        '_determineMode(routeData.mode)',
+        '_idChanged(routeData.id)',
+	],
+
+	_determineMode: function(value) {
+		this.mode = value || 'list'; 
+	},
+    _idChanged: function(value) {
+        this.id = parseInt(value);
+    },
+
+	_importHTML: function(newValue) {
+		if (newValue != 'view')
+			this.importHref(this.resolveUrl('corp-kpi/social-kpi-' + newValue + '.html'), null, null, true);
+	},
+});
+</script>
+</dom-module>
+

@@ -1,0 +1,80 @@
+<link rel="import" href="/bower_components/app-route/app-route.html">
+
+<link rel="import" href="/src/components/common/normal-select.html">
+
+<dom-module id="page-chart-kpi">
+    <template>
+        <app-route route="{{route}}"
+                   pattern="/app/chart-kpi/:tab"
+                   data="{{routeData}}">
+        </app-route>
+
+        <div class="horizontal-margin-20"></div>
+
+        <div class="page-header">
+            <h2>KPI 항목별 분석<small>By KPI Analytics</small></h2>
+        </div>
+
+        <ul id="pageTab" class="nav nav-tabs">
+            <li name="level1"><a href="/app/chart-kpi/level1">KPI 항목</a></li>
+            <li name="level2"><a href="/app/chart-kpi/level2">KPI 항목(상세)</a></li>
+        </ul>
+
+        <iron-pages id="reportTabs" role="monthly-tab" selected="[[tab]]" attr-for-selected="name">
+            <chart-kpi-level1 name="level1" ></chart-kpi-level1>
+            <chart-kpi-level2 name="level2" ></chart-kpi-level2>
+        </iron-pages>
+    </template>
+    <script>
+        Polymer({
+            is: 'page-chart-kpi',
+
+            properties: {
+                route: String,
+                tab: {
+                    type: String,
+                    observer: "_selectTab"
+                },
+            },
+
+            observers: [
+                '_determineTab(routeData.tab)'
+            ],
+
+            _determineTab: function(value) {
+                this.tab = value || "level1";
+            },
+
+            _selectTab: function(newValue, oldValue) {
+                var newTab = this.$.pageTab.querySelector("li[name='" + newValue + "']");
+                var oldTab = this.$.pageTab.querySelector("li[name='" + oldValue +"']");
+
+                if (oldTab)
+                    oldTab.classList.remove('active');
+                else
+                    this._deselectAllTabs();
+
+                if (newTab)
+                    newTab.classList.add('active');
+
+                this.importHref(
+                    this.resolveUrl('chart/chart-kpi-' + newValue + '.html'), null, null, true);
+            },
+
+
+            _deselectAllTabs: function() {
+                var child;
+
+                for (var key in Polymer.dom(this.$.pageTab).children) {
+                    child = Polymer.dom(this.$.pageTab).children[key];
+                    child.classList.remove('active');
+                }
+            },
+            _getData: function(e) {
+
+                this.$.reportTabs.selectedItem.requestAllData();
+            },
+
+        });
+    </script>
+</dom-module>
