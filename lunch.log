@@ -1535,3 +1535,192 @@ Verify the connector's configuration, identify and stop any process that's liste
 06-08 13:20:46.055 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
 10. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'ad' 
 
+06-08 13:34:25.090 [                  jdbc.sqlonly][DEBUG]  org.apache.tomcat.jdbc.pool.PooledConnection.validate(PooledConnection.java:509)
+5. SELECT 1 
+
+06-08 13:34:25.092 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:25.271 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:25.437 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:25.621 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:25.794 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:25.950 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:26.112 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:26.268 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:26.424 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:26.589 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:34:26.752 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+5. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'as' 
+
+06-08 13:49:19.330 [         snp.SocialApplication][INFO ] Starting SocialApplication on DESKTOP-0J1RTFF with PID 10000 (started by anseungbae in E:\프로젝트폴더\사회기업\social\social)
+06-08 13:49:19.332 [         snp.SocialApplication][INFO ] The following profiles are active: development
+06-08 13:49:19.490 [gEmbeddedWebApplicationContext][INFO ] Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@367ffa75: startup date [Thu Jun 08 13:49:19 KST 2017]; root of context hierarchy
+06-08 13:49:19.628 [   o.h.v.internal.util.Version][INFO ] HV000001: Hibernate Validator 5.2.4.Final
+06-08 13:49:21.232 [egate$BeanPostProcessorChecker][INFO ] Bean 'aopConfig' of type [class snp.config.AopConfig$$EnhancerBySpringCGLIB$$cd3a42b4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:21.358 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [class org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$1d44bbd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:21.409 [nnotationActionEndpointMapping][INFO ] Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+06-08 13:49:21.497 [egate$BeanPostProcessorChecker][INFO ] Bean 'mybatisConfig' of type [class snp.config.MybatisConfig$$EnhancerBySpringCGLIB$$a944b465] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:21.968 [egate$BeanPostProcessorChecker][INFO ] Bean 'dataSource_default' of type [class org.apache.tomcat.jdbc.pool.DataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:21.976 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration' of type [class org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$$EnhancerBySpringCGLIB$$3f302a1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.013 [egate$BeanPostProcessorChecker][INFO ] Bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties' of type [class org.springframework.boot.autoconfigure.jdbc.DataSourceProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.019 [egate$BeanPostProcessorChecker][INFO ] Bean 'dataSourceInitializer' of type [class org.springframework.boot.autoconfigure.jdbc.DataSourceInitializer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.037 [egate$BeanPostProcessorChecker][INFO ] Bean 'transactionManager' of type [class org.springframework.jdbc.datasource.DataSourceTransactionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.045 [egate$BeanPostProcessorChecker][INFO ] Bean 'transactionConfig' of type [class snp.config.TransactionConfig$$EnhancerBySpringCGLIB$$56b9910] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.070 [egate$BeanPostProcessorChecker][INFO ] Bean 'txAdvice' of type [class org.springframework.transaction.interceptor.TransactionInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.079 [egate$BeanPostProcessorChecker][INFO ] Bean 'txAdviceAdvisor' of type [class org.springframework.aop.support.DefaultPointcutAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.123 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [class org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$f5ea4ef8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.312 [egate$BeanPostProcessorChecker][INFO ] Bean 'objectPostProcessor' of type [class org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.319 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@4d48bd85' of type [class org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.345 [egate$BeanPostProcessorChecker][INFO ] Bean 'enableGlobalAuthenticationAutowiredConfigurer' of type [class org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.361 [egate$BeanPostProcessorChecker][INFO ] Bean 'initializeUserDetailsBeanManagerConfigurer' of type [class org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.368 [egate$BeanPostProcessorChecker][INFO ] Bean 'initializeAuthenticationProviderBeanManagerConfigurer' of type [class org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.381 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration' of type [class org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration$$EnhancerBySpringCGLIB$$5c908428] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.766 [egate$BeanPostProcessorChecker][INFO ] Bean 'securityProperties' of type [class org.springframework.boot.autoconfigure.security.SecurityProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.781 [egate$BeanPostProcessorChecker][INFO ] Bean 'springBootAuthenticationConfigurerAdapter' of type [class org.springframework.boot.autoconfigure.security.AuthenticationManagerConfiguration$SpringBootAuthenticationConfigurerAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.790 [egate$BeanPostProcessorChecker][INFO ] Bean 'bootGlobalAuthenticationConfigurationAdapter' of type [class org.springframework.boot.autoconfigure.security.BootGlobalAuthenticationConfiguration$BootGlobalAuthenticationConfigurationAdapter] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.794 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration' of type [class org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration$$EnhancerBySpringCGLIB$$41b3596d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:22.813 [egate$BeanPostProcessorChecker][INFO ] Bean 'authenticationManagerBuilder' of type [class org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.231 [egate$BeanPostProcessorChecker][INFO ] Bean 'sqlSessionFactory_default' of type [class snp.spring.mybatis.ProxySqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.245 [egate$BeanPostProcessorChecker][INFO ] Bean 'sqlSessionTemplate_default' of type [class org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.248 [egate$BeanPostProcessorChecker][INFO ] Bean 'userRepo' of type [class org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.252 [egate$BeanPostProcessorChecker][INFO ] Bean 'userRepo' of type [class com.sun.proxy.$Proxy70] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.266 [egate$BeanPostProcessorChecker][INFO ] Bean '__before_repo_method__' of type [class snp.config.AopConfig$$Lambda$9/1906029492] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.279 [egate$BeanPostProcessorChecker][INFO ] Bean '__after_repo_method__' of type [class snp.config.AopConfig$$Lambda$10/1807634633] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.280 [egate$BeanPostProcessorChecker][INFO ] Bean 'userAuthenticationProvider' of type [class snp.infra.security.component.UserAuthenticationProvider] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.282 [egate$BeanPostProcessorChecker][INFO ] Bean 'securityConfig.MethodSecurityConfigurer' of type [class snp.config.SecurityConfig$MethodSecurityConfigurer$$EnhancerBySpringCGLIB$$c0dc54bf] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.329 [egate$BeanPostProcessorChecker][INFO ] Bean 'methodSecurityMetadataSource' of type [class org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:23.353 [egate$BeanPostProcessorChecker][INFO ] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [class org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5d3c86be] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+06-08 13:49:24.213 [TomcatEmbeddedServletContainer][INFO ] Tomcat initialized with port(s): 8001 (http)
+06-08 13:49:24.248 [    o.a.c.core.StandardService][INFO ] Starting service Tomcat
+06-08 13:49:24.249 [     o.a.c.core.StandardEngine][INFO ] Starting Servlet Engine: Apache Tomcat/8.5.6
+06-08 13:49:24.647 [   o.a.c.c.C.[.[localhost].[/]][INFO ] Initializing Spring embedded WebApplicationContext
+06-08 13:49:24.647 [ o.s.web.context.ContextLoader][INFO ] Root WebApplicationContext: initialization completed in 5157 ms
+06-08 13:49:25.071 [s.b.w.s.FilterRegistrationBean][INFO ] Mapping filter: 'characterEncodingFilter' to: [/*]
+06-08 13:49:25.071 [s.b.w.s.FilterRegistrationBean][INFO ] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+06-08 13:49:25.071 [s.b.w.s.FilterRegistrationBean][INFO ] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+06-08 13:49:25.072 [s.b.w.s.FilterRegistrationBean][INFO ] Mapping filter: 'requestContextFilter' to: [/*]
+06-08 13:49:25.075 [ingFilterProxyRegistrationBean][INFO ] Mapping filter: 'springSecurityFilterChain' to: [/*]
+06-08 13:49:25.076 [.b.w.s.ServletRegistrationBean][INFO ] Mapping servlet: 'dispatcherServlet' to [/]
+06-08 13:49:25.077 [.b.w.s.ServletRegistrationBean][INFO ] Mapping servlet: 'messageDispatcherServlet' to [/services/*]
+06-08 13:49:26.639 [s.w.DefaultSecurityFilterChain][INFO ] Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c91530d, org.springframework.security.web.context.SecurityContextPersistenceFilter@42aae04d, org.springframework.security.web.header.HeaderWriterFilter@135a8c6f, org.springframework.security.web.authentication.logout.LogoutFilter@28ee7bee, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@149b0577, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3679d92e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ba17be6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d70638, org.springframework.security.web.session.SessionManagementFilter@3d19d85, org.springframework.security.web.access.ExceptionTranslationFilter@59fbb34, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1fc713c9]
+06-08 13:49:26.871 [a.RequestMappingHandlerAdapter][INFO ] Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@367ffa75: startup date [Thu Jun 08 13:49:19 KST 2017]; root of context hierarchy
+06-08 13:49:27.079 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menus/{parentMenu}],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.CommonController.findMenusByParent(java.lang.String)
+06-08 13:49:27.081 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/{grpCd}/code],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.CommonController.findCodes(java.lang.String)
+06-08 13:49:27.084 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menu/{menuCd}],methods=[POST]}" onto public int snp.app.common.CommonController.updateMenu(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.087 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menus],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.CommonController.findAllMenus()
+06-08 13:49:27.089 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menus],methods=[POST]}" onto public int snp.app.common.CommonController.saveMenus(java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)
+06-08 13:49:27.093 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/role],methods=[PUT]}" onto public int snp.app.common.CommonController.insertRole(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.102 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menu],methods=[PUT]}" onto public int snp.app.common.CommonController.insertMenu(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.103 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/role/{roleCd}],methods=[POST]}" onto public int snp.app.common.CommonController.updateRole(java.lang.String,java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.108 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/menu/{menuCd}],methods=[DELETE]}" onto public int snp.app.common.CommonController.deleteMenu(java.lang.String)
+06-08 13:49:27.112 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/role/{roleCd}],methods=[DELETE]}" onto public int snp.app.common.CommonController.deleteRole(java.lang.String)
+06-08 13:49:27.118 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/role/{roleCd}/menus],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.CommonController.findRoleMenus(java.lang.String)
+06-08 13:49:27.119 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/common/roles],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.CommonController.findRoles()
+06-08 13:49:27.126 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user],methods=[POST || PUT]}" onto public int snp.app.common.UserController.saveUser(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.128 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user/find/{page}/{keyword}],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.UserController.findUsers(java.lang.Integer,java.lang.String)
+06-08 13:49:27.129 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user/find],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.common.UserController.findUsers(java.lang.String)
+06-08 13:49:27.149 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user/{userSeq}],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.common.UserController.findUsers(java.lang.Integer)
+06-08 13:49:27.162 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user/{userSeq}],methods=[DELETE]}" onto public int snp.app.common.UserController.deleteUser(java.lang.Integer)
+06-08 13:49:27.163 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/user],methods=[GET]}" onto public snp.infra.user.model.User snp.app.common.UserController.getLoggedInUser()
+06-08 13:49:27.171 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/cooperationkpi],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.findCooperationKpi(int,int)
+06-08 13:49:27.174 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-kpi/level2],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartKpiDetailGrade(java.lang.String)
+06-08 13:49:27.176 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/analytics-corp/excel],methods=[GET]}" onto public void snp.app.corp.CorpController.findCorpAvg2Excel(javax.servlet.http.HttpServletResponse,int) throws java.lang.Exception
+06-08 13:49:27.178 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-kpidetail/rate],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartKpiDetailRate(java.lang.String)
+06-08 13:49:27.180 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/villagekpi],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.findVillageKpi(int,int)
+06-08 13:49:27.182 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/savekpi],methods=[POST]}" onto public int snp.app.corp.CorpController.saveKpi(java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)
+06-08 13:49:27.182 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/socialkpi],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.findSocialKpi(int,int)
+06-08 13:49:27.183 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-grade/grade],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartGradeGrade(java.lang.String)
+06-08 13:49:27.185 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/analytics/keyword],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.gridCorpKeyword(java.lang.String)
+06-08 13:49:27.187 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/all/keyword],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.allCorpsKeyword(java.lang.String)
+06-08 13:49:27.188 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-type/grade],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartTypeGrade()
+06-08 13:49:27.192 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/analytics/corp],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.gridCorp(java.lang.String)
+06-08 13:49:27.195 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-kpi/level1],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartKpiGrade(java.lang.String)
+06-08 13:49:27.196 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-all/grade],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartAllGrade()
+06-08 13:49:27.199 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-region/grade],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartRegionGrade(java.lang.String)
+06-08 13:49:27.200 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-region/rate],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartRegionRate(java.lang.String)
+06-08 13:49:27.202 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-grade/rate],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartGradeRate(java.lang.String)
+06-08 13:49:27.203 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-sector/grade],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartSectorGrade(java.lang.String)
+06-08 13:49:27.204 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-sector/rate],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartSectorRate(java.lang.String)
+06-08 13:49:27.210 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-type/rate],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartTypeRate()
+06-08 13:49:27.213 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-all/rate],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.corp.CorpController.chartAllRate()
+06-08 13:49:27.215 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/all/corps],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.allCorps(java.lang.String)
+06-08 13:49:27.222 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/all-corps/excel],methods=[GET]}" onto public void snp.app.corp.CorpController.allCorps2Excel(javax.servlet.http.HttpServletResponse,int,java.lang.String) throws java.lang.Exception
+06-08 13:49:27.226 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/corp/chart-kpi/rate],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.corp.CorpController.chartKpiRate(java.lang.String)
+06-08 13:49:27.239 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/corpInfo]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.hq.HqController.findCorpInfo(java.lang.Integer)
+06-08 13:49:27.245 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/corpInfo],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.hq.HqController.findCorpInfo(int,int)
+06-08 13:49:27.247 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/socialList]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findSocialList()
+06-08 13:49:27.248 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/corpInfo],methods=[POST]}" onto public int snp.app.hq.HqController.saveCorpInfo(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.250 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/centerMgm],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findCenterMgm()
+06-08 13:49:27.254 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/socialInfo],methods=[POST]}" onto public int snp.app.hq.HqController.saveSocialInfo(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.260 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/centerMgm],methods=[POST]}" onto public int snp.app.hq.HqController.saveCenterMgm(java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)
+06-08 13:49:27.261 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/villageList]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findVillageList()
+06-08 13:49:27.262 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/socialinfo/{CORP_SEQ}],methods=[DELETE]}" onto public int snp.app.hq.HqController.deleteSocialInfo(java.lang.Integer)
+06-08 13:49:27.263 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/socialInfo/{CORP_SEQ}]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.hq.HqController.findSocialInfo(java.lang.Integer)
+06-08 13:49:27.264 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/{corpType}/type],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findCorpList(java.lang.String)
+06-08 13:49:27.265 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/villageInfo/{CORP_SEQ}]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.hq.HqController.findVillageInfo(java.lang.Integer)
+06-08 13:49:27.266 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/villageInfo],methods=[POST]}" onto public int snp.app.hq.HqController.saveVillageInfo(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.267 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/cooperationList]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findCooperationList()
+06-08 13:49:27.268 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/cooperationinfo/{CORP_SEQ}],methods=[DELETE]}" onto public int snp.app.hq.HqController.deleteCooperationInfo(java.lang.Integer)
+06-08 13:49:27.269 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/keyword],methods=[GET]}" onto public java.util.List<java.util.Map<java.lang.String, java.lang.Object>> snp.app.hq.HqController.findCorpListKeyword(java.lang.String,java.lang.String)
+06-08 13:49:27.311 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/villageinfo/{CORP_SEQ}],methods=[DELETE]}" onto public int snp.app.hq.HqController.deleteVillageInfo(java.lang.Integer)
+06-08 13:49:27.313 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/cooperationInfo/{CORP_SEQ}]}" onto public java.util.Map<java.lang.String, java.lang.Object> snp.app.hq.HqController.findCooperationnfo(java.lang.Integer)
+06-08 13:49:27.316 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/hq/cooperationInfo],methods=[POST]}" onto public int snp.app.hq.HqController.saveCooperationInfo(java.util.Map<java.lang.String, java.lang.Object>)
+06-08 13:49:27.362 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/auth/login],methods=[POST],params=[userId && password]}" onto snp.infra.user.model.User snp.infra.security.AuthApi.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest) throws org.springframework.security.core.AuthenticationException
+06-08 13:49:27.363 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/auth/user],methods=[GET]}" onto snp.infra.user.model.User snp.infra.security.AuthApi.authenticatedUser()
+06-08 13:49:27.364 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/api/auth],methods=[GET],params=[userId]}" onto snp.infra.user.model.User snp.infra.security.AuthApi.forceAuthenticate(java.lang.String,javax.servlet.http.HttpServletRequest)
+06-08 13:49:27.367 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/ || /index || /app/* || /app/*/* || /app/*/*/*]}" onto public java.lang.String snp.infra.security.IndexController.index()
+06-08 13:49:27.370 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+06-08 13:49:27.371 [a.RequestMappingHandlerMapping][INFO ] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+06-08 13:49:27.449 [.w.s.h.SimpleUrlHandlerMapping][INFO ] Mapped URL path [/deps/bower/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+06-08 13:49:27.450 [.w.s.h.SimpleUrlHandlerMapping][INFO ] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+06-08 13:49:27.450 [.w.s.h.SimpleUrlHandlerMapping][INFO ] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+06-08 13:49:27.553 [.w.s.h.SimpleUrlHandlerMapping][INFO ] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+06-08 13:49:28.212 [.j.e.a.AnnotationMBeanExporter][INFO ] Registering beans for JMX exposure on startup
+06-08 13:49:28.231 [o.a.c.http11.Http11NioProtocol][INFO ] Initializing ProtocolHandler ["http-nio-8001"]
+06-08 13:49:28.244 [o.a.c.http11.Http11NioProtocol][INFO ] Starting ProtocolHandler [http-nio-8001]
+06-08 13:49:28.283 [o.a.t.util.net.NioSelectorPool][INFO ] Using a shared selector for servlet write/read
+06-08 13:49:28.313 [TomcatEmbeddedServletContainer][INFO ] Tomcat started on port(s): 8001 (http)
+06-08 13:49:28.333 [         snp.SocialApplication][INFO ] Started SocialApplication in 9.45 seconds (JVM running for 10.269)
+06-08 13:50:55.692 [   o.a.c.c.C.[.[localhost].[/]][INFO ] Initializing Spring FrameworkServlet 'dispatcherServlet'
+06-08 13:50:55.692 [     o.s.w.s.DispatcherServlet][INFO ] FrameworkServlet 'dispatcherServlet': initialization started
+06-08 13:50:55.748 [     o.s.w.s.DispatcherServlet][INFO ] FrameworkServlet 'dispatcherServlet': initialization completed in 55 ms
+06-08 13:51:08.451 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+10. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'admin' 
+
+06-08 13:51:08.464 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+10. SELECT PASSWORD FROM USERS WHERE USER_ID = 'admin' 
+
+06-08 13:51:10.084 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+10. SELECT USER_ID, USER_NAME, CORP_SEQ, EMAIL FROM USERS WHERE USER_ID = 'admin' 
+
+06-08 13:51:10.086 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+10. SELECT PASSWORD FROM USERS WHERE USER_ID = 'admin' 
+
+06-08 13:51:10.090 [   snp.infra.security.Security][INFO ] User(admin, 관리자) was logged in. (0:0:0:0:0:0:0:1)
+06-08 13:51:11.066 [                  jdbc.sqlonly][DEBUG]  org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+10. SELECT CASE CORP_TYPE WHEN '1' THEN '사회적기업' WHEN '2' THEN '마을기업' ELSE '협동조합' END AS CORP_TYPE 
+,CORP_SEQ , CORP_NM , DATE_FORMAT(OPEN_DT, '%Y') AS OPEN_DT , SE_YN , (SELECT CD_NM FROM CODE 
+WHERE GRP_CD = 'SE_YN' AND CD = SE_YN) AS SE_YN_NM , ORG_TYPE , (SELECT CD_NM FROM CODE WHERE 
+GRP_CD = 'ORG_TYPE' AND CD = ORG_TYPE) AS ORG_TYPE_NM , REGION , (SELECT CD_NM FROM CODE WHERE 
+GRP_CD = 'REGION' AND CD = REGION) AS REGION_NM FROM CORP_INFO WHERE CORP_TYPE = '1' ORDER 
+BY CORP_NM 
+
