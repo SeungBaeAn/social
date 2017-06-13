@@ -17,9 +17,25 @@
 				on-response="_stopLoader"
 				last-response="{{_data}}">
 	</iron-ajax>
-	<div class="row">
-		<div class="col-xs-2">
+	  <app-location id="appLocation" route="{{route}}"></app-location>
+		<app-route
+			route="{{route}}"
+			pattern="/app/:page"
+			data="{{routeData}}"
+			tail="{{subroute}}">
+		</app-route>
+ 	
+	<div class="row" >
+		<div class="col-xs-2" style="text-align: center;">
 		    <iron-image src="/src/img/self_main1.png"></iron-image>
+		</div>
+		<div class="col-xs-1">
+			
+		</div>
+	</div>
+		<div class="row">
+		<div class="col-xs-2" style="float:right;">
+	<a href="/app/social-form/step/" name="social-form" class="btn btn-primary btn-lg" data-role="button">자가진단 시작</a>
 		</div>
 		<div class="col-xs-1">
 			
@@ -28,6 +44,7 @@
 	<div class="col">
 		<div class="horizontal-margin-20"></div>
 	</div>
+	
 </template>
 <script>
 Polymer({

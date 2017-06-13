@@ -11,10 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
     @RequestMapping(value={"/", "/index", "/app/*", "/app/*/*", "/app/*/*/*"})
-    public String index() {
-        if (Security.user() == null){
+    public String userId() {
+        if (Security.userId() == null){
             return "/login.html";
-        }else {
+        }else if(Security.userId().equals("self")) {
+        	return "/selfmain.html";
+        }else{ 	
             return "/main.html";
         }
     }

@@ -1,0 +1,177 @@
+<!--
+	@license
+	Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+	This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+	The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+	The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+	Code distributed by Google as part of the polymer project is also
+	subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
+
+<link rel="import" href="/bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="/bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="/bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="/bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="/bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="/bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html" />
+<link rel="import" href="/bower_components/paper-menu/paper-menu.html" />
+<link rel="import" href="/bower_components/paper-menu/paper-submenu.html" />
+
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html" />
+<link rel="import" href="/bower_components/iron-image/iron-image.html" />
+
+<link rel="import" href="/src/components/common/loading-spinner.html" />
+
+<link rel="import" href="styles/base/common.html" />
+<link rel="import" href="styles/components/header.html" />
+
+<dom-module id="self-app">
+
+	<template>
+		<style include="common-style"></style>
+		<style include="header-style"></style>
+		<style>
+			:host {
+				display: block;
+				--app-drawer-content-container: {
+					background-color: #d5d5d5;
+				}
+			}
+		</style>
+
+		<app-location id="appLocation" route="{{route}}"></app-location>
+		<app-route
+			route="{{route}}"
+			pattern="/app/:page"
+			data="{{routeData}}"
+			tail="{{subroute}}">
+		</app-route>
+
+		<loading-spinner></loading-spinner>
+		<app-drawer-layout fullbleed>
+
+			<!-- Drawer content -->
+
+			<!-- Main content -->
+			<app-header-layout has-scrolling-region>
+                           
+					<app-header condenses reveals effects="waterfall">
+						<app-toolbar>
+								<iron-image src="img/social_left1.png"></iron-image>
+									<paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+						
+									<div title style="text-align: center;">사회적기업 사회가치 자가진단 시스템</div>
+									<div class="loginInfo">
+											
+											<div class="login-delimeter"></div>
+									</div>
+									<paper-button on-tap="_logout">
+									<iron-icon icon="exit-to-app"></iron-icon>
+										
+									</paper-button>
+								</app-toolbar>	
+							</app-toolbar>
+					</app-header>
+
+					<div class="container-fluid">
+							<div class="row">
+									<div class="col-xs-12">
+											<div class="card">
+													<iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                                                        <page-social-self  name="social-self" route="{{route}}"></page-social-self>
+                                                        <page-social-form  name="social-form" route="{{route}}"></page-social-form>
+														<page-social-info name="social-info" route="{{route}}"></page-social-info>
+														<page-cooperation-info name="cooperation-info" route="{{route}}"></page-cooperation-info>
+														<page-village-info name="village-info" route="{{route}}"></page-village-info>
+
+														<page-social-kpi name="social-kpi" route="{{route}}"></page-social-kpi>
+														<page-cooperation-kpi name="cooperation-kpi" route="{{route}}"></page-cooperation-kpi>
+														<page-village-kpi name="village-kpi" route="{{route}}"></page-village-kpi>
+														<page-analytics-corp name="analytics-corp" route="{{route}}"></page-analytics-corp>
+														<page-chart-sector name="chart-sector" route="{{route}}"></page-chart-sector>
+														<page-chart-all name="chart-all" route="{{route}}"></page-chart-all>
+
+														<page-chart-type name="chart-type" route="{{route}}"></page-chart-type>
+														<page-analytics-radar name="analytics-radar" route="{{route}}"></page-analytics-radar>
+														<page-chart-kpi name="chart-kpi" route="{{route}}"></page-chart-kpi>
+														<page-chart-region name="chart-region" route="{{route}}"></page-chart-region>
+														<page-all-corps name="all-corps" route="{{route}}" ></page-all-corps>
+														<page-center-mgm name="center-mgm" route="{{route}}"></page-center-mgm>
+
+													</iron-pages>
+											</div>
+									</div>
+							</div>
+					</div>
+			</app-header-layout>
+
+			</app-drawer-layout>
+
+	</template>
+
+        <script>
+                Polymer({
+
+                        is: 'self-app',
+
+                        properties: {
+
+                                page: {
+                                        type: String,
+                                        reflectToAttribute: true,
+                                        observer: '_pageChanged'
+                                },
+                                _userName: {
+                                        type: Number,
+                                        value: function() {
+                                                return sessionStorage.userName;
+                                        }
+                                },
+                                _corpSeq: {
+                                        type: Number,
+                                        value: function() {
+                                                return sessionStorage.corpSeq > 0 ? sessionStorage.corpSeq : 0;
+                                        }
+                                },
+
+                        },
+
+                        observers: [
+                                '_routePageChanged(routeData.page)'
+                        ],
+
+                        attached: function() {
+                                if (this.$.appLocation.path == '/')
+                                        this.$.appLocation.path = '/app/social-info/list/';
+                        },
+
+                        _routePageChanged: function(page) {
+                                this.page = page || 'social-info';
+                        },
+
+                        _pageChanged: function(page) {
+                                // load page import on demand.
+                                this.importHref(
+                                        this.resolveUrl('pages/page-' + page + '.html'), null, null, true);
+                        },
+
+                        _logout: function(e) {
+                                sessionStorage.clear();
+                                location.href = '/logout';
+                        },
+
+                });
+        </script>
+
+</dom-module>
+
+
