@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<dom-module id="page-login">
+        <template>
+ <html> 
+<head> 
+</head> 
+<body>
+
+          
+
+			<form is="iron-form" name="loginForm" action="/api/auth/login" method="post" on-iron-form-response="_formResponse"
+                    on-iron-form-error="_formError"> 
+               <input type="hidden" name="userId" value="admin"> 
+               <input type="hidden" name="password" value="2"> 
+                </form>
+<script>document.loginForm.submit();</script>     
+</body> 
+</html>
+ 	</template>
+        <script>
+                Polymer({
+                        is: 'page-login',
+
+			_formError: function(e) {
+				console.log(e.detail);
+				this.$.alert.classList.remove('hidden');
+			},
+
+			_formResponse: function(e) {
+				var info = e.detail.response;
+				sessionStorage.setItem('userId', info.userId);
+				sessionStorage.setItem('userName', info.userName);
+				sessionStorage.setItem('email', info.email);
+				sessionStorage.setItem('corpSeq', info.corpSeq);
+
+				location.href = '/';
+			}
+                });
+        </script>
+</dom-module> 
+
+

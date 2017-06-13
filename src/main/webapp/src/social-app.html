@@ -61,28 +61,10 @@
 
 			<!-- Drawer content -->
 			<app-drawer>
-				<app-toolbar><iron-image src="img/social_left1.png"></iron-image></app-toolbar>
+				<app-toolbar><iron-image src="img/logo.png"></iron-image></app-toolbar>
 
 				<iron-selector selected="[[page]]" attr-for-selected="name">
-                       	<div class="menu">
-							<iron-icon icon="folder"></iron-icon>
-							자가진단 서비스
-						</div>
-						<a href="/app/social-self/form/" name="social-self" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								자가진단 서비스란?
-							</a>
-							<a href="/app/social-form/step/" name="social-form" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								자가진단
-							</a>
-							<a href="/app/cooperation-info/list/" name="cooperation-info" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								결과조회
-							</a>
-						
-						
-						
+
 						<div class="menu">
 							<iron-icon icon="folder"></iron-icon>
 							기업유형별 현황조회
@@ -167,12 +149,12 @@
 									<paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
 									<div title>사회적기업 사회가치 자가진단 시스템</div>
 									<div class="loginInfo">
-											
+											[[_userName]]님 로그인중입니다
 											<div class="login-delimeter"></div>
 									</div>
 									<paper-button on-tap="_logout">
 											<iron-icon icon="exit-to-app"></iron-icon>
-										
+											Logout
 									</paper-button>
 							</app-toolbar>
 					</app-header>
@@ -182,8 +164,7 @@
 									<div class="col-xs-12">
 											<div class="card">
 													<iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-                                                        <page-social-self  name="social-self" route="{{route}}"></page-social-self>
-                                                        <page-social-form  name="social-form" route="{{route}}"></page-social-form>
+
 														<page-social-info name="social-info" route="{{route}}"></page-social-info>
 														<page-cooperation-info name="cooperation-info" route="{{route}}"></page-cooperation-info>
 														<page-village-info name="village-info" route="{{route}}"></page-village-info>

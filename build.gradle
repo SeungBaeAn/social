@@ -20,11 +20,11 @@ bootRun {
 }
 
 bootRepackage {
-	mainClass = "snp.DaeguAppication"
+	mainClass = "snp.SocialApplication"
 }
 
 war {
-	baseName = 'daegu'
+	baseName = 'social'
 	version = '0.0.1-SNAPSHOT'
 }
 

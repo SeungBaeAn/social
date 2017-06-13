@@ -1,0 +1,53 @@
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+
+<dom-module id="page-social-form">
+<template>
+	<app-route route="{{route}}"
+		   pattern="/app/social-form/:mode/:id"
+		   data="{{routeData}}"
+		   active>
+	</app-route>
+
+	<div class="page-header">
+		<h2>자가진단  <small>Social Self Diagnosis </small></h2>
+	</div>
+
+	<iron-pages id="social-form" selected="[[mode]]" attr-for-selected="name">
+		<social-form-step name="step"></social-form-step>
+		<social-info-view name="view" id="{{id}}"></social-info-view>
+	</iron-pages>
+
+</template>
+<script>
+Polymer({
+	is: 'page-social-form',
+
+	properties: {
+		mode: {
+			type: String,
+			value: 'step',
+			observer: '_importHTML'
+		},
+		id: Number,
+	},
+
+	observers: [
+		'_determineMode(routeData.mode)',
+        '_idChanged(routeData.id)',
+	],
+
+	_determineMode: function(value) {
+		this.mode = value || 'step'; 
+	},
+
+    _idChanged: function(value) {
+        this.id = parseInt(value);
+    },
+
+    _importHTML: function(newValue) {
+		this.importHref(this.resolveUrl('corp-info/social-form-' + newValue + '.html'), null, null, true);
+	},
+});
+</script>
+</dom-module>
