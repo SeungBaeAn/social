@@ -1,0 +1,168 @@
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/src/components/common/normal-table.html">
+<link rel="import" href="/src/components/common/normal-input.html">
+<link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<html lang="ko">
+<head>
+  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- css -->
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="./js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>
+</head> 
+
+<dom-module id="social-step4-form">
+<template>
+
+    <iron-ajax  auto id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/findStep6"
+	 	       on-request="_startLoader"
+	  	       on-response="_stopLoader"
+		       last-response="{{_data}}">
+	</iron-ajax>
+	       <form id="stepForm5" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepup5"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+   <body>	
+	<!-- contents -->
+	<section class="contents">
+    <!-- tab
+      .is-current : 현재 작성중인 페이지
+      .is-complete :완료된 페이지
+    -->
+    <ol class="tab">
+      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
+      <li><a href="self_iagnosis02.html" class="is-complete">사회적<br />미션의 관리</a></li>
+      <li><a href="self_iagnosis03.html" class="is-complete">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="self_iagnosis04.html" class="is-complete">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="self_iagnosis05.html" class="is-complete">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="self_iagnosis06.html" class="is-current">운영의<br />민주성</a></li>
+      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
+      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
+      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+    </ol>
+    <!-- // tab -->
+    
+
+	  <div class="inner_motion">
+      <h2 class="tit_page">참여적 의사결정 비율</h2>
+     <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+      <div class="box_question">
+        <p class="question">귀사는 지난 한해 조직운영의 민주성을 제고하기 위해 이사회 등 주요 의사결정 과정에서 근로자대표, 사외이사 등의 실제 참여한 비율은 얼마나 됩니까?</p>
+        <ul class="vertical mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step06_q01" name="KPI_FORM7" value="5"/><label for="step06_q01">61 ~ 100%</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step06_q02" name="KPI_FORM7" value="4" /><label for="step06_q02">41 ~ 60 %</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step06_q03" name="KPI_FORM7" value="3" /><label for="step06_q03">21 ~ 40 %</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step06_q04" name="KPI_FORM7" value="2" /><label for="step06_q04">1 ~ 20 %</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step06_q05" name="KPI_FORM7" value="1" /><label for="step06_q05">0 %</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        의사결정기구는 이사회를 기본으로 하되, 사회적기업 인증시기에 따라 운영위원회, 주주총회도 인정합니다.<br />개별 회의 건의 각 비율 평균이 아니라 모든 회의의 참석자를 합한 후 참가비율 산출해야 합니다.
+      </div>
+      <!-- //box_tip -->
+ <div class="btnArea mgt60">
+  <a href="/app/social-step3/form/" name="social-step3" class="btn btn_prev" onclick="document.getElementById('stepback5').submit();">이전<</a>
+  <a href="/app/social-step5/form/" name="social-step5" class="btn btn_next" onclick="document.getElementById('stepForm5').submit();">다음</a>
+      </div>
+      <!-- //btnArea end -->
+    </div>
+    <!-- //inner end -->
+	</section>			
+</form>
+ </body> 
+<!-- 모달 팝업 --> 
+	    <form id="stepback5" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepback5"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+               <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="4"></input>
+              </form>
+  
+</template>
+
+<script>
+Polymer({
+	is: 'social-step4-form',
+
+	behaviors: [Lunch.LoaderBehavior],
+
+	properties: {
+
+		_data: {
+			type: Array,
+			value: function() {
+				return [];
+			}
+		},
+     
+
+	},
+	  _submitForm: function(e) {
+	        if (this.$.stepback5.validate()) {
+	            this.$.stepback5.submit();
+	        }
+	    },
+	    _submitResponse: function(e) {
+	        if (e.detail.response == 1) {
+	            this.$.alert1.innerHTML = '수정되었습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-success');
+	            this.$.alert2.innerHTML = '수정되었습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-success');
+	        }else {
+	            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-danger');
+	            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-danger');
+	        }
+	        this.async(function() {
+	            this.$.alert1.classList.add('hide');
+	            this.$.alert2.classList.add('hide');
+	        }, 2000);
+	    },
+
+
+});
+</script>
+</dom-module>

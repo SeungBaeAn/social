@@ -1,0 +1,185 @@
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/src/components/common/normal-table.html">
+<link rel="import" href="/src/components/common/normal-input.html">
+<link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<html lang="ko">
+<head>
+  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- css -->
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="./js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>
+</head> 
+
+<dom-module id="social-step2-form">
+<template>
+    <iron-ajax  auto id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/findStep4"
+	 	       on-request="_startLoader"
+	  	       on-response="_stopLoader"
+		       last-response="{{_data}}">
+	</iron-ajax>
+	       <form id="stepForm3" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepup3"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+   <body>	
+	<!-- contents -->
+	<section class="contents">
+    <!-- tab
+      .is-current : 현재 작성중인 페이지
+      .is-complete :완료된 페이지
+    -->
+    <ol class="tab">
+      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
+      <li><a href="self_iagnosis02.html" class="is-complete">사회적<br />미션의 관리</a></li>
+      <li><a href="self_iagnosis03.html" class="is-complete">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="self_iagnosis04.html" class="is-current">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="self_iagnosis05.html">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="self_iagnosis06.html">운영의<br />민주성</a></li>
+      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
+      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
+      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+    </ol>
+    <!-- // tab -->
+    
+  <div class="inner_motion">
+      <h2 class="tit_page">사회적 경제 조직간의 협력 수준</h2>
+      <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+      <div class="box_question">
+        <p class="question">귀사는 지난 한해 사회적 가치를 지향하는 사회적 경제 조직과 상호협력을 위한 네트워크 활동에 얼마나 참여하고 있습니까?</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step04_q01" name="KPI_FORM4" value="5"  /><label for="step04_q01">4개 이상</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q02" name="KPI_FORM4" value="4" /><label for="step04_q02">3개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q03" name="KPI_FORM4" value="3"  /><label for="step04_q03">2개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q04" name="KPI_FORM4" value="2" /><label for="step04_q04">1개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q05" name="KPI_FORM4" value="1"  /><label for="step04_q05">없음</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        <strong class="txt_orange">네트워크 활동</strong> 이란 사회가치 실현을 목적으로 한 중앙, 지역별, 업종별 사회적경제협의회 등 사회적경제조직과의 공식적인 협력활동을 일컫습니다.
+      </div>
+      <!-- //box_tip -->
+
+      <h2 class="tit_page top_line">지역사회와의 협력 수준</h2>
+
+      <div class="box_question">
+        <p class="question">귀사는 지난 한해 사회적 가치를 지향하는 지역사회내의 기관, 단체 등과 상호협력을 위한 네트워크 활동에 얼마나 참여하고 있습니까?</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step04_q06" name="KPI_FORM5" value="5" /><label for="step04_q06">4개 이상</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q07" name="KPI_FORM5" value="4" /><label for="step04_q07">3개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q08" name="KPI_FORM5" value="3" /><label for="step04_q08">2개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q09" name="KPI_FORM5" value="2" /><label for="step04_q09">1개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step04_q10" name="KPI_FORM5" value="1" /><label for="step04_q10">없음</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        <strong class="txt_orange">협력활동</strong> 이란 사회가치 실현을 목적으로 한 광역자치단체 범위 내 자치단체, 공공기관, 비영리기관, 영리기관과의 공식적인 협력활동을 일컫습니다.
+      </div>
+      <!-- //box_tip -->
+      
+  <div class="btnArea mgt60">
+  <a href="/app/social-step1/form/" name="social-step1" class="btn btn_prev" onclick="document.getElementById('stepback3').submit();">이전<</a>
+  <a href="/app/social-step3/form/" name="social-step3" class="btn btn_next" onclick="document.getElementById('stepForm3').submit();">다음</a>
+      </div>
+      <!-- //btnArea end -->
+    </div>
+    <!-- //inner end -->
+	</section>			
+</form>
+ </body> 
+<!-- 모달 팝업 --> 
+
+		    <form id="stepback3" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepback3"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+               <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="2"></input>
+              </form>
+  
+</template>
+
+<script>
+Polymer({
+	is: 'social-step2-form',
+
+	behaviors: [Lunch.LoaderBehavior],
+
+	properties: {
+
+		_data: {
+			type: Array,
+			value: function() {
+				return [];
+			}
+		},
+     
+    },
+	  _submitForm: function(e) {
+	        if (this.$.stepback3.validate()) {
+	            this.$.stepback3.submit();
+	        }
+	    },
+	    _submitResponse: function(e) {
+	        if (e.detail.response == 1) {
+	            this.$.alert1.innerHTML = '수정되었습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-success');
+	            this.$.alert2.innerHTML = '수정되었습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-success');
+	        }else {
+	            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-danger');
+	            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-danger');
+	        }
+	        this.async(function() {
+	            this.$.alert1.classList.add('hide');
+	            this.$.alert2.classList.add('hide');
+	        }, 2000);
+	    },
+
+});
+</script>
+</dom-module>

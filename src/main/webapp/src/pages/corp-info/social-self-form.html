@@ -2,7 +2,28 @@
 <link rel="import" href="/src/components/common/normal-table.html">
 <link rel="import" href="/src/components/common/normal-input.html">
 <link rel="import" href="/src/components/behaviors/behavior-loader.html">
-
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+  <link rel="import" href="/src/css/common.css">
+  <link  rel="import" href="/src/jquery.mCustomScrollbar.css">  
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+   <script src="/src/js/jquery-1.12.0.min.js"></script>
+   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+   <script src="/src/js/TweenMax.min.js"></script>
+   <script src="/src/js/ui.js"></script> 
 <dom-module id="social-self-form">
 <template>
 	<iron-ajax  auto id="getCorpList" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
@@ -11,41 +32,44 @@
 	  	       on-response="_stopLoader"
 		       last-response="{{_data}}">
 	</iron-ajax>
-	<iron-ajax  id="getCorpListKeyword" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
-				url="/api/hq/keyword"
-				on-request="_startLoader"
-				on-response="_stopLoader"
-				last-response="{{_data}}">
-	</iron-ajax>
-	  <app-location id="appLocation" route="{{route}}"></app-location>
-		<app-route
-			route="{{route}}"
-			pattern="/app/:page"
-			data="{{routeData}}"
-			tail="{{subroute}}">
-		</app-route>
- 	
-	<div class="row" >
-		<div class="col-xs-2" style="text-align: center;">
-		    <iron-image src="/src/img/self_main1.png"></iron-image>
-		</div>
-		<div class="col-xs-1">
-			
-		</div>
-	</div>
-		<div class="row">
-		<div class="col-xs-2" style="float:right;">
-	<a href="/app/social-form/step/" name="social-form" class="btn btn-primary btn-lg" data-role="button">자가진단 시작</a>
-		</div>
-		<div class="col-xs-1">
-			
-		</div>
-	</div>
-	<div class="col">
-		<div class="horizontal-margin-20"></div>
-	</div>
-	
+
+	<body>
+ 		<form id="socialForm" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/step"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+	<!-- contents -->
+	<section class="contents main">
+
+	  <div class="inner">
+      <h2>사회가치 측정이란 무엇을 의미하나요?</h2>
+      <p><strong>“사회가치 측정은 사회적 목적을 우선적으로 추구하는 조직이 창출한<br />사회적·경제적 가치와 사회적 영향을 측정하는 과정”</strong> 즉</p>
+      <p>“조직이 우선적으로 사회가치를 실현하기 위한 기제를 설정하고 이를 조직 운영과 본질적인 사업 활동에 반영하며,<br />조직의 효율적인 인적·물적 자원 투입, 사회문제 해결을 위한 혁신적인 해결 방법 등“ 의 노력과 성과를 측정합니다.</p>
+      <p>현재 ‘사회적 가치 지표(SVI)’는<br />사회적 가치, 경제적 가치, 혁신 성과의 3가지 관점에 따라 14개 지표로 구성되어 있습니다.</p>
+      <p>‘SE 자가진단 KIT’에서 스스로 측정하시면 대략적인 점수를 확인하실 수 있습니다.</p>
+
+      <div class="start_button mgt60">
+        <a href="/app/social-form/step/" name="social-form" class="btn_start" onclick="document.getElementById('socialForm').submit();" style="color:#FFFFFF;">자가진단 시작</a>
+      </div>
+    </div>
+    <!-- //inner end -->
+	</section>              
+              
+
+	</form>
+	</body>
 </template>
+  <link rel="import" href="/src/css/common.css">
+  <link  rel="import" href="/src/jquery.mCustomScrollbar.css">  
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+   <script src="/src/js/jquery-1.12.0.min.js"></script>
+   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+   <script src="/src/js/TweenMax.min.js"></script>
+   <script src="/src/js/ui.js"></script> 
 <script>
 Polymer({
 	is: 'social-self-form',
@@ -96,6 +120,32 @@ Polymer({
         if (e.keyCode == 13) {
             this._onSearch();
         }
+    },
+    _submitForm: function(e) {
+        if (this.$.socialForm.validate()) {
+            this.$.socialForm.submit();
+        }
+    },
+    _submitResponse: function(e) {
+        if (e.detail.response == 1) {
+            this.$.alert1.innerHTML = '수정되었습니다';
+            this.$.alert1.classList.remove('hide');
+            this.$.alert1.classList.add('alert-success');
+            this.$.alert2.innerHTML = '수정되었습니다';
+            this.$.alert2.classList.remove('hide');
+            this.$.alert2.classList.add('alert-success');
+        }else {
+            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+            this.$.alert1.classList.remove('hide');
+            this.$.alert1.classList.add('alert-danger');
+            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+            this.$.alert2.classList.remove('hide');
+            this.$.alert2.classList.add('alert-danger');
+        }
+        this.async(function() {
+            this.$.alert1.classList.add('hide');
+            this.$.alert2.classList.add('hide');
+        }, 2000);
     },
 
 });

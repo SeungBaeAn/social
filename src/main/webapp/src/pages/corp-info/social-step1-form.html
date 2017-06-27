@@ -1,0 +1,192 @@
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/src/components/common/normal-table.html">
+<link rel="import" href="/src/components/common/normal-input.html">
+<link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<html lang="ko">
+<head>
+  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- css -->
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="./js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>
+</head> 
+
+<dom-module id="social-step1-form">
+<template>
+
+    <iron-ajax  auto id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/findStep3"
+	 	       on-request="_startLoader"
+	  	       on-response="_stopLoader"
+		       last-response="{{_data}}">
+	</iron-ajax>
+	       <form id="stepForm2" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepup2"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+   <body>	
+	<!-- contents -->
+	<section class="contents">
+    <!-- tab
+      .is-current : 현재 작성중인 페이지
+      .is-complete :완료된 페이지
+    -->
+    <ol class="tab">
+      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
+      <li><a href="self_iagnosis02.html" class="is-complete">사회적<br />미션의 관리</a></li>
+      <li><a href="self_iagnosis03.html" class="is-current">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="self_iagnosis04.html">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="self_iagnosis05.html">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="self_iagnosis06.html">운영의<br />민주성</a></li>
+      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
+      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
+      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+    </ol>
+    <!-- // tab -->
+ <div class="inner_motion">
+  <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+      <h2 class="tit_page">사업활동의 사회적 가치 지향성</h2>
+
+      <div class="box_question">
+        <p class="question">귀사의 고용, 경영 등 내부운영에 있어서 사회가치 지향은 어느 정도라고 생각하고 있습니까?<br />
+
+        <span class="txt_orange">취약계층의 고용비중, 월평균임금, 취약계층 차별금지 등 근로자 고용을 위한 질적 노력, 산업재해 발생건수, 근로자의 보건 및 안전을 위한 질적 노력 등</span>
+        </p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step03_q01" name="KPI_FORM3_1" value="4"/><label for="step03_q01">매우 우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q02" name="KPI_FORM3_1" value="3.2"/><label for="step03_q02">우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q03" name="KPI_FORM3_1" value="2.4"/><label for="step03_q03">보통</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q04" name="KPI_FORM3_1" value="1.6"/><label for="step03_q04">미흡</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q05" name="KPI_FORM3_1" value="0.8"/><label for="step03_q05">매우 미흡</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_question top_line">
+        <p class="question">귀사의 주 사업영역의 제품/서비스를 생산, 판매하는 과정에서 사회가치를 어느 정도 반영하고 있다고 생각하십니까?</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step03_q06" name="KPI_FORM3_2" value="0.6"/><label for="step03_q06">매우 우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q07" name="KPI_FORM3_2" value="1.2"/><label for="step03_q07">우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q08" name="KPI_FORM3_2" value="1.8"/><label for="step03_q08">보통</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q09" name="KPI_FORM3_2" value="2.4"/><label for="step03_q09">미흡</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q10" name="KPI_FORM3_2" value="3"/><label for="step03_q10">매우 미흡</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_question top_line">
+        <p class="question">귀사의 주 사업영역의 제품/서비스가 어느 정도 사회가치를 반영하고 있으며, 이용자(수혜자)의 사회적 가치를 실현하고 있다고 생각하십니까?</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step03_q11" name="KPI_FORM3_3" value="0.6"/><label for="step03_q11">매우 우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q12" name="KPI_FORM3_3" value="1.2"/><label for="step03_q12">우수</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q13" name="KPI_FORM3_3" value="1.8"/><label for="step03_q13">보통</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q14" name="KPI_FORM3_3" value="2.4"/><label for="step03_q14">미흡</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step03_q15" name="KPI_FORM3_3" value="3"/><label for="step03_q15">매우 미흡</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        <strong class="txt_orange">내부운영의 사회적 가치</strong>란 취약계층의 고용비중, 월평균임금, 취약계층 차별금지, 산업재해 발생건수, 근로자의 보건 및 안전 등 근로자 고용을 위한 질적 노력을 의미합니다.<br />
+        <strong class="txt_orange">생산·판매 과정의 사회적 가치</strong>란 주된 사업 영역의 제품·서비스를 생산·판매하는 과정에서의 사회가치 실현을 위한 질적 노력을 의미합니다.<br />
+        <strong class="txt_orange">제품·이용자의 사회적 가치</strong>란 주된 사업 영역에서 결과적인 제품·서비스의 사회가치, 이용자의 사회가치 실현을 위한 질적 노력을 의미합니다.<br />
+      </div>
+     <div class="btnArea mgt60">
+  <a href="/app/social-step/form/" name="social-step" class="btn btn_prev" onclick="document.getElementById('stepback2').submit();"> 이전</a>
+  <a href="/app/social-step2/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm2').submit();">다음</a>
+      </div>
+      <!-- //btnArea end -->
+    </div>
+    <!-- //inner end -->
+	</section>			
+</form>
+ </body> 
+<!-- 모달 팝업 --> 
+
+		    <form id="stepback2" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepback2"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+               <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="1"></input>
+              </form>
+  
+</template>
+
+<script>
+Polymer({
+	is: 'social-step1-form',
+
+	behaviors: [Lunch.LoaderBehavior],
+
+	properties: {
+
+		_data: {
+			type: Array,
+			value: function() {
+				return [];
+			}
+		},
+
+
+	},
+	  _submitForm: function(e) {
+	        if (this.$.stepFormback.validate()) {
+	            this.$.stepFormback.submit();
+	        }
+	    },
+	    _submitResponse: function(e) {
+	        if (e.detail.response == 1) {
+	            this.$.alert1.innerHTML = '수정되었습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-success');
+	            this.$.alert2.innerHTML = '수정되었습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-success');
+	        }else {
+	            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-danger');
+	            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-danger');
+	        }
+	        this.async(function() {
+	            this.$.alert1.classList.add('hide');
+	            this.$.alert2.classList.add('hide');
+	        }, 2000);
+	    },
+});
+</script>
+</dom-module>

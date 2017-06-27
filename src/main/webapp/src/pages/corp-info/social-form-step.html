@@ -15,123 +15,262 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>
+  <link rel="import" href="/src/css/common.css">
+  <link  rel="import" href="/src/jquery.mCustomScrollbar.css">  
+<html lang="ko">
+<head>
+  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- css -->
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="./js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>
+</head>
+  <script type="text/javascript">
+  function stepinfo(){
+//	alert(document.getElementById('KPI_SEQ'));
+//	document.getElementById.kpinum.value = document.socialForms.KPI_SEQ.value;
+//    var kpi = document.getElementById("KPI_SEQ");
+ //   alert(kpi);
+//	form.action = "/AS";
+//	form.cmd.value = "ASStatDetail";
+//	form.assetNo.value = assetNo;
+//	form.grpCd.value = grpCd;
+	alert(document.getElementsByName('kpiseq')[0].value);
+	var kpinm = document.getElementsByName('kpiseq')[0].value
+	alert(kpinm);
+	location.href = '/app/social-step/form/?KPI_SEQ=kpinm';
+	document.getElementById('socialForms').submit();
+	return true;
+}
+   </script>  
 <dom-module id="social-form-step">
 <template>
-    <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/SECTOR/code/" last-response="{{_sector}}"></iron-ajax>
-	<iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/REGION/code/" last-response="{{_region}}"></iron-ajax>
-	<iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/MAIN_TYPE/code/" last-response="{{_mainType}}"></iron-ajax>
-	<iron-ajax  auto id="getCorpList" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
-		       url="/api/hq/1/type"
+    <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/BS_FORM/code/" last-response="{{_bsform}}"></iron-ajax>
+	<iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/ZONE_TYPE/code/" last-response="{{_zonetype}}"></iron-ajax>
+	<iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/common/BS_TYPE/code/" last-response="{{_bsType}}"></iron-ajax>
+
+	 <iron-ajax  auto id="getStepList1"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/stepList1"
 	 	       on-request="_startLoader"
 	  	       on-response="_stopLoader"
 		       last-response="{{_data}}">
 	</iron-ajax>
-	<iron-ajax  id="getCorpListKeyword" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
-				url="/api/hq/keyword"
-				on-request="_startLoader"
-				on-response="_stopLoader"
-				last-response="{{_data}}">
-	</iron-ajax>
-	       <form id="gridForm" is="iron-form"
+	  <app-location id="appLocation" route="{{route}}"></app-location>
+		<app-route
+			route="{{route}}"
+			pattern="/app/:page"
+			data="{{routeData}}"
+			tail="{{subroute}}">
+		</app-route>
+		
+	       <form id="socialForms" is="iron-form"
               content-type="application/json"
               method="post"
-              action="/api/hq/centerMgm"
+              action="/api/self/stepupdate"
               on-iron-form-presubmit="_parseDataBeforeSubmit"
               on-iron-form-response="_submitResponse"
               class="form-horizontal">
-   <body>	
-	<div style="width: 100%; height:700px;  background: #FFFFFF;">
-   <div style="width: 20%; height:500px; border:0px solid red; float: left;  background: #FFFFFF;">
-   <a href=""><h5 style="margin-bottom:0;background-color:red;color:#FFFFFF;">회사 기본정보</h5></a>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF; ">사회적 미션관리</h5>  
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;">주사업활동의 사회적가치회</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;">사회적경제 생태계 구축노력</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;">이윤의 사회목적 재투자</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;"> 운영의 민주성</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;"> 근로자 지향성</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;">고용창출및 재정성과</h5>
-     <h5 style="margin-bottom:0;background-color:#60BBDD;color:#FFFFFF;">기업활동에서의 혁신성</h5>  
+             
+   <body> 	
+	<section class="contents">
+    <ol class="tab">
+      <li><a href="">회사 기본정보</a></li>
+      <li><a href="">사회적<br />미션의 관리</a></li>
+      <li><a href="">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="">운영의<br />민주성</a></li>
+      <li><a href="">근로자<br />지향성</a></li>
+      <li><a href="">고용창출 및<br />재정성과</a></li>
+      <li><a href="">기업활동에서의<br />혁신성</a></li>
+    </ol>
+   	  <div class="inner">
+   	   <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+   	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}" ></input>
+      <!-- 회사정보 입력 -->
+      <div class="company_info">
+        <table class="tbl_write">
+          <colgroup>
+            <col style="width:145px;" />
+            <col />
+          </colgroup>
+          <tr>
+            <th><span class="bullet_blue">회사명{{_data.KPI_SEQ}}</span></th>
+            <td><input type="text" class="inputSt"  name="COMPANY" /></td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">사업자번호</span></th>
+            <td><input type="text" class="inputSt" name="LICENSEE" /></td>
+          </tr>
+          <tr>
+             <th><span class="bullet_blue">대표자명</span></th>
+            <td><input type="text" class="inputSt" name="CEO_NAME"  /></td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">업종</span></th>
+            <td>
+              <select class="ui-select" name="BS_TYPE">
+                <option value="0">선택</option>
+                <option value="1">문화,예술,여행</option>
+                <option value="2">청소.환경.경비</option>    
+                <option value="3">교육.방과후 서비스</option>    
+                <option value="4">간병,가사 보건인력</option>    
+                <option value="5">사무 생활용품(유통,제조,판매)</option>    
+                <option value="6">식품(유통,제조,판매)</option>    
+                <option value="7">기타</option>    
+                    
+              </select>            
+             <a href="#" class="btn bg_orange innerBtn js-openPop">업종 설명</a>
+            </td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">형태</span></th>
+            <td>
+              <select class="ui-select" name="BS_FORM">
+                <option value="0">선택</option>
+                <option value="1">인증</option>
+                <option value="2">예비인증</option>    
+                <option value="3">창업</option>    
+             </select>                     
+            </td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">지역</span></th>
+            <td>
+              <select class="ui-select" name="ZONE_TYPE">
+                <option value="0">선택</option>
+                <option value="1">서울시</option>
+                <option value="2">경기도</option>    
+                <option value="3">인천시</option>    
+                <option value="4">부산시</option>    
+                <option value="5">대전시</option>    
+                <option value="6">대구시</option>    
+                <option value="7">울산시</option>    
+                <option value="8">강원도</option>      
+                <option value="9">광주시</option>      
+                <option value="10">충청북도</option>      
+                <option value="11">충청남도</option>      
+                <option value="12">경상북도</option>
+                <option value="13">경상남도</option>  
+                <option value="14">전라북도</option>  
+                <option value="15">전라남도</option>  
+                <option value="16">제주시</option>            
+              </select>        
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- //company_info end -->
+
+      <div class="btnArea mgt60">
+        <button  name="social-step" class="btn btn_next" onclick="javascript:stepinfo();">다음</button>
+      </div>
+      <!-- //btnArea end -->
     </div>
-  <div style="width: 75%; height:600px; border:0px solid green; float: right;background: #FFFFFF;">
-     <h3 style="margin-bottom:0;"><b>* 회사 기본정보</b></h3><br>
-     <div class="row" style="float: center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 회사명 : </h6>
-     </div>
-		<div class="col-xs-3">
-		<normal-input id="keyword" placeholder="" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
-		</div>
-	  </div>
-	     <div class="row" style="float: center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 사업자번호 : </h6>
-     </div>
-		<div class="col-xs-3">
-		<normal-input id="keyword" placeholder="" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
-		</div>
-	  </div>
-	    <div class="row" style="float: center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 대표자명 : </h6>
-     </div>
-		<div class="col-xs-3">
-		<normal-input id="keyword" placeholder="" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
-		</div>
-	  </div>
-	 <div class="row" style="float: center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 업종 : </h6>
-     </div>
-	  <div class="col-xs-4">
-					<normal-select name="MAIN_TYPE" items="{{_mainType}}" name-from="CD_NM" value-from="CD" value="{{_data.MAIN_TYPE}}"></normal-select>
-				</div>
-	<div> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">업종 설명</button>			
-			</div>
-	 	</div>	
-	 <div class="row" style="float:center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 형태  : </h6>
-     </div>
-	  <div class="col-xs-4">
-					<normal-select name="SECTOR" items="{{_sector}}" name-from="CD_NM" value-from="CD" value="{{_data.SECTOR}}"></normal-select>
-			</div>	
-	  </div>	
-	 <div class="row" style="float:center;">
-     <div class="col-xs-2">
-     <h6 style="margin-bottom:1;">* 지역  : </h6>
-     </div>
-	  <div class="col-xs-4">
-				<normal-select name="REGION" items="{{_region}}" name-from="CD_NM" value-from="CD" value="{{_data.REGION}}"></normal-select>
-				</div>
-			</div>
-			<br><br><br>
-     <div style="text-align: center;">
-    <button type="submit" class="btn btn-primary btn-lg" >
-    <span class="glyphicon glyphicon-plus"></span> 다 음</button>
-     </div>						
+    <!-- //inner end -->
+
+    <!-- 업종설명 팝업 -->
+    <div class="dim"></div>
+    <div class="popup">
+      <table class="tbl_blue">
+        <colgroup>
+          <col style="width:205px;" />
+          <col />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>서비스분야</th>
+            <th>세부 내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>문화, 예술, 여행</td>
+            <td>
+              - 연극, 영화, 공연, 축제, 문화콘텐츠, 문화체험<br />
+              - 국내외 여행
+            </td>
+          </tr>
+          <tr>
+            <td>청소, 환경, 경비</td>
+            <td>
+              - 청소용역, 소독방역, 건물종합관리, 위생관리, 소독<br />
+              - 생활폐기물/음식물폐기물 수집·운반, 재활용품 수집/처리
+            </td>
+          </tr>
+          <tr>
+            <td>교육, 방과 후 서비스</td>
+            <td>
+              - 교육, 현장체험 캠프 및 교육, 컨설팅, 인재양성<br />
+              - 방과후 학교
+            </td>
+          </tr>
+          <tr>
+            <td>간병, 가사/보건/인력</td>
+            <td>
+              - 간병, 장기요양, 노인복지, 산후조리, 신생아, 아동, 세탁업<br />
+              - 병원, 한의원, 한방의원, 의료기기<br />
+              - 인력공급 및 고용알선
+            </td>
+          </tr>
+          <tr>
+            <td>사무생활용품<br />(유통, 제조, 판매)</td>
+            <td>
+              - 복사용지, 문구, 의류, 장갑, 가구, 비누, 바이오 제품<br />
+              - 디자인, 공고기획, 인쇄출판
+            </td>
+          </tr>
+          <tr>
+            <td>식품(유통, 제조, 판매)</td>
+            <td>
+              - 휴게음식점, 한식, 카페, 음식업, 커피, 빵, 도시락<br />
+              - 농축산물, 식품제조 및 가공채소
+            </td>
+          </tr>
+          <tr>
+            <td>기타</td>
+            <td>
+              - 건설, 집수리, 인테리어, 공사<br />
+              - IT주변기기 조립, 소프트웨어, 자동차부품제조, 수배전반 등<br />
+              - 기타(웹사이트 평가, 퀵서비스, 택배 등)<br />
+              - 특정 분류로 구분하기 어려운 소규모인 업종
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="#" class="btn_closePop js-closePop">닫기</a>
+    </div>
+    <!-- //popup end -->
+	</section>
+ 
+
+    						
 </form>
- </body> 
-<!-- 모달 팝업 --> 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">업종</h4>
-      </div>
-      <div class="modal-body">
-        업종 설명
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-      </div>
-    </div>
-  </div></div>
-
-  
+ </body>
+   <!-- css -->
+  <link rel="import" href="/src/css/common.css">
+  <link  rel="import" href="/src/jquery.mCustomScrollbar.css">  
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+   <script src="/src/js/jquery-1.12.0.min.js"></script>
+   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+   <script src="/src/js/TweenMax.min.js"></script>
+   <script src="/src/js/ui.js"></script> 
+<!-- 모달 팝업 -->   
 </template>
-
 <script>
 Polymer({
 	is: 'social-form-step',
@@ -140,50 +279,35 @@ Polymer({
 
 	properties: {
 
-		_data: {
-			type: Array,
-			value: function() {
-				return [];
-			}
-		},
-        _keyword: {
-            type: String,
-            value: function() {
-                return "";
-            }
-        },
-		_headerLabels: {
-			type: Object,
-			value: function() {
-				return {
-				    CORP_TYPE: '기업유형',
-                    CORP_NM: '기업명',
-                    OPEN_DT: '설립연월',
-                    SE_YN_NM: '인증여부',
-                    ORG_TYPE_NM: '조직형태',
-                    REGION_NM: '지역',
-				};
-			}
-		},
-		_linkURL: {
-			type: String,
-			value: '/app/social-info/view/'
-		},
 
 	},
-    _onSearch: function() {
-        this.$.getCorpListKeyword.params = {
-            KEYWORD: this._keyword,
-			CORP_TYPE: '1'
-        };
-        this.$.getCorpListKeyword.generateRequest();
-    },
-    _runFind: function(e) {
-        if (e.keyCode == 13) {
-            this._onSearch();
-        }
-    },
 
+	   _submitForm: function(e) {
+	        if (this.$.socialForms.validate()) {
+	            this.$.socialForms.submit();
+	        }
+	    },
+    _submitResponse: function(e) {
+        if (e.detail.response == 1) {
+            this.$.alert1.innerHTML = '수정되었습니다';
+            this.$.alert1.classList.remove('hide');
+            this.$.alert1.classList.add('alert-success');
+            this.$.alert2.innerHTML = '수정되었습니다';
+            this.$.alert2.classList.remove('hide');
+            this.$.alert2.classList.add('alert-success');
+        }else {
+            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+            this.$.alert1.classList.remove('hide');
+            this.$.alert1.classList.add('alert-danger');
+            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+            this.$.alert2.classList.remove('hide');
+            this.$.alert2.classList.add('alert-danger');
+        }
+        this.async(function() {
+            this.$.alert1.classList.add('hide');
+            this.$.alert2.classList.add('hide');
+        }, 2000);
+    },
 });
 </script>
 </dom-module>

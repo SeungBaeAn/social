@@ -1,30 +1,32 @@
 <link rel="import" href="/bower_components/app-route/app-route.html">
 <link rel="import" href="/bower_components/iron-pages/iron-pages.html">
 
-<dom-module id="page-social-form">
+<dom-module id="page-social-step6">
 <template>
 	<app-route route="{{route}}"
-		   pattern="/app/social-form/:mode/:id"
+		   pattern="/app/social-step6/:mode/:id"
 		   data="{{routeData}}"
 		   active>
 	</app-route>
 
+	<div class="page-header">
+		<h2>자가진단  <small>Social Self Diagnosis </small></h2>
+	</div>
 
-
-	<iron-pages id="social-form" selected="[[mode]]" attr-for-selected="name">
-		<social-form-step name="step"></social-form-step>
-		<social-info name="view" id="{{id}}"></social-info>
+	<iron-pages id="social-step6" selected="[[mode]]" attr-for-selected="name">
+		<social-step6-form name="form"></social-step6-form>
+		<social-form-step name="view" id="{{id}}"></social-form-step>
 	</iron-pages>
 
 </template>
 <script>
 Polymer({
-	is: 'page-social-form',
+	is: 'page-social-step6',
 
 	properties: {
 		mode: {
 			type: String,
-			value: 'step',
+			value: 'form',
 			observer: '_importHTML'
 		},
 		id: Number,
@@ -36,7 +38,7 @@ Polymer({
 	],
 
 	_determineMode: function(value) {
-		this.mode = value || 'step'; 
+		this.mode = value || 'form'; 
 	},
 
     _idChanged: function(value) {
@@ -44,7 +46,7 @@ Polymer({
     },
 
     _importHTML: function(newValue) {
-		this.importHref(this.resolveUrl('corp-info/social-form-' + newValue + '.html'), null, null, true);
+		this.importHref(this.resolveUrl('corp-info/social-step6-' + newValue + '.html'), null, null, true);
 	},
 });
 </script>

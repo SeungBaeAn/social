@@ -1,0 +1,205 @@
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/src/components/common/normal-table.html">
+<link rel="import" href="/src/components/common/normal-input.html">
+<link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
+<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<html lang="ko">
+<head>
+  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- css -->
+  <link href="/src/css/common.css" rel="stylesheet">
+  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+  <!--[if lt IE 9]>
+  <script src="./js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>
+  
+</head> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var val = location.href.substr(
+                location.href.lastIndexOf('=') + 1
+            );
+            console.log('val ========================================: ' + val);
+    //  alert('val : ' + val.value);
+        });
+    </script>
+<dom-module id="social-step-form">
+<template>
+    <iron-ajax  auto id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/findStep2"
+	 	       on-request="_startLoader"
+	  	       on-response="_stopLoader"
+		       last-response="{{_data}}">
+	</iron-ajax>
+	       <form id="stepForm1" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepup1"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+   <body>	
+	<!-- contents -->
+	<section class="contents">
+    <!-- tab
+      .is-current : 현재 작성중인 페이지
+      .is-complete :완료된 페이지
+    -->
+    <ol class="tab">
+      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
+      <li><a href="self_iagnosis02.html" class="is-current">사회적<br />미션의 관리</a></li>
+      <li><a href="self_iagnosis03.html">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="self_iagnosis04.html">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="self_iagnosis05.html">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="self_iagnosis06.html">운영의<br />민주성</a></li>
+      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
+      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
+      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+    </ol>
+    <!-- // tab -->
+
+		 <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+	  <div class="inner_motion">
+      <h2 class="tit_page">사회적 가치 추구 여부</h2>
+
+      <div class="box_question">
+        <p class="question">귀사는 현재 기업의 사회적 목적을 반영하는 미션 선언문 또는 경영원칙 등을 명시적으로 표현한 문서를 가지고 계십니까?</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1" value="5"/><label for="step02_q01">있음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q02" name="KPI_FORM1" value="1"/><label for="step02_q02">없음</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        <strong class="txt_orange">명시적 문서</strong>란 사회적 가치가 내포된 미션 및 비전이 명시적으로 드러난 문서를 뜻하며, 정관·규약, 비 전선언문, 미션선언문 등이 해당합니다.
+      </div>
+      <!-- //box_tip -->
+
+      <h2 class="tit_page top_line">사회적 성과 평가체제 구축</h2>
+
+      <div class="box_question">
+        <p class="question">귀사는 현재 기업에서 창출하는 사회적 성과를 체계적으로 관리하기 위해 다음 중 몇 가지 사항을 갖추고 있습니까?</p>
+        <p class="txt_choice">측정기준,  담당인력,  평가보고서,  평가위원회,  평가결과의 사내공유</p>
+        <ul class="horizon mgt25">
+          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="5"/><label for="step02_q03">4개 이상</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q04" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q05" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q06" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q07" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
+        </ul>
+      </div>
+
+      <div class="box_tip">
+        <strong class="tit">작성 TIP</strong>
+        <strong class="txt_orange">성과평가 체계</strong>란 사회적기업 운영 성과(사회적 가치구현, 매출, 일자리 창출 등)를 평가할 수 있는 체계적인 평가도구를 의미합니다.
+      </div>
+      
+ <div class="btnArea mgt60">
+  <a href="/app/social-form/step/" name="social-step" class="btn btn_prev" onclick="document.getElementById('stepback1').submit();">이전</a>
+  <a href="/app/social-step1/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm1').submit();">다음</a>
+     </div>	
+    </div>
+    <!-- //inner end -->
+	</section>     	
+</form>
+ </body> 
+
+    		    <form id="stepback1" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepback1"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+               <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="0"></input>
+              </form>
+<script>
+var _value="";
+window.onload = function()
+{
+ var url = unescape(location.href);
+ var pm  = url.split('?');
+ var params   = pm[1].split('&');
+ for( var i=0; i<params.length; i++ )
+ {
+  var param = params[i].split('=');
+//  alert(param[0]+' 의 값은 '+param[1]+' 입니다.');
+ _value=param[1];
+ }
+ 
+}
+</script>              
+</template>
+
+<script>
+Polymer({
+	is: 'social-step-form',
+
+	behaviors: [Lunch.LoaderBehavior],
+
+	properties: {
+		
+	
+
+	
+	},
+
+	  _submitForm: function(e) {
+	        if (this.$.stepForm1.validate()) {
+	            this.$.stepForm1.submit();
+	        }
+	    },
+	    _submitResponse: function(e) {
+	        if (e.detail.response == 1) {
+	            this.$.alert1.innerHTML = '수정되었습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-success');
+	            this.$.alert2.innerHTML = '수정되었습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-success');
+	        }else {
+	            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-danger');
+	            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-danger');
+	        }
+	        this.async(function() {
+	            this.$.alert1.classList.add('hide');
+	            this.$.alert2.classList.add('hide');
+	        }, 2000);
+	    },
+	    
+
+	    
+});
+</script>
+</dom-module>
