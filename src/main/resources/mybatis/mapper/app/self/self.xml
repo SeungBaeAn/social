@@ -275,7 +275,6 @@
 		WHERE 1=1
 		 AND KPI_STEP ='1'
 		 AND END_DATE IS NULL
-		 AND KPI_SEQ = #{p.KPI_SEQ}
 		 order by KPI_SEQ desc limit 1
     </select>
     
