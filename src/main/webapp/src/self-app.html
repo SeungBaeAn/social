@@ -28,17 +28,19 @@
 <link rel="import" href="/bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html" />
 <link rel="import" href="/bower_components/iron-image/iron-image.html" />
-
 <link rel="import" href="/src/components/common/loading-spinner.html" />
-
 <link rel="import" href="styles/base/common.html" />
 <link rel="import" href="styles/components/header.html" />
-  <!-- css -->
 <link href="/src/css/common.css" rel="stylesheet">
 <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+  <script src="/src/js/jquery-1.12.0.min.js"></script>
+  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
+  <script src="/src/js/TweenMax.min.js"></script>
+  <script src="/src/js/ui.js"></script>	
 <dom-module id="self-app">
 
 	<template>
+
 		<style include="common-style"></style>
 		<style include="header-style"></style>
 		<style>
@@ -49,10 +51,7 @@
 				}
 			}
 		</style>
-  <script src="/src/js/jquery-1.12.0.min.js"></script>
-  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-  <script src="/src/js/TweenMax.min.js"></script>
-  <script src="/src/js/ui.js"></script>
+
 		<app-location id="appLocation" route="{{route}}"></app-location>
 		<app-route
 			route="{{route}}"
@@ -61,8 +60,7 @@
 			tail="{{subroute}}">
 		</app-route>
 
-		<loading-spinner></loading-spinner>
-		<app-drawer-layout fullbleed>
+
 
 			<!-- Drawer content -->
 
@@ -115,8 +113,8 @@
 							</div>
 					</div>
 
-			</app-drawer-layout>
-
+	
+            
 	</template>
 
         <script>

@@ -1,27 +1,21 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="/src/components/common/normal-input.html" />
-<dom-module id="page-login">
-        <template>
- <html> 
-<head> 
-</head> 
-<body>
 
-          
-
-			<form is="iron-form" name="loginForm" action="/api/auth/login" method="post" on-iron-form-response="_formResponse"
+<dom-module id="social-main-kpi"> 
+ <template>
+ 
+			<form is="iron-form" id="loginForm" name="loginForm" action="/api/auth/login" method="post" on-iron-form-response="_formResponse"
                     on-iron-form-error="_formError"> 
                <input type="hidden" name="userId" value="self"> 
                <input type="hidden" name="password" value="1"> 
-                </form>
-<script>document.loginForm.submit();</script>     
-</body> 
-</html>
+            </form>
+      <script>document.getElementById('loginForm').submit();</script>  
+
  	</template>
         <script>
                 Polymer({
-                        is: 'page-login',
+                        is: 'social-main-kpi',
 
 			_formError: function(e) {
 				console.log(e.detail);
