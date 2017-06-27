@@ -24,6 +24,8 @@
    <script src="/src/js/jquery.mCustomScrollbar.js"></script>
    <script src="/src/js/TweenMax.min.js"></script>
    <script src="/src/js/ui.js"></script> 
+   
+   
 <dom-module id="social-self-form">
 <template>
 	<iron-ajax  auto id="getCorpList" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
@@ -62,14 +64,7 @@
 	</form>
 	</body>
 </template>
-  <link rel="import" href="/src/css/common.css">
-  <link  rel="import" href="/src/jquery.mCustomScrollbar.css">  
-  <link href="/src/css/common.css" rel="stylesheet">
-  <link href="/src/jquery.mCustomScrollbar.css" rel="stylesheet">
-   <script src="/src/js/jquery-1.12.0.min.js"></script>
-   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-   <script src="/src/js/TweenMax.min.js"></script>
-   <script src="/src/js/ui.js"></script> 
+
 <script>
 Polymer({
 	is: 'social-self-form',
@@ -84,43 +79,8 @@ Polymer({
 				return [];
 			}
 		},
-        _keyword: {
-            type: String,
-            value: function() {
-                return "";
-            }
-        },
-		_headerLabels: {
-			type: Object,
-			value: function() {
-				return {
-				    CORP_TYPE: '기업유형',
-                    CORP_NM: '기업명',
-                    OPEN_DT: '설립연월',
-                    SE_YN_NM: '인증여부',
-                    ORG_TYPE_NM: '조직형태',
-                    REGION_NM: '지역',
-				};
-			}
-		},
-		_linkURL: {
-			type: String,
-			value: '/app/social-info/view/'
-		},
 
 	},
-    _onSearch: function() {
-        this.$.getCorpListKeyword.params = {
-            KEYWORD: this._keyword,
-			CORP_TYPE: '1'
-        };
-        this.$.getCorpListKeyword.generateRequest();
-    },
-    _runFind: function(e) {
-        if (e.keyCode == 13) {
-            this._onSearch();
-        }
-    },
     _submitForm: function(e) {
         if (this.$.socialForm.validate()) {
             this.$.socialForm.submit();
