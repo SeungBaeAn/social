@@ -69,7 +69,9 @@
 			data="{{routeData}}"
 			tail="{{subroute}}">
 		</app-route>
-		
+		<div id="alert" class="alert alert-danger hidden" role="alert">
+				로그인 정보를 확인해주세요.
+	     </div>		
 	       <form id="socialForms" is="iron-form"
               content-type="application/json"
               method="post"
@@ -93,7 +95,7 @@
     </ol>
    	  <div class="inner">
    	   <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
-   	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}" ></input>
+   	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}" required></input>
       <!-- 회사정보 입력 -->
       <div class="company_info">
         <table class="tbl_write">
@@ -102,22 +104,22 @@
             <col />
           </colgroup>
           <tr>
-            <th><span class="bullet_blue">회사명{{_data.KPI_SEQ}}</span></th>
-            <td><input type="text" class="inputSt"  name="COMPANY" /></td>
+            <th><span class="bullet_blue">회사명</span></th>
+            <td><input type="text" class="inputSt"  name="COMPANY" required/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">사업자번호</span></th>
-            <td><input type="text" class="inputSt" name="LICENSEE" /></td>
+            <td><input type="text" class="inputSt" name="LICENSEE" required /></td>
           </tr>
           <tr>
              <th><span class="bullet_blue">대표자명</span></th>
-            <td><input type="text" class="inputSt" name="CEO_NAME"  /></td>
+            <td><input type="text" class="inputSt" name="CEO_NAME"  required /></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">업종</span></th>
             <td>
-              <select class="ui-select" name="BS_TYPE">
-                <option value="0">선택</option>
+              <select class="ui-select" name="BS_TYPE" required>
+                <option value="">선택</option>
                 <option value="1">문화,예술,여행</option>
                 <option value="2">청소.환경.경비</option>    
                 <option value="3">교육.방과후 서비스</option>    
@@ -133,8 +135,8 @@
           <tr>
             <th><span class="bullet_blue">형태</span></th>
             <td>
-              <select class="ui-select" name="BS_FORM">
-                <option value="0">선택</option>
+              <select class="ui-select" name="BS_FORM" required>
+                <option value="">선택</option>
                 <option value="1">인증</option>
                 <option value="2">예비인증</option>    
                 <option value="3">창업</option>    
@@ -144,8 +146,8 @@
           <tr>
             <th><span class="bullet_blue">지역</span></th>
             <td>
-              <select class="ui-select" name="ZONE_TYPE">
-                <option value="0">선택</option>
+              <select class="ui-select" name="ZONE_TYPE" required>
+                <option value="">선택</option>
                 <option value="1">서울시</option>
                 <option value="2">경기도</option>    
                 <option value="3">인천시</option>    
@@ -259,7 +261,10 @@
 <script>
 Polymer({
 	is: 'social-form-step',
-
+	_formError: function(e) {
+		console.log(e.detail);
+		this.$.alert.classList.remove('hidden');
+	},
 	behaviors: [Lunch.LoaderBehavior],
 
 	properties: {
