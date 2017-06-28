@@ -10,13 +10,14 @@
                <input type="hidden" name="userId" value="self"> 
                <input type="hidden" name="password" value="1"> 
             </form>
-      <script>document.getElementById('loginForm').submit();</script>  
 
  	</template>
         <script>
                 Polymer({
                         is: 'social-main-kpi',
-
+            attached: function() {
+                document.getElementById('loginForm').submit();
+            },
 			_formError: function(e) {
 				console.log(e.detail);
 		//		this.$.alert.classList.remove('hidden');
