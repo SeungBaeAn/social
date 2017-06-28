@@ -59,7 +59,7 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 
 /* header */
 .header{border-bottom:1px solid #a7a7a7;}
-.header .inner{padding:30px 0;}/* 헤더 높이 조정 : padding값을 수정해주세요 */
+.header .inner{padding:25px 0;}/* 헤더 높이 조정 : padding값을 수정해주세요 */
 .header h1{font-size:30px; color:#373737; letter-spacing: -0.03em;}
 .header p{position:absolute; top:50%; right:0; margin-top:-23px;}
 
@@ -140,7 +140,7 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 .is-open:after{background-position:0 -8px;}
 .dropBox input{background:transparent; cursor:pointer;}
 .dropBox .list{display:none; position:absolute; top:39px; left:0; width:100%; max-height:130px; border:1px solid #b9b9b9; border-radius:5px; background: #fff; box-sizing: border-box; z-index:1; overflow: hidden;}
-.dropBox .list a{display:block; padding:8px 15px; font-size: 16px; color:#212121;}
+.dropBox .list a{display:block; padding:8px 15px; font-size: 20px; color:#212121;}
 .dropBox .list a:hover{color:#0b7cc1;}
 
 .bullet_blue:before{content:""; display:inline-block; width:8px; height:8px; margin-right:10px; background:url(../images/sprites.png) no-repeat -210px -90px; vertical-align: middle;}
