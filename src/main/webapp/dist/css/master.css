@@ -6156,11 +6156,11 @@ a:link, a:visited, a:active, a:hover {
   right: 0 !important; }
 
 .btn-primary {
-  background-color: #4db14e;
-  border-color: #4da14e; }
+  background-color: #00aee6;
+  border-color: #00aee6; }
   .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
-    background-color: green !important;
-    border-color: green !important; }
+    background-color: dodgerblue !important;
+    border-color: dodgerblue !important; }
 
 /*
  *polymer components reset

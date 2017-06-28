@@ -61,101 +61,19 @@
 
 			<!-- Drawer content -->
 			<app-drawer>
-				<app-toolbar><iron-image src="img/social_left1.png"></iron-image></app-toolbar>
+				<app-toolbar><iron-image src="img/social_logo.png"></iron-image></app-toolbar>
 
 				<iron-selector selected="[[page]]" attr-for-selected="name">
                        	<div class="menu">
 							<iron-icon icon="folder"></iron-icon>
-							자가진단 서비스
+							자가진단 서비스 관리
 						</div>
-						<a href="/app/social-self/form/" name="social-self" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								자가진단 서비스란?
-							</a>
-							<a href="/app/social-form/step/" name="social-form" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								자가진단
-							</a>
-							<a href="/app/cooperation-info/list/" name="cooperation-info" class="menu submenu">
+
+							<a href="/app/social-self/form/" name="social-self" class="menu submenu">
 								<iron-icon icon="assignment"></iron-icon>
 								결과조회
 							</a>
-						
-						
-						
-						<div class="menu">
-							<iron-icon icon="folder"></iron-icon>
-							기업유형별 현황조회
-						</div>
-							<a href="/app/social-info/list/" name="social-info" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								사회적기업
-							</a>
-							<a href="/app/village-info/list/" name="village-info" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								마을기업
-							</a>
-							<a href="/app/cooperation-info/list/" name="cooperation-info" class="menu submenu">
-								<iron-icon icon="assignment"></iron-icon>
-								협동조합
-							</a>
-						<div class="menu">
-							<iron-icon icon="folder"></iron-icon>
-							기업유형별 성과조회
-						</div>
-							<a href="/app/social-kpi/list/" name="social-kpi" class="menu submenu">
-								<iron-icon icon="assessment"></iron-icon>
-								사회적기업
-							</a>
-							<a href="/app/village-kpi/list/" name="village-kpi" class="menu submenu">
-								<iron-icon icon="assessment"></iron-icon>
-								마을기업
-							</a>
-							<a href="/app/cooperation-kpi/list/" name="cooperation-kpi" class="menu submenu">
-								<iron-icon icon="assessment"></iron-icon>
-								협동조합
-							</a>
 
-						<div class="menu">
-							<iron-icon icon="folder"></iron-icon>
-							성과지표 분석
-						</div>
-							<a href="/app/analytics-corp" name="analytics-corp" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								기업별 성과지표 분석
-							</a>
-							<a href="/app/chart-all" name="chart-all" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								사회적경제조직 유형별 분석
-							</a>
-							<a href="/app/chart-type" name="chart-type" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								사회적목적 유형별 분석
-							</a>
-							<a href="/app/chart-sector" name="chart-sector" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								 업종별 분석
-							</a>
-							<a href="/app/chart-region" name="chart-region" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-									지역별 분석
-							</a>
-							<a href="/app/chart-kpi" name="chart-kpi" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								KPI 항목별 분석
-							</a>
-							<a href="/app/all-corps" name="all-corps" class="menu submenu">
-								<iron-icon icon="timeline"></iron-icon>
-								전체기업 상세정보 조회
-							</a>
-							<a href="#" name="general" class="menu">
-								<iron-icon icon="settings"></iron-icon>
-								관리
-							</a>
-							<a href="/app/center-mgm/" name="center-mgm" class="menu submenu">
-								<iron-icon icon="perm-identity"></iron-icon>
-								사용자 관리
-							</a>
 				</iron-selector>
 			</app-drawer>
 
@@ -165,7 +83,7 @@
 					<app-header condenses reveals effects="waterfall">
 							<app-toolbar>
 									<paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-									<div title>사회적기업 사회가치 자가진단 시스템</div>
+									<div title>사회적기업 사회가치 자가진단 KIT</div>
 									<div class="loginInfo">
 											
 											<div class="login-delimeter"></div>
@@ -246,7 +164,7 @@
 
                         attached: function() {
                                 if (this.$.appLocation.path == '/')
-                                        this.$.appLocation.path = '/app/social-info/list/';
+                                        this.$.appLocation.path = '/app/social-self/form/';
                         },
 
                         _routePageChanged: function(page) {
