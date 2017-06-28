@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $(".js-openPop").on("click",function(e){
     e.preventDefault();
-
+    
     var topPosition = $(window).scrollTop()+100;
 
     $(".dim").fadeIn(200);
@@ -65,8 +65,10 @@ function dropBox(){
 }
 
 function pageMotion(){
+	
   var $target = $(".motion");
   var $tab = $(".is-current");
+  $tab.animate({"top":100});
   TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
   TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
 }

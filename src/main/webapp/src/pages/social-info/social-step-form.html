@@ -12,11 +12,12 @@
 <link rel="import" href="/src/components/common/number-input.html" />
 <link rel="import" href="/src/components/common/normal-select.html" />
 <link rel="import" href="/src/components/common/date-input.html" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+ <link href="/src/css/common.css" rel="stylesheet">
+ <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+<script src="/src/js/jquery-1.12.0.min.js"></script>
+<script src="/src/js/jquery.mCustomScrollbar.js"></script>
+<script src="/src/js/TweenMax.min.js"></script>
+<script src="/src/js/ui.js"></script>
 <html lang="ko">
 <head>
   <title>사회적 가치 지표(SVI) 자가진단</title>
@@ -24,13 +25,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link href="/src/css/common.css" rel="stylesheet">
-  <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
 
-  <script src="/src/js/jquery-1.12.0.min.js"></script>
-  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-  <script src="/src/js/TweenMax.min.js"></script>
-  <script src="/src/js/ui.js"></script>
   
 </head> 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -79,7 +74,7 @@
     <!-- // tab -->
 
 		 <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
-	  <div class="inner_motion">
+	  <div class="inner motion">
       <h2 class="tit_page">사회적 가치 추구 여부</h2>
 
       <div class="box_question">
@@ -196,5 +191,14 @@ Polymer({
 
 	    
 });
+
+
+	
+  var $target = $(".motion");
+  var $tab = $(".is-current");
+  $tab.animate({"top":100});
+  TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
+  TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
+
 </script>
 </dom-module>
