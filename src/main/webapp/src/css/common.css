@@ -24,7 +24,7 @@
 
 /* reset */
 *, *:before, *:after {margin:0; padding:0;}
-html,body{font-family: 'Nanum Square'; line-height:1; letter-spacing: -0.02em;}
+html,body{font-family: 'Nanum Square'; line-height:1; letter-spacing: -0.02em; background:#fff;}
 fieldset,img{border:0 none}
 dl,ul,ol,menu,li{list-style:none}
 blockquote,q{quotes:none}
@@ -66,17 +66,17 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 /* buttons */
 .btn{display:inline-block; height:40px; border-radius:5px; overflow:hidden; font-weight:700; text-align:center; line-height:40px; vertical-align: middle;}
 .btnArea{text-align:center;}
-.btnArea .btn{width:197px; height:56px; font-size:20px; line-height:56px;}
+.btnArea .btn{width:197px; height:56px; padding:0; font-size:20px; line-height:56px;}
 .btnArea .btn+.btn{margin-left:25px;}
 .btn_prev{border:1px solid #8a8a8a; background:#ebebeb; color:#808080;}
 .btn_prev:before{content:""; display:inline-block; float:left; width:50px; height:56px; background:url(../images/sprites.png) no-repeat 0 0; vertical-align: middle;}
-.btn_next{border:1px solid #00619d; background:#0b7cc1; color:#fff;}
+.btn_next{border:1px solid #00619d; background:#0b7cc1; color:#fff !important;}
 .btn_next:after{content:""; display:inline-block; float:right; width:50px; height:56px; background:url(../images/sprites.png) no-repeat -60px 0; vertical-align: middle;}
 .btn_end{border:1px solid #d86400;}
-.btn_print{width:110px; font-size:17px; letter-spacing: -0.01em;}
+.btn_print{width:110px; padding:0; font-size:17px; letter-spacing: -0.01em;  color:#fff !important;}
 .btn_print:before{content:""; display:inline-block; width:28px; height:22px; margin-right:10px; background:url(../images/sprites.png) no-repeat -30px -60px; vertical-align: middle;}
-.bg_orange{background:#f5821f; color:#fff;}
-.innerBtn{width:110px;}
+.bg_orange{background:#f5821f;  color:#fff !important;}
+.innerBtn{width:110px; padding:0; color:#fff !important;}
 .btn_start{display:inline-block; width:470px; height:90px; border-radius:50px; background:#222; color:#fff; font-size:30px; font-weight:700; text-align:center; line-height:90px;}
 .btn_start:after{content:""; display:inline-block;width:28px; height:28px; margin-left:40px; background:url(../images/sprites.png) no-repeat 0 -60px; vertical-align: middle;}
 
@@ -132,7 +132,7 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 /* 회사 정보 입력 */
 .company_info{padding:70px 235px 20px; border:1px solid #cdcdcd;}
 .tbl_write th{text-align:left; font-size:20px; font-weight:700; letter-spacing: -0.015em; color:#0b7cc1;}
-.tbl_write td{padding:14px 0;}
+.tbl_write td{padding:14px 0; text-align:left;}
 .tbl_write td input{width:220px; text-align:left; box-sizing: border-box;}
 
 .dropBox{display:inline-block; position:relative; width:220px; vertical-align: middle;}
@@ -206,6 +206,9 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 .tbl_write .msg_alert input{border:2px solid #ef0101;}
 
 .ui-select{width:220px; height:40px; border-radius: 5px;}
+
+.card{margin:0; padding:0; border-radius:0; border:0;}
+.col-xs-12 {padding:0; border:0; float:none;}
 
 @media print{
   .header, .btn_print{display:none;}

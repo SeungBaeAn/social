@@ -1,33 +1,17 @@
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/src/components/common/normal-table.html">
-<link rel="import" href="/src/components/common/normal-input.html">
-<link rel="import" href="/src/components/behaviors/behavior-loader.html">
-<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
-<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
-<link rel="import" href="/bower_components/iron-form/iron-form.html">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/bower_components/iron-input/iron-input.html">
-<link rel="import" href="/src/components/common/normal-input.html" />
-<link rel="import" href="/src/components/common/number-input.html" />
-<link rel="import" href="/src/components/common/normal-select.html" />
-<link rel="import" href="/src/components/common/date-input.html" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script>>  
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <title>사회적 가치 지표(SVI) 자가진단</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- css -->
-  <link href="/src/css/common.css" rel="stylesheet">
-  <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-
-  <script src="/src/js/jquery-1.12.0.min.js"></script>
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/src/components/common/normal-table.html">
+<link rel="import" href="/src/components/common/normal-input.html">
+<link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link href="/src/css/common.css" rel="stylesheet">
+<link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
+<script src="/src/js/jquery-1.12.0.min.js"></script>
   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
   <script src="/src/js/TweenMax.min.js"></script>
   <script src="/src/js/ui.js"></script>
@@ -43,10 +27,11 @@
 //	form.assetNo.value = assetNo;
 //	form.grpCd.value = grpCd;
 //	alert(document.getElementsByName('kpiseq')[0].value);
-	var kpinm = document.getElementsByName('kpiseq')[0].value
+//	var kpinm = document.getElementsByName('kpiseq')[0].value
 //	alert(kpinm);
-	location.href = '/app/social-step/form/?KPI_SEQ=kpinm';
+	
 	document.getElementById('socialForms').submit();
+	location.href = '/app/social-step/form/';
 	return true;
 }
    </script>  
@@ -67,13 +52,14 @@
 			data="{{routeData}}"
 			tail="{{subroute}}">
 		</app-route>
-			
+  
 	       <form id="socialForms" is="iron-form"
               content-type="application/json"
               method="post"
               action="/api/self/stepupdate"
               on-iron-form-presubmit="_parseDataBeforeSubmit"
               on-iron-form-response="_submitResponse"
+              onsubmit="return check()"
               class="form-horizontal">
              
    <body> 	
@@ -89,9 +75,6 @@
       <li><a href="">고용창출 및<br />재정성과</a></li>
       <li><a href="">기업활동에서의<br />혁신성</a></li>
     </ol>
-    	<div id="alert" class="alert alert-danger hidden" role="alert">
-		정보를 확인해주세요.
-	     </div>
    	  <div class="inner">
    	   <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
    	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}"></input>
@@ -104,19 +87,19 @@
           </colgroup>
           <tr>
             <th><span class="bullet_blue">회사명</span></th>
-            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY" required/></td>
+            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY" required="required"/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">사업자번호</span></th>
-            <td><input type="text" class="inputSt" name="LICENSEE" required /></td>
+            <td><input type="text" class="inputSt" name="LICENSEE" id="LICENSEE" required="required" /></td>
           </tr>
           <tr>
              <th><span class="bullet_blue">대표자명</span></th>
-            <td><input type="text" class="inputSt" name="CEO_NAME"  required /></td>
+            <td><input type="text" class="inputSt" name="CEO_NAME" id="CEO_NAME" required="required" /></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">업종</span></th>
-            <td>&nbsp;
+            <td>
               <select class="ui-select" name="BS_TYPE" required>
                 <option value="">선택</option>
                 <option value="1">문화,예술,여행</option>
@@ -128,14 +111,14 @@
                 <option value="7">기타</option>    
                     
               </select>   
-               <a href="#" class="btn bg_orange innerBtn js-openPop">업종 설명</a>         
+               <a href="#" class="btn bg_orange innerBtn js-openPop">업종 설명</a>   
             </td>
             
           </tr>
           <tr>
             <th><span class="bullet_blue">형태</span></th>
             <td>
-              <select class="ui-select" name="BS_FORM" required>
+              <select class="ui-select" name="BS_FORM" required="required">
                 <option value="">선택</option>
                 <option value="1">인증</option>
                 <option value="2">예비인증</option>    
@@ -146,7 +129,7 @@
           <tr>
             <th><span class="bullet_blue">지역</span></th>
             <td>
-              <select class="ui-select" name="ZONE_TYPE" required>
+              <select class="ui-select" name="ZONE_TYPE" required="required">
                 <option value="">선택</option>
                 <option value="1">서울시</option>
                 <option value="2">경기도</option>    
@@ -176,7 +159,7 @@
       <!-- //company_info end -->
 
       <div class="btnArea mgt60"  style="text-align:center;">
-        <a href="/app/social-step/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('socialForms').submit();">다음</a>
+        <button type="submit"  name="social-step1" class="btn btn_next" onclick="return check()">다음</button>
       </div>
       <!-- //btnArea end -->
     </div>
@@ -303,5 +286,66 @@ Polymer({
         }, 2000);
     },
 });
+
+$(".js-openPop").on("click",function(e){
+    e.preventDefault();
+    
+    var topPosition = $(window).scrollTop()+100;
+
+    $(".dim").fadeIn(200);
+    $(".popup").css("top",topPosition).fadeIn(200);
+  });
+
+  $(".js-closePop").on("click",function(e){
+    e.preventDefault();
+
+    $(".dim").hide();
+    $(".popup").hide();
+  });
+  var $target = $(".motion");
+  var $tab = $(".is-current");
+  $tab.animate({"top":100});
+  TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
+  TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
+  
+  function check() {
+	  if(socialForms.COMPANY.value == "") {
+	    alert("회사명을 입력해 주세요.");
+	    socialForms.COMPANY.focus();
+	    return false;
+	  }
+	  else if(socialForms.LICENSEE.value == "") {
+	    alert("사업자번호를 입력해 주세요.");
+	    socialForms.LICENSEE.focus();
+	    return false;
+	  }
+	  else if(socialForms.CEO_NAME.value == "") {
+		    alert("대표자명을 입력해 주세요.");
+		    socialForms.CEO_NAME.focus();
+		    return false;
+		  }
+	  else if(socialForms.BS_TYPE.value == "") {
+		    alert("업종을 선택해 주세요.");
+		    socialForms.BS_TYPE.focus();
+		    return false;
+		  }
+	  else if(socialForms.BS_FORM.value == "") {
+		    alert("형태를 선택해 주세요.");
+		    socialForms.BS_FORM.focus();
+		    return false;
+		  }
+	  else if(socialForms.ZONE_TYPE.value == "") {
+		    alert("지역을 선택해 주세요.");
+		    socialForms.ZONE_TYPE.focus();
+		    return false;
+		  }
+	  else 
+	    document.getElementById('socialForms').submit();
+		location.href = '/app/social-step/form/'; 
+		  return true;
+	  
+	}
+  
+  
 </script>
 </dom-module>
