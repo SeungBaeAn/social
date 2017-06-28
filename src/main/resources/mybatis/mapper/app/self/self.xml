@@ -118,7 +118,8 @@
         ,KPI_FORM10        = #{p.KPI_HERE_N}
         ,KPI_FORM11        = #{p.KPI_SALES_N}
         ,KPI_FORM12        = #{p.KPI_BS_N}  
-        ,KPI_FORM15        = #{p.KPI_WORK_N}     
+        ,KPI_FORM15        = #{p.KPI_WORK_N} 
+        ,KPI_TOTAL        = (#{p.TOTAL_POINT} + #{p.KPI_FORM13_1} + #{p.KPI_FORM13_2} + #{p.KPI_FORM13_3} + #{p.KPI_FORM13_4})  
         ,KPI_STEP           = '9'
         ,END_DATE =  DATE_FORMAT(now(),'%Y-%m-%d.%H%i')
         WHERE KPI_SEQ  = #{p.KPI_SEQ}
@@ -795,6 +796,9 @@ select
 		,KPI_SALES_N
 		,KPI_BS_P
 		,KPI_BS_N
+		,GRADE_P
+		,GRADE_PP
+		,GRADE_MENT
 ,(KPI_FORM1+KPI_FORM2+KPI_FORM3+KPI_FORM4+KPI_FORM5+KPI_FORM6+KPI_FORM7+KPI_PAY_N+KPI_FORM9+KPI_HERE_N+KPI_SALES_N+KPI_BS_N+KPI_WORK_N+KPI_FORM13)AS TOTAL_POINT  
 FROM(
 SELECT
@@ -835,7 +839,7 @@ SELECT
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) limit 1
 		) AS KPI_WORK_P
-		,(select SERVICE_NUM
+		,(select  SERVICE_NUM
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
@@ -898,12 +902,39 @@ SELECT
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) limit 1
 		) AS KPI_BS_N
+			,(select b.GRP_NM
+		from social_info_master a,
+		serviceinfo_code_standard b
+		where 1=1
+		and b.GRP_CD ='SERVICE_POINT'
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		) AS GRADE_P
+		  ,(select SERVICE_PERCENT
+		from social_info_master a,
+		serviceinfo_code_standard b
+		where 1=1
+		and b.GRP_CD ='SERVICE_POINT'
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		) AS GRADE_PP
+		,(select SERVICE_NM
+		from social_info_master a,
+		serviceinfo_code_standard b
+		where 1=1
+		and b.GRP_CD ='SERVICE_POINT'
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		) AS GRADE_MENT		
 		from social_info_master
 		where 1=1
 		 AND KPI_STEP ='9'
 		 AND END_DATE IS NOT NULL
 		 order by KPI_SEQ desc limit 1
-		)cnt    
+		)cnt  
     </select>   
   
    

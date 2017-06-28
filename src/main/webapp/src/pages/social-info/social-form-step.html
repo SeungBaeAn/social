@@ -32,7 +32,7 @@
   <script src="/src/js/TweenMax.min.js"></script>
   <script src="/src/js/ui.js"></script>
 </head>
-  <script type="text/javascript">
+  <script type="text/javascript">  
   function stepinfo(){
 //	alert(document.getElementById('KPI_SEQ'));
 //	document.getElementById.kpinum.value = document.socialForms.KPI_SEQ.value;
@@ -90,11 +90,11 @@
       <li><a href="">기업활동에서의<br />혁신성</a></li>
     </ol>
     	<div id="alert" class="alert alert-danger hidden" role="alert">
-				로그인 정보를 확인해주세요.
+		정보를 확인해주세요.
 	     </div>
    	  <div class="inner">
    	   <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
-   	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}" required></input>
+   	   <input  type="hidden" name="kpiseq" value="{{_data.KPI_SEQ}}"></input>
       <!-- 회사정보 입력 -->
       <div class="company_info">
         <table class="tbl_write">
@@ -104,7 +104,7 @@
           </colgroup>
           <tr>
             <th><span class="bullet_blue">회사명</span></th>
-            <td><input type="text" class="inputSt"  name="COMPANY" required/></td>
+            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY" required/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">사업자번호</span></th>
@@ -116,7 +116,7 @@
           </tr>
           <tr>
             <th><span class="bullet_blue">업종</span></th>
-            <td>
+            <td>&nbsp;
               <select class="ui-select" name="BS_TYPE" required>
                 <option value="">선택</option>
                 <option value="1">문화,예술,여행</option>
@@ -127,9 +127,10 @@
                 <option value="6">식품(유통,제조,판매)</option>    
                 <option value="7">기타</option>    
                     
-              </select>            
-             <a href="#" class="btn bg_orange innerBtn js-openPop">업종 설명</a>
+              </select>   
+               <a href="#" class="btn bg_orange innerBtn js-openPop">업종 설명</a>         
             </td>
+            
           </tr>
           <tr>
             <th><span class="bullet_blue">형태</span></th>
@@ -166,12 +167,16 @@
               </select>        
             </td>
           </tr>
+           <tr>
+           
+          
+           </tr>
         </table>
       </div>
       <!-- //company_info end -->
 
-      <div class="btnArea mgt60">
-        <button  name="social-step" class="btn btn_next" onclick="javascript:stepinfo();">다음</button>
+      <div class="btnArea mgt60"  style="text-align:center;">
+        <a href="/app/social-step/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('socialForms').submit();">다음</a>
       </div>
       <!-- //btnArea end -->
     </div>
@@ -186,9 +191,9 @@
           <col />
         </colgroup>
         <thead>
-          <tr>
-            <th>서비스분야</th>
-            <th>세부 내용</th>
+          <tr  style="text-align:center;">
+            <th  style="text-align:center;">서비스분야</th>
+            <th  style="text-align:center;">세부 내용</th>
           </tr>
         </thead>
         <tbody>
