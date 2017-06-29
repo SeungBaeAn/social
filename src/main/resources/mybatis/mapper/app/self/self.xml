@@ -681,6 +681,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) limit 1
 		) AS KPI_WORK_P
@@ -688,6 +690,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) limit 1
 		) AS KPI_WORK_N
@@ -695,6 +699,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) limit 1
 		) AS KPI_PAY_P
@@ -702,6 +708,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) limit 1
 		) AS KPI_PAY_N
@@ -709,6 +717,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) limit 1
 		) AS KPI_HERE_P
@@ -716,6 +726,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) limit 1
 		) AS KPI_HERE_N
@@ -723,6 +735,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) limit 1
 		) AS KPI_SALES_P
@@ -730,6 +744,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) limit 1
 		) AS KPI_SALES_N
@@ -737,6 +753,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) limit 1
 		) AS KPI_BS_P
@@ -744,6 +762,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		 AND KPI_STEP ='8'
+		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) limit 1
 		) AS KPI_BS_N
@@ -836,6 +856,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) limit 1
 		) AS KPI_WORK_P
@@ -843,6 +865,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) limit 1
 		) AS KPI_WORK_N
@@ -850,6 +874,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) limit 1
 		) AS KPI_PAY_P
@@ -857,6 +883,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) limit 1
 		) AS KPI_PAY_N
@@ -864,6 +892,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) limit 1
 		) AS KPI_HERE_P
@@ -871,6 +901,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) limit 1
 		) AS KPI_HERE_N
@@ -878,6 +910,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) limit 1
 		) AS KPI_SALES_P
@@ -885,6 +919,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) limit 1
 		) AS KPI_SALES_N
@@ -892,6 +928,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) limit 1
 		) AS KPI_BS_P
@@ -899,6 +937,8 @@ SELECT
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) limit 1
 		) AS KPI_BS_N
@@ -934,7 +974,7 @@ SELECT
 		 AND KPI_STEP ='9'
 		 AND END_DATE IS NOT NULL
 		 order by KPI_SEQ desc limit 1
-		)cnt  
+		)cnt 
     </select>   
   
    
