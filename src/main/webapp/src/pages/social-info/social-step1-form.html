@@ -68,15 +68,15 @@
       .is-complete :완료된 페이지
     -->
     <ol class="tab">
-      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
-      <li><a href="self_iagnosis02.html" class="is-complete">사회적<br />미션의 관리</a></li>
-      <li><a href="self_iagnosis03.html" class="is-current">주사업활동의<br />사회적 가치</a></li>
-      <li><a href="self_iagnosis04.html">사회적경제<br />생태계 구축노력</a></li>
-      <li><a href="self_iagnosis05.html">이윤의<br />사회목적 재투자</a></li>
-      <li><a href="self_iagnosis06.html">운영의<br />민주성</a></li>
-      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
-      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
-      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+      <li><a href="/app/social-form/step/" style="text-decoration:none" onclick="document.getElementById('stepback1').submit();">회사 기본정보</a></li>
+      <li><a href="/app/social-step/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback2').submit();">사회적<br />미션의 관리</a></li>
+      <li><a href="#" style="text-decoration:none"  class="is-current">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="#" style="text-decoration:none">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="#" style="text-decoration:none">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="#" style="text-decoration:none">운영의<br />민주성</a></li>
+      <li><a href="#" style="text-decoration:none">근로자<br />지향성</a></li>
+      <li><a href="#" style="text-decoration:none">고용창출 및<br />재정성과</a></li>
+      <li><a href="#" style="text-decoration:none">기업활동에서의<br />혁신성</a></li>
     </ol>
     <!-- // tab -->
  <div class="inner motion">
@@ -137,6 +137,18 @@
  </body> 
 <!-- 모달 팝업 --> 
 
+
+           <form id="stepback1" is="iron-form"
+              content-type="application/json"
+              method="post"
+              action="/api/self/stepback1"
+              on-iron-form-presubmit="_parseDataBeforeSubmit"
+              on-iron-form-response="_submitResponse"
+              class="form-horizontal">
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+               <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="0"></input>
+              </form>
+               
 		    <form id="stepback2" is="iron-form"
               content-type="application/json"
               method="post"

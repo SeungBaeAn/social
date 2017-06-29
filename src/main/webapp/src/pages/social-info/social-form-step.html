@@ -9,69 +9,74 @@
 <link rel="import" href="/src/components/common/normal-table.html">
 <link rel="import" href="/src/components/common/normal-input.html">
 <link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-input/iron-input.html">
+<link rel="import" href="/src/components/common/normal-input.html" />
+<link rel="import" href="/src/components/common/number-input.html" />
+<link rel="import" href="/src/components/common/normal-select.html" />
+<link rel="import" href="/src/components/common/date-input.html" />
 <link href="/src/css/common.css" rel="stylesheet">
 <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
 <script src="/src/js/jquery-1.12.0.min.js"></script>
   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
   <script src="/src/js/TweenMax.min.js"></script>
   <script src="/src/js/ui.js"></script>
-</head>
-  <script type="text/javascript">  
-  function stepinfo(){
-//	alert(document.getElementById('KPI_SEQ'));
-//	document.getElementById.kpinum.value = document.socialForms.KPI_SEQ.value;
-//    var kpi = document.getElementById("KPI_SEQ");
- //   alert(kpi);
-//	form.action = "/AS";
-//	form.cmd.value = "ASStatDetail";
-//	form.assetNo.value = assetNo;
-//	form.grpCd.value = grpCd;
-//	alert(document.getElementsByName('kpiseq')[0].value);
-//	var kpinm = document.getElementsByName('kpiseq')[0].value
-//	alert(kpinm);
-	
-	document.getElementById('socialForms').submit();
-	location.href = '/app/social-step/form/';
-	return true;
-}
-  function inpcheck() {
-	  if(socialForms.COMPANY.value == "") {
-	    alert("회사명을 입력해 주세요.");
-	    socialForms.COMPANY.focus();
-	    return false;
-	  }
-	  else if(socialForms.LICENSEE.value == "") {
-	    alert("사업자번호를 입력해 주세요.");
-	    socialForms.LICENSEE.focus();
-	    return false;
-	  }
-	  else if(socialForms.CEO_NAME.value == "") {
-		    alert("대표자명을 입력해 주세요.");
-		    socialForms.CEO_NAME.focus();
-		    return false;
-		  }
-	  else if(socialForms.BS_TYPE.value == "") {
-		    alert("업종을 선택해 주세요.");
-		    socialForms.BS_TYPE.focus();
-		    return false;
-		  }
-	  else if(socialForms.BS_FORM.value == "") {
-		    alert("형태를 선택해 주세요.");
-		    socialForms.BS_FORM.focus();
-		    return false;
-		  }
-	  else if(socialForms.ZONE_TYPE.value == "") {
-		    alert("지역을 선택해 주세요.");
-		    socialForms.ZONE_TYPE.focus();
-		    return false;
-		  }
-	  else 
+
+<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
+<script>
+
+  $(document).ready(function() { 
+//	  alert("AAAAA");  
+ }) 
+ 
+  function fmCheck(){
+	  if(fnMemberValidation() == false) return;
+	  
 	    document.getElementById('socialForms').submit();
 		location.href = "/app/social-step/form/"; 
-		return true;
+	 }
+
+	
 	  
-	}  
-   </script>  
+	  function fnMemberValidation(){ 
+	  if($.trim($('#COMPANY').val()) == ''){
+		   alert("회사명을 입력해 주세요.");
+		   $('#COMPANY').focus();
+		   return false;
+		  }
+	  if($.trim($('#LICENSEE').val()) == ''){
+		   alert("사업자번호를 입력해 주세요.");
+		   $('#LICENSEE').focus();
+		   return false;
+		  } 
+	  if($.trim($('#CEO_NAME').val()) == ''){
+		   alert("대표자명을 입력해 주세요.");
+		   $('#CEO_NAME').focus();
+		   return false;
+		  } 
+	  if($.trim($('#BS_TYPE').val()) == ''){
+		   alert("업종을 선택해 주세요.");
+		   $('#BS_TYPE').focus();
+		   return false;
+		  } 
+	  if($.trim($('#BS_FORM').val()) == ''){
+		   alert("형태를 선택해 주세요.");
+		   $('#BS_FORM').focus();
+		   return false;
+		  } 
+	  if($.trim($('#ZONE_TYPE').val()) == ''){
+		   alert("지역을 선택해 주세요.");
+		   $('#ZONE_TYPE').focus();
+		   return false;
+		  } 
+	
+  }
+   </script> 
+   </head> 
 <dom-module id="social-form-step">
 <template>
    
@@ -107,15 +112,15 @@
 			</header> 	
 	<section class="contents">
     <ol class="tab">
-      <li><a href="">회사 기본정보</a></li>
-      <li><a href="">사회적<br />미션의 관리</a></li>
-      <li><a href="">주사업활동의<br />사회적 가치</a></li>
-      <li><a href="">사회적경제<br />생태계 구축노력</a></li>
-      <li><a href="">이윤의<br />사회목적 재투자</a></li>
-      <li><a href="">운영의<br />민주성</a></li>
-      <li><a href="">근로자<br />지향성</a></li>
-      <li><a href="">고용창출 및<br />재정성과</a></li>
-      <li><a href="">기업활동에서의<br />혁신성</a></li>
+      <li><a href="#" style="text-decoration:none">회사 기본정보</a></li>
+      <li><a href="#" style="text-decoration:none">사회적<br />미션의 관리</a></li>
+      <li><a href="#" style="text-decoration:none">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="#" style="text-decoration:none">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="#" style="text-decoration:none">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="#" style="text-decoration:none">운영의<br />민주성</a></li>
+      <li><a href="#" style="text-decoration:none">근로자<br />지향성</a></li>
+      <li><a href="#" style="text-decoration:none">고용창출 및<br />재정성과</a></li>
+      <li><a href="#" style="text-decoration:none">기업활동에서의<br />혁신성</a></li>
     </ol>
    	  <div class="inner">
    	   <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
@@ -129,20 +134,20 @@
           </colgroup>
           <tr>
             <th><span class="bullet_blue">회사명</span></th>
-            <td><input type="text" class="inputSt"  name="COMPANY"  required="required" /></td>
+            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY"  required="required" value="{{_data.COMPANY}}"/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">사업자번호</span></th>
-            <td><input type="text" class="inputSt" name="LICENSEE"  required="required" /></td>
+            <td><input type="text" class="inputSt" name="LICENSEE" id="LICENSEE" required="required" value="{{_data.LICENSEE}}"/></td>
           </tr>
           <tr>
              <th><span class="bullet_blue">대표자명</span></th>
-            <td><input type="text" class="inputSt" name="CEO_NAME"  required="required"  /></td>
+            <td><input type="text" class="inputSt" name="CEO_NAME" id="CEO_NAME" required="required"  value="{{_data.CEO_NAME}}"/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">업종</span></th>
             <td>
-              <select class="ui-select" name="BS_TYPE" required>
+              <select class="ui-select" name="BS_TYPE" id="BS_TYPE" required="required" >
                 <option value="">선택</option>
                 <option value="1">문화,예술,여행</option>
                 <option value="2">청소.환경.경비</option>    
@@ -160,9 +165,9 @@
           <tr>
             <th><span class="bullet_blue">형태</span></th>
             <td>
-              <select class="ui-select" name="BS_FORM" required="required">
+              <select class="ui-select" name="BS_FORM" id="BS_FORM" required="required">
                 <option value="">선택</option>
-                <option value="인증 사회적기업">인증 사회적기업</option>
+                <option value="인증 사회적기업" >인증 사회적기업</option>
                 <option value="예비 사회적기업">예비 사회적기업</option>    
                 <option value="사회적기업가 육성사업 창업팀(소셜벤처 포함)">사회적기업가 육성사업 창업팀(소셜벤처 포함)</option>
                 <option value="기타 사회적경제조직">기타 사회적경제조직</option>
@@ -173,7 +178,7 @@
           <tr>
             <th><span class="bullet_blue">지역</span></th>
             <td>
-              <select class="ui-select" name="ZONE_TYPE" required="required">
+              <select class="ui-select" name="ZONE_TYPE"  id="ZONE_TYPE" required="required">
                 <option value="">선택</option>
                 <option value="서울">서울</option>
                 <option value="경기">경기</option>    
@@ -203,7 +208,7 @@
       <!-- //company_info end -->
 
       <div class="btnArea mgt60"  style="text-align:center;">
-      <a href="/app/social-step/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('socialForms').submit();">다음</a>
+      <button type="button"  name="social-step1" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
         
       </div>
       <!-- //btnArea end -->
@@ -309,6 +314,27 @@ Polymer({
 	            this.$.socialForms.submit();
 	        }
 	    },
+	    _submitResponse: function(e) {
+	        if (e.detail.response == 1) {
+	            this.$.alert1.innerHTML = '수정되었습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-success');
+	            this.$.alert2.innerHTML = '수정되었습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-success');
+	        }else {
+	            this.$.alert1.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert1.classList.remove('hide');
+	            this.$.alert1.classList.add('alert-danger');
+	            this.$.alert2.innerHTML = '오류가 발생하였습니다';
+	            this.$.alert2.classList.remove('hide');
+	            this.$.alert2.classList.add('alert-danger');
+	        }
+	        this.async(function() {
+	            this.$.alert1.classList.add('hide');
+	            this.$.alert2.classList.add('hide');
+	        }, 2000);
+	    }, 
 
 });
 

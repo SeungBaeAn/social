@@ -28,16 +28,46 @@
 
   
 </head> 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var val = location.href.substr(
-                location.href.lastIndexOf('=') + 1
-            );
-            console.log('val ========================================: ' + val);
-    //  alert('val : ' + val.value);
-        });
-    </script>
+<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
+<script>
+
+  $(document).ready(function() { 
+//	  alert("AAAAA");  
+ }) 
+ 
+  function fmCheck(){
+	  if(fnMemberValidation() == false) return;
+	  
+	    document.getElementById('stepForm1').submit();
+		location.href = "/app/social-step1/form/"; 
+	 }
+  
+  function fnMemberValidation(){ 
+	  
+	  var chk_radio1 = document.getElementsByName('step02_q01');
+	  var chk_radio2 = document.getElementsByName('step02_q03');
+	  
+	  var sel_type = null;
+	  
+		for(var i=0;i<chk_radio1.length;i++){
+
+			if(chk_radio1[i].checked == true){ 
+
+				sel_type = chk_radio1[i].value;
+
+			}
+
+		}
+		if(sel_type == null){
+
+            alert("서비스유형을 선택하세요."); 
+
+		return false;
+
+		}
+
+  }
+  </script>
 <dom-module id="social-step-form">
 <template>
     <iron-ajax  auto id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
@@ -67,15 +97,15 @@
       .is-complete :완료된 페이지
     -->
     <ol class="tab">
-      <li><a href="self_iagnosis01.html">회사 기본정보</a></li>
-      <li><a href="self_iagnosis02.html" class="is-current">사회적<br />미션의 관리</a></li>
-      <li><a href="self_iagnosis03.html">주사업활동의<br />사회적 가치</a></li>
-      <li><a href="self_iagnosis04.html">사회적경제<br />생태계 구축노력</a></li>
-      <li><a href="self_iagnosis05.html">이윤의<br />사회목적 재투자</a></li>
-      <li><a href="self_iagnosis06.html">운영의<br />민주성</a></li>
-      <li><a href="self_iagnosis07.html">근로자<br />지향성</a></li>
-      <li><a href="self_iagnosis08.html">고용창출 및<br />재정성과</a></li>
-      <li><a href="self_iagnosis09.html">기업활동에서의<br />혁신성</a></li>
+      <li><a href="/app/social-form/step/" style="text-decoration:none" onclick="document.getElementById('stepback1').submit();">회사 기본정보</a></li>
+      <li><a href="#" style="text-decoration:none" class="is-current">사회적<br />미션의 관리</a></li>
+      <li><a href="#" style="text-decoration:none">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="#" style="text-decoration:none">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="#" style="text-decoration:none">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="#" style="text-decoration:none">운영의<br />민주성</a></li>
+      <li><a href="#" style="text-decoration:none">근로자<br />지향성</a></li>
+      <li><a href="#" style="text-decoration:none">고용창출 및<br />재정성과</a></li>
+      <li><a href="#" style="text-decoration:none">기업활동에서의<br />혁신성</a></li>
     </ol>
     <!-- // tab -->
 
@@ -86,8 +116,8 @@
       <div class="box_question">
         <p class="question">귀사는 현재 기업의 사회적 목적을 반영하는 미션 선언문 또는 경영원칙 등을 명시적으로 표현한 문서를 가지고 계십니까?</p>
         <ul class="horizon mgt25">
-          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1" value="5"/><label for="step02_q01">있음</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q02" name="KPI_FORM1" value="1"/><label for="step02_q02">없음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1"  value="5"/><label for="step02_q01">있음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1"  value="1"/><label for="step02_q02">없음</label></span></li>
         </ul>
       </div>
 
@@ -104,10 +134,10 @@
         <p class="txt_choice">측정기준,  담당인력,  평가보고서,  평가위원회,  평가결과의 사내공유</p>
         <ul class="horizon mgt25">
           <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="5"/><label for="step02_q03">4개 이상</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q04" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q05" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q06" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q07" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
         </ul>
       </div>
 
@@ -118,7 +148,8 @@
       
  <div class="btnArea mgt60">
   <a href="/app/social-form/step/" name="social-step" class="btn btn_prev" onclick="document.getElementById('stepback1').submit();">이전</a>
-  <a href="/app/social-step1/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm1').submit();">다음</a>
+ <a href="/app/social-step1/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm1').submit();">다음</a>
+  
      </div>	
     </div>
     <!-- //inner end -->
