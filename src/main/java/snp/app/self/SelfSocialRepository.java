@@ -51,6 +51,7 @@ public interface SelfSocialRepository {
 		// 자가진단 스템1 리스트
 //	List<Map<String, Object>> findstepList1(@Param("u") User user);
 	//겱과 조회 리스트
+	Map<String, Object> resultMent(@Param("u") User user);
 	Map<String, Object> resultStepList(@Param("u") User user);
 	Map<String, Object> resultSteplow(@Param("u") User user);
 	Map<String, Object> resultSteptop(@Param("u") User user);
@@ -67,7 +68,7 @@ public interface SelfSocialRepository {
 
 	Map<String, Object> findstepList2(@Param("u") User user);
 	Map<String, Object> findstepList1(@Param("u") User user);
-
+	
 	// 참여기업 결과 리스트
 	List<Map<String, Object>>gridCorp(@Param("u") User user);
 

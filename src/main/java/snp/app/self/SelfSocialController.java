@@ -321,7 +321,11 @@ public class SelfSocialController {
 		return service.resultSteptop();
 //	return service.findstepList2(RequestParams.map());
    }
-
+	@RequestMapping(value="/resultMent")
+    public Map<String, Object> resultMent(){
+		return service.resultMent();
+//	return service.findstepList2(RequestParams.map());
+   }
 	// 참여기업 결과 리스트
 	@RequestMapping(value="/corplist", method= RequestMethod.GET)
 	public List<Map<String, Object>>gridCorp(){

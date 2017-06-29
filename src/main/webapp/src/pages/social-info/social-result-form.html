@@ -54,6 +54,12 @@
 	  	       on-response="_stopLoader2"		       
 		       last-response="{{_data2}}">
 	</iron-ajax>
+	    <iron-ajax  auto   method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+		       url="/api/self/resultMent"
+	 	       on-request="_startLoader2"
+	  	       on-response="_stopLoader2"		       
+		       last-response="{{_data3}}">
+	</iron-ajax>	
 	       <form id="stepForm9" is="iron-form"
               content-type="application/json"
               method="post"
@@ -61,6 +67,8 @@
               on-iron-form-presubmit="_parseDataBeforeSubmit"
               on-iron-form-response="_submitResponse"
               class="form-horizontal">
+              
+              
    <body>
     	<header class="header">
 		      <div class="inner">
@@ -100,7 +108,7 @@
               point4 : 별 4
                <span class='{{_data.GRADE_P}}'><img src="/src/images/bg_grade.png" alt="" /></span>
             -->
-            <strong>{{_data.GRADE_PP}}</strong>
+            <strong>{{_data3.SERVICE_PERCENT}}</strong>
           </td>
           <th>측정일</th>
           <td>{{_data.LOAD_DATE}}</td>
@@ -193,8 +201,8 @@
       <div class="comment">
         <p class="tit">결과</p>
         <p class="txt">
-          귀사의 사회적 가치 지표 자가진단 결과는 <strong>‘{{_data.GRADE_PP}}’</strong> 입니다.<br />
-      {{_data.GRADE_MENT}}<br />.
+          귀사의 사회적 가치 지표 자가진단 결과는 <strong>‘{{_data3.SERVICE_PERCENT}}’</strong> 입니다.<br />
+      {{_data3.SERVICE_NM}}<br />.
           세부적으로 14개 측정지표 중에서  <strong>{{_data2.TOP_LIST}}</strong> 지표가 상대적으로 높은 득점, <strong>{{_data1.LOW_LIST}}</strong> 지표가<br />
            상대적으로 낮은 득점으로 진단되었습니다.  지표별 세부 득점 결과를 참조하여 귀사의 조직운영, 사업활동에 참고하시기 바랍니다.<br />
            본 진단은 귀사가 스스로 입력한 자료에 기초하여 측정된 자가진단 결과입니다. 따라서, 실제 사회적 가치 지표(SVI) 측정시 그 결과가 상이하게 나올 수 있습니다. 

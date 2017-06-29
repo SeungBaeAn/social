@@ -307,7 +307,14 @@ public class SelfSocialService {
 	{
 		return repository.resultSteptop(Security.user());
 	
+	}	
+	// 결과조회 화면
+	public Map<String, Object> resultMent()
+	{
+		return repository.resultMent(Security.user());
+	
 	}		
+		
 //	public Map<String, Object> findstepList2(Map<String, Object> params)
 //	{
 //		return repository.findstepList2(params, Security.user());
