@@ -909,7 +909,7 @@ SELECT
 		and b.GRP_CD ='SERVICE_POINT'
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL) desc limit 1 
 		) AS GRADE_P
 		  ,(select SERVICE_PERCENT
 		from social_info_master a,
@@ -918,7 +918,7 @@ SELECT
 		and b.GRP_CD ='SERVICE_POINT'
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL) desc limit 1 
 		) AS GRADE_PP
 		,(select SERVICE_NM
 		from social_info_master a,
@@ -927,7 +927,7 @@ SELECT
 		and b.GRP_CD ='SERVICE_POINT'
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)limit 1 
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL) desc limit 1 
 		) AS GRADE_MENT		
 		from social_info_master
 		where 1=1
