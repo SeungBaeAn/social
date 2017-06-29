@@ -35,11 +35,7 @@
 
 <dom-module id="social-result-form">
 <template>
-	<iron-ajax  auto id="getData" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
-				   on-request="_startLoader"
-				   url="/api/corp/chart-all/grade"
-				   on-response="_drawChart">
-	</iron-ajax>
+
     <iron-ajax  auto id="getResultStep"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
 		       url="/api/self/resultStep"
 	 	       on-request="_startLoader"
