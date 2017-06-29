@@ -57,7 +57,7 @@ public class SelfSocialController {
 	/**
 	 * 사용자 저장(입력,수정)
 	 * from user_save.php
-	 * @param u
+	 * @param
 	 * @return
 	 */
 	@RequestMapping(value="", method={RequestMethod.POST, RequestMethod.PUT})
@@ -320,6 +320,12 @@ public class SelfSocialController {
     public Map<String, Object> resultSteptop(){
 		return service.resultSteptop();
 //	return service.findstepList2(RequestParams.map());
-   }		
+   }
+
+	// 참여기업 결과 리스트
+	@RequestMapping(value="/corplist", method= RequestMethod.GET)
+	public List<Map<String, Object>>gridCorp(){
+		return service.gridCorp();
+	}
 		
 }

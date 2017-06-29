@@ -69,9 +69,9 @@
 							자가진단 서비스 관리
 						</div>
 
-							<a href="/app/social-self/form/" name="social-self" class="menu submenu">
+							<a href="/app/social-corp" name="social-corp" class="menu submenu">
 								<iron-icon icon="assignment"></iron-icon>
-								결과조회
+								참여기업 결과조회
 							</a>
 
 				</iron-selector>
@@ -100,25 +100,7 @@
 									<div class="col-xs-12">
 											<div class="card">
 													<iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-                                                        <page-social-self  name="social-self" route="{{route}}"></page-social-self>
-                                                        <page-social-form  name="social-form" route="{{route}}"></page-social-form>
-														<page-social-info name="social-info" route="{{route}}"></page-social-info>
-														<page-cooperation-info name="cooperation-info" route="{{route}}"></page-cooperation-info>
-														<page-village-info name="village-info" route="{{route}}"></page-village-info>
-
-														<page-social-kpi name="social-kpi" route="{{route}}"></page-social-kpi>
-														<page-cooperation-kpi name="cooperation-kpi" route="{{route}}"></page-cooperation-kpi>
-														<page-village-kpi name="village-kpi" route="{{route}}"></page-village-kpi>
-														<page-analytics-corp name="analytics-corp" route="{{route}}"></page-analytics-corp>
-														<page-chart-sector name="chart-sector" route="{{route}}"></page-chart-sector>
-														<page-chart-all name="chart-all" route="{{route}}"></page-chart-all>
-
-														<page-chart-type name="chart-type" route="{{route}}"></page-chart-type>
-														<page-analytics-radar name="analytics-radar" route="{{route}}"></page-analytics-radar>
-														<page-chart-kpi name="chart-kpi" route="{{route}}"></page-chart-kpi>
-														<page-chart-region name="chart-region" route="{{route}}"></page-chart-region>
-														<page-all-corps name="all-corps" route="{{route}}" ></page-all-corps>
-														<page-center-mgm name="center-mgm" route="{{route}}"></page-center-mgm>
+                                                        <page-social-corp  name="social-corp" route="{{route}}"></page-social-corp>
 
 													</iron-pages>
 											</div>
@@ -164,11 +146,11 @@
 
                         attached: function() {
                                 if (this.$.appLocation.path == '/')
-                                        this.$.appLocation.path = '/app/social-self/form/';
+                                        this.$.appLocation.path = '/app/social-corp';
                         },
 
                         _routePageChanged: function(page) {
-                                this.page = page || 'social-info';
+                                this.page = page || 'social-corp';
                         },
 
                         _pageChanged: function(page) {
