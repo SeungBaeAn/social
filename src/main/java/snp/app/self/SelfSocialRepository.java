@@ -67,4 +67,8 @@ public interface SelfSocialRepository {
 
 	Map<String, Object> findstepList2(@Param("u") User user);
 	Map<String, Object> findstepList1(@Param("u") User user);
+
+	// 참여기업 결과 리스트
+	List<Map<String, Object>>gridCorp(@Param("u") User user);
+
 }

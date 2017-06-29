@@ -313,5 +313,14 @@ public class SelfSocialService {
 //		return repository.findstepList2(params, Security.user());
 //	}	
 
+
+	// 참여기업 결과 리스트
+	public List<Map<String, Object>>gridCorp() {
+		List<Map<String, Object>> result;
+
+		result = repository.gridCorp(Security.user()); //전체
+
+		return result;
+	}
 	
 }
