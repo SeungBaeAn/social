@@ -38,18 +38,19 @@
 
   $(document).ready(function() { 
 //	  alert("AAAAA");  
+	  document.getElementById('stepForm9').submit();
  }) 
  
-  function fmCheck(){	  
-	    document.getElementById('stepForm9').submit();
-	    window.open('','_self').close();
+//  function fmCheck(){	  
+//	    document.getElementById('stepForm9').submit();
+//	    window.open('','_self').close();
 	//	location.href ="/app/social-step2/form/"; 
 	//	self.opener = self;
 	 //   window.close();
 //	 window.open('', '_self', '');
 //     window.close();
 
-	 }
+//	 }
   </script>
 <dom-module id="social-result-form">
 <template>
@@ -63,13 +64,13 @@
 	    <iron-ajax  auto   method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
 		       url="/api/self/resultSteplow"
 	 	       on-request="_startLoader1"
-	  	       on-response="_stopLoader1"		       		       
+	  	       on-response="_lowCheck"		       		       
 		       last-response="{{_data1}}">
 	</iron-ajax>
 	    <iron-ajax  auto   method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
 		       url="/api/self/resultSteptop"
 	 	       on-request="_startLoader2"
-	  	       on-response="_stopLoader2"		       
+	  	       on-response="_topCheck"		       
 		       last-response="{{_data2}}">
 	</iron-ajax>
 	    <iron-ajax  auto   method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
@@ -152,12 +153,12 @@
           <col style="width:145px;" />
         </colgroup>
         <thead>
-          <tr>
-            <th>관점</th>
-            <th>범주</th>
-            <th>영역</th>
-            <th>측정지표</th>
-            <th>점수/배점</th>
+          <tr style="text-align:center;">
+            <th style="text-align:center;">관점</th>
+            <th style="text-align:center;">범주</th>
+            <th style="text-align:center;">영역</th>
+            <th style="text-align:center;">측정지표</th>
+            <th style="text-align:center;">점수/배점</th>
           </tr>
         </thead>
         <tbody>
@@ -237,26 +238,26 @@
         </tbody>
       </table>
 
-      <div class="comment">
-        <p class="tit">결과</p>
-        <p class="txt">
-          귀사의 사회적 가치 지표(SVI) 자가진단 결과는 <strong>‘{{_data3.SERVICE_PERCENT}}’</strong> 입니다.<br />
-      {{_data3.SERVICE_NM}}<br />.
-          세부적으로 14개 측정지표 중에서  <strong>{{_data2.TOP_LIST}}</strong> 지표가 상대적으로 높은 득점, <strong>{{_data1.LOW_LIST}}</strong> 지표가<br />
-           상대적으로 낮은 득점으로 진단되었습니다.  지표별 세부 득점 결과를 참조하여 귀사의 조직운영, 사업활동에 참고하시기 바랍니다.<br />
-           본 진단은 귀사가 스스로 입력한 자료에 기초하여 측정된 자가진단 결과입니다. 따라서, 실제 사회적 가치 지표(SVI) 측정시 그 결과가 상이하게 나올 수 있습니다. 
-      </p> 
+	  <div class="comment">
+	 <p class="tit">결과</p>
+		<p class="txt">
+	 귀사의 사회적 가치 지표(SVI) 자가진단 결과는 <strong>‘{{_data3.SERVICE_PERCENT}}’</strong> 입니다.<br />
+	 {{_data3.SERVICE_NM}}<br />
+	 세부적으로 14개 측정지표 중에서 <strong>{{_data2.TOP_LIST}}</strong> {{_topMsg}}<strong> {{_data1.LOW_LIST}}</strong> {{_lowMsg}}<br />
+	지표별 세부 득점 결과를 참조하여 귀사의 조직운영, 사업활동에 참고하시기 바랍니다.<br />
+	본 진단은 귀사가 스스로 입력한 자료에 기초하여 측정된 자가진단 결과입니다. 따라서, 실제 사회적 가치 지표(SVI) 측정시 그 결과가 상이하게 나올 수 있습니다.
+	 </p> 	
       </div>
       <!-- //comment -->
 
       <!-- graph    <canvas id="barChart" ></canvas> -->
     <div class="wrap_graph mgt30">
         <div class="graph">
-        <h5 class="tit_graph" style="background-color:#FFFFFF;">관점별 점수비율</h5>
+        <h9 class="tit_graph" style="background-color:#FFFFFF;">관점별 점수비율</h9>
          <canvas id="barChart"></canvas>
         </div>
         <div class="graph">
-        <h5 class="tit_graph" style="background-color:#FFFFFF;">측정지표별 평가 점수</h5>
+        <h9 class="tit_graph" style="background-color:#FFFFFF;">측정지표별 평가 점수</h9>
         <canvas id="barChart1"></canvas>
         </div>
       </div>
@@ -299,8 +300,34 @@ Polymer({
 			value: function() {
 				return [];
 			}
-		},		
+		},	
+		
+		_topMsg: {
+			 type: String,
+			 value: function() {
+			  return '';
+			 }
+			 },
+			 _lowMsg: {
+			 type: String,
+			 value: function() {
+			  return '';
+			 }
+	     },		
     },
+	 _topCheck: function(){
+		 if( this._data2.TOP_LIST== null )
+		 this._topMsg = '';
+		 else
+		 this._topMsg = '지표가 상대적으로 높은 득점으로 진단되었습니다.';
+		 },
+		 _lowCheck: function(){
+		 if( this._data1.LOW_LIST== null )
+		 this._lowMsg = '';
+		 else
+		 this._lowMsg = '지표가 상대적으로 낮은 득점으로 진단되었습니다.';
+		 },
+		 
 	  _submitForm: function(e) {
 	        if (this.$.stepFormback.validate()) {
 	            this.$.stepFormback.submit();
