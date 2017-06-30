@@ -61,6 +61,13 @@
 		  } 
 	
   }
+	  function onlyNumber(obj) {
+		    $(obj).keyup(function(){
+		         $(this).val($(this).val().replace(/[^0-9]/g,""));
+		    }); 
+		}
+	  
+	  
    </script> 
    </head> 
 <dom-module id="social-form-step">
@@ -120,7 +127,7 @@
           </colgroup>
           <tr>
             <th><span class="bullet_blue">회사명</span></th>
-            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY"  required="required" value="{{_data.COMPANY}}"/></td>
+            <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY"  required="required" value="{{_data.COMPANY}}"  onkeydown="onlyNumber(this)"/></td>
           </tr>
 
           <tr>

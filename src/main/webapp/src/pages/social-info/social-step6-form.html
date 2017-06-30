@@ -72,7 +72,11 @@
 
   }
 
-
+  function onlyNumber(obj) {
+	    $(obj).keyup(function(){
+	         $(this).val($(this).val().replace(/[^0-9]/g,""));
+	    }); 
+	}
   
   </script>
 <dom-module id="social-step6-form">
@@ -123,7 +127,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 총 근로자수는 몇 명입니까?</p>
         <div class="inputArea mgt25">
-          유급근로자 수(명) : <input type="text" class="inputSt"  name="KPI_FORM10_PAY" id="KPI_FORM10_PAY" value="{{_data.KPI_FORM10_PAY}}" />
+          유급근로자 수(명) : <input type="text" class="inputSt"  name="KPI_FORM10_PAY" id="KPI_FORM10_PAY" value="{{_data.KPI_FORM10_PAY}}" onkeydown="onlyNumber(this)" />
         </div>
       </div>
 
@@ -138,7 +142,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 총 매출액은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          매출액(원) : <input type="text" class="inputSt" name="KPI_FORM11_PAY" id="KPI_FORM11_PAY" value="{{_data.KPI_FORM11_PAY}}" />
+          매출액(원) : <input type="text" class="inputSt" name="KPI_FORM11_PAY" id="KPI_FORM11_PAY" value="{{_data.KPI_FORM11_PAY}}" onkeydown="onlyNumber(this)" />
         </div>
       </div>
 
@@ -153,7 +157,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 영업이익(손실)은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" id="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}"/>
+          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" id="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}" onkeydown="onlyNumber(this)"/>
         </div>
       </div>
 
