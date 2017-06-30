@@ -41,11 +41,22 @@
             <tr>
                 <th>NO</th>
                 <th>기업명</th>
-                <th>사업자번호</th>
-                <th>대표자명</th>
                 <th>업종</th>
-                <th>기업형태</th>
-                <th>지역</th>
+                <th>조직형태</th>
+                <th>KPI_1</th>
+                <th>KPI_2</th>
+                <th>KPI_3</th>
+                <th>KPI_4</th>
+                <th>KPI_5</th>
+                <th>KPI_6</th>
+                <th>KPI_7</th>
+                <th>KPI_8</th>
+                <th>KPI_9</th>
+                <th>KPI_10</th>
+                <th>KPI_11</th>
+                <th>KPI_12</th>
+                <th>KPI_13</th>
+                <th>KPI_14</th>
                 <th>평가점수</th>
                 <th>DATE</th>
             </tr>
@@ -77,11 +88,22 @@
                     value: function () {
                         return [
                             'COMPANY',
-                            'LICENSEE',
-                            'CEO_NAME',
                             'BUSINESS_TYPE',
                             'BS_TYPE',
-                            'CITY_ZONE',
+                            'KPI_FORM1',
+                            'KPI_FORM2',
+                            'KPI_FORM3',
+                            'KPI_FORM4',
+                            'KPI_FORM5',
+                            'KPI_FORM6',
+                            'KPI_FORM7',
+                            'KPI_FORM8',
+                            'KPI_FORM9',
+                            'KPI_FORM10',
+                            'KPI_FORM11',
+                            'KPI_FORM12',
+                            'KPI_FORM13',
+                            'KPI_FORM15',
                             'RESULT',
                             'LOAD_DATE'
                         ];
@@ -150,17 +172,29 @@
                                 td.setAttribute('name', prefix + '_' + guide[attribute]);
                                 td.setAttribute("style", "background-color:#ebe9e9; text-align:center;");
                                 break;
-                            case 'LICENSE':
-                            case 'CEO_NAME':
                             case 'BUSINESS_TYPE':
                             case 'BS_TYPE':
-                            case 'CITY_ZONE':
                             case 'LOAD_DATE':
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);
                                 td.setAttribute('name', prefix + '_' + guide[attribute]);
                                 td.setAttribute("style", "text-align:center;");
                                 break;
+                            case 'KPI_FORM1':
+                            case 'KPI_FORM2':
+                            case 'KPI_FORM3':
+                            case 'KPI_FORM4':
+                            case 'KPI_FORM5':
+                            case 'KPI_FORM6':
+                            case 'KPI_FORM7':
+                            case 'KPI_FORM8':
+                            case 'KPI_FORM9':
+                            case 'KPI_FORM10':
+                            case 'KPI_FORM11':
+                            case 'KPI_FORM12':
+                            case 'KPI_FORM13':
+                            case 'KPI_FORM14':
+                            case 'KPI_FORM15':
                             case 'RESULT':
                                 td.setAttribute("style", "padding-right: 15px !important; text-align: right");
                                 td.innerHTML = value;
