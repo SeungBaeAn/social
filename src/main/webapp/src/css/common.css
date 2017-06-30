@@ -131,7 +131,7 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 .contents .inner{width:960px}
 
 /* 회사 정보 입력 */
-.company_info{padding:70px 235px 20px; border:1px solid #cdcdcd;}
+.company_info{padding:70px 235px 50px; border:1px solid #cdcdcd;}
 .tbl_write th{text-align:left; font-size:20px; font-weight:700; letter-spacing: -0.015em; color:#0b7cc1;}
 .tbl_write td{padding:14px 0; text-align:left;}
 .tbl_write td input{width:220px; text-align:left; box-sizing: border-box;}

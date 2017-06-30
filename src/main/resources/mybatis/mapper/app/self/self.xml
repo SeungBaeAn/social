@@ -932,19 +932,18 @@ SELECT
 	]]>	
   </select>
   <select id="resultMent" resultType="hashmap">
-     select 
-		*
+	   select 
+		  *
 		from(
-        select *
+             select *
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
 		and b.GRP_CD ='SERVICE_POINT'
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		and abs(b.SERVICE_NUM - a.KPI_TOTAL) 
 		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='9' order by KPI_SEQ desc limit 1)     
-		order by KPI_SEQ desc limit 1
+		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)   limit 1
 		)cnt
 		where 1=1
 		AND KPI_STEP ='9'
