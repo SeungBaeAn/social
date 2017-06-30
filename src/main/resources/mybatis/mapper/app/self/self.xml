@@ -131,9 +131,9 @@
           UPDATE SOCIAL_INFO_MASTER
         SET   
         KPI_STEP    = '10'
-        ,KPI_END    =  'Y'
+        ,KPI_AND    =  'Y'
         WHERE KPI_SEQ  = #{p.KPI_SEQ}
-        AND END_DATE IS NULL
+        AND END_DATE IS NOT NULL
     
      </update>               
           <!-- 자가진단 스템 -1 업데이트 -->  
@@ -679,7 +679,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY))  limit 1
+		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) desc limit 1
 		) AS KPI_WORK_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -688,7 +688,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) desc limit 1
 		) AS KPI_PAY_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -697,7 +697,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) desc limit 1
 		) AS KPI_HERE_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -706,7 +706,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) desc limit 1
 		) AS KPI_SALES_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -715,7 +715,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) desc limit 1
 		) AS KPI_BS_N
 		from social_info_master
 		where 1=1
@@ -807,7 +807,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY))  limit 1
+		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY)) desc  limit 1
 		) AS KPI_WORK_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -816,7 +816,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY) desc limit 1
 		) AS KPI_PAY_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -825,7 +825,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY) desc limit 1
 		) AS KPI_HERE_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -834,7 +834,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY) desc limit 1
 		) AS KPI_SALES_N
 		,(select SERVICE_NUM
 		from social_info_master a,
@@ -843,7 +843,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY)  limit 1
+		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY) desc limit 1
 		) AS KPI_BS_N	
 		from social_info_master
 		where 1=1
@@ -963,5 +963,267 @@ SELECT
 		FROM SOCIAL_INFO_MASTER
 		ORDER BY  LOAD_DATE DESC
 	</select>
-
+	<!-- 챠트 동종업계평균-->
+  <select id="chartAllGradeSocial" resultType="hashmap">
+	select STATUS,RESULT
+		from(
+		SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result a, social_info_master b
+		where 1=1
+		AND TOTAL_CODE ='2'
+		AND TOTAL_TYPE = b.BUSINESS_TYPE
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select STATUS,RESULT
+		from(
+		SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result a, social_info_master b
+		where 1=1
+		AND TOTAL_CODE ='4'
+		AND TOTAL_TYPE = b.BUSINESS_TYPE
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select STATUS,RESULT
+		from(
+		SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result a, social_info_master b
+		where 1=1
+		AND TOTAL_CODE ='6'
+		AND TOTAL_TYPE = b.BUSINESS_TYPE
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select STATUS,RESULT
+		from(
+		SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result a, social_info_master b
+		where 1=1
+		AND TOTAL_CODE ='8'
+		AND TOTAL_TYPE = b.BUSINESS_TYPE
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+   </select>
+   <!-- 챠트 전체평균점수-->
+   	<select id="chartAllGradeTotal" resultType="hashmap">
+	SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result
+		where 1=1
+		AND TOTAL_CODE ='1'
+		AND TOTAL_TYPE= '1'
+		UNION ALL
+	SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result
+		where 1=1
+		AND TOTAL_CODE ='3'
+		AND TOTAL_TYPE= '1'
+		UNION ALL
+	SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result
+		where 1=1
+		AND TOTAL_CODE ='5'
+		AND TOTAL_TYPE= '1'
+		UNION ALL
+	SELECT TOTAL_STANDAR  AS STATUS, TOTAL_AVERAGE AS RESULT
+		FROM social_total_result
+		where 1=1
+		AND TOTAL_CODE ='7'
+		AND TOTAL_TYPE= '1'
+   </select>
+   <!-- 챠트 귀사평균점수-->
+   <select id="chartAllGradeMyTotal" resultType="hashmap">
+	 select RESULT
+		from(
+		SELECT KPI_TOTAL AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM1+KPI_FORM2+KPI_FORM3+KPI_FORM4+KPI_FORM5+KPI_FORM6+KPI_FORM7+KPI_FORM8+KPI_FORM9) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM10+KPI_FORM11+KPI_FORM12+KPI_FORM15) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM13) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt  
+  
+   
+     </select> 
+      <!-- 챠트 귀사평균점수-->
+   <select id="chartAllraderSocial" resultType="hashmap">
+	select RESULT
+		from(
+		SELECT (KPI_FORM1 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM2 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM3 * 10)  AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM4 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM5 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM6 * 10)  AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM7 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM8 * 10) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM9 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT ( KPI_FORM10 * 10) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM11 * 10) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT ( KPI_FORM12 * 10)  AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM15 * 20) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1 
+		)cnt
+		UNION ALL
+	select RESULT
+		from(
+		SELECT (KPI_FORM13 * 10) AS RESULT
+		FROM SOCIAL_INFO_MASTER
+		WHERE 1=1
+		AND KPI_STEP ='9'
+		AND END_DATE IS NOT NULL
+		order by KPI_SEQ desc limit 1
+		)cnt  
+    </select>
+    
 </mapper>

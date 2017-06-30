@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import snp.infra.helper.RequestParams;
+import snp.infra.security.Security;
 import snp.infra.user.model.User;
 
 import java.util.List;
@@ -330,6 +331,17 @@ public class SelfSocialController {
 	@RequestMapping(value="/corplist", method= RequestMethod.GET)
 	public List<Map<String, Object>>gridCorp(){
 		return service.gridCorp();
+	}
+	
+	// 관련별 점수비율
+	@RequestMapping(value="/chart-all/grade", method= RequestMethod.GET)
+	public Map<String, Object> chartAllGrade(){
+		return service.chartAllGrade();
+	}
+	// 측정지표별 평가점수
+	@RequestMapping(value="/chart-all/rader", method= RequestMethod.GET)
+	public Map<String, Object> chartAllrader(){
+		return service.chartAllrader();
 	}
 		
 }

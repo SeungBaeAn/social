@@ -41,10 +41,11 @@
   
   function fnMemberValidation(){ 
 	  
-	  var chk_radio1 = document.getElementsByName('step02_q01');
-	  var chk_radio2 = document.getElementsByName('step02_q03');
+	  var chk_radio1 = document.getElementsByName('KPI_FORM1');
+	  var chk_radio2 = document.getElementsByName('KPI_FORM2');
 	  
 	  var sel_type = null;
+	  var sel_type1 = null;
 	  
 		for(var i=0;i<chk_radio1.length;i++){
 
@@ -55,9 +56,25 @@
 			}
 
 		}
+		for(var i=0;i<chk_radio2.length;i++){
+
+			if(chk_radio2[i].checked == true){ 
+
+				sel_type1 = chk_radio2[i].value;
+
+			}
+
+		}
 		if(sel_type == null){
 
-            alert("서비스유형을 선택하세요."); 
+            alert("체크박스를 선택하세요."); 
+
+		return false;
+
+		}
+		if(sel_type1 == null){
+
+            alert("체크박스를 선택하세요."); 
 
 		return false;
 
@@ -114,7 +131,7 @@
         <p class="question">귀사는 현재 기업의 사회적 목적을 반영하는 미션 선언문 또는 경영원칙 등을 명시적으로 표현한 문서를 가지고 계십니까?</p>
         <ul class="horizon mgt25">
           <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1"  value="5"/><label for="step02_q01">있음</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1"  value="1"/><label for="step02_q02">없음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q02" name="KPI_FORM1"  value="1"/><label for="step02_q02">없음</label></span></li>
         </ul>
       </div>
 
@@ -131,10 +148,10 @@
         <p class="txt_choice">측정기준,  담당인력,  평가보고서,  평가위원회,  평가결과의 사내공유</p>
         <ul class="horizon mgt25">
           <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="5"/><label for="step02_q03">4개 이상</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q04" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q05" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q06" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
+          <li><span class="ui_radio"><input type="radio" id="step02_q07" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
         </ul>
       </div>
 
@@ -145,8 +162,7 @@
       
  <div class="btnArea mgt60">
   <a href="/app/social-form/step/" name="social-step" class="btn btn_prev" onclick="document.getElementById('stepback1').submit();">이전</a>
- <a href="/app/social-step1/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm1').submit();">다음</a>
-  
+ <button type="button"  name="social-step1" class="btn btn_next" onclick="javascript:fmCheck();"> 다음</button>
      </div>	
     </div>
     <!-- //inner end -->

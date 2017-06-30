@@ -71,5 +71,11 @@ public interface SelfSocialRepository {
 	
 	// 참여기업 결과 리스트
 	List<Map<String, Object>>gridCorp(@Param("u") User user);
+		
+	List<Map<String, Object>> chartAllraderSocial(@Param("u") User user);
+	// 성과지표 사회적경제조직 유형별 분석 - 등급항목 통계
+	List<Map<String, Object>> chartAllGradeSocial(@Param("u") User user);
+	List<Map<String, Object>> chartAllGradeTotal(@Param("u") User user);
+	List<Map<String, Object>> chartAllGradeMyTotal(@Param("u") User user);
 
 }
