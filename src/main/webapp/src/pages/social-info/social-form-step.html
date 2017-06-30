@@ -49,11 +49,6 @@
 		   return false;
 		  }
 	
-	  if($.trim($('#CEO_NAME').val()) == ''){
-		   alert("대표자명을 입력해 주세요.");
-		   $('#CEO_NAME').focus();
-		   return false;
-		  } 
 	  if($.trim($('#BS_TYPE').val()) == ''){
 		   alert("업종을 선택해 주세요.");
 		   $('#BS_TYPE').focus();
@@ -127,10 +122,7 @@
             <th><span class="bullet_blue">회사명</span></th>
             <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY"  required="required" value="{{_data.COMPANY}}"/></td>
           </tr>
-          <tr>
-             <th><span class="bullet_blue">대표자명</span></th>
-            <td><input type="text" class="inputSt" name="CEO_NAME" id="CEO_NAME" required="required"  value="{{_data.CEO_NAME}}"/></td>
-          </tr>
+
           <tr>
             <th><span class="bullet_blue">업종</span></th>
             <td>
@@ -150,7 +142,7 @@
             
           </tr>
           <tr>
-            <th><span class="bullet_blue">조직형태</span></th>
+            <th><span class="bullet_blue">조직1018형태</span></th>
             <td>
               <select class="ui-select" name="BS_FORM" id="BS_FORM" required="required">
                 <option value="">선택</option>
