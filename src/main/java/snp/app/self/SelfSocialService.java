@@ -9,6 +9,11 @@ import snp.infra.security.Security;
 import snp.app.common.*;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class SelfSocialService {
@@ -314,7 +319,43 @@ public class SelfSocialService {
 		return repository.resultMent(Security.user());
 	
 	}		
+	
+			// 
+		public Map<String, Object> chartAllGrade() {
+		Map<String, Object> nestedData = new HashMap<>();
 		
+		nestedData.put("socialData", chartAllGradeSocial());
+		nestedData.put("totalData", chartAllGradeTotal());
+		nestedData.put("mytotalData", chartAllGradeMyTotal());
+		
+		return nestedData;
+		}
+		public Map<String, Object> chartAllrader() {
+		Map<String, Object> nestedData = new HashMap<>();
+		
+		nestedData.put("radersocialData", chartAllraderSocial());
+
+		
+		return nestedData;
+		}
+		//
+		public List<Map<String, Object>> chartAllraderSocial() {
+			return repository.chartAllraderSocial(Security.user());
+		}
+		// 
+		public List<Map<String, Object>> chartAllGradeSocial() {
+			return repository.chartAllGradeSocial(Security.user());
+		}
+
+		// 
+		public List<Map<String, Object>> chartAllGradeTotal() {
+			return repository.chartAllGradeTotal(Security.user());
+		}		
+
+		// 
+		public List<Map<String, Object>> chartAllGradeMyTotal() {
+			return repository.chartAllGradeMyTotal(Security.user());
+		}	
 //	public Map<String, Object> findstepList2(Map<String, Object> params)
 //	{
 //		return repository.findstepList2(params, Security.user());

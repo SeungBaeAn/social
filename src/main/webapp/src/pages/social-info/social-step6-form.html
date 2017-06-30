@@ -36,7 +36,45 @@
   <script src="/src/js/jquery.mCustomScrollbar.js"></script>
   <script src="/src/js/TweenMax.min.js"></script>
   <script src="/src/js/ui.js"></script>
+</head>
+<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
+<script>
 
+  $(document).ready(function() { 
+//	  alert("AAAAA");  
+ }) 
+ 
+  function fmCheck(){
+	  if(fnMemberValidation() == false) return;
+	  
+	    document.getElementById('stepForm7').submit();
+		location.href ="/app/social-step7/form/"; 
+	 }
+  
+  function fnMemberValidation(){ 
+	  
+	  if($.trim($('#KPI_FORM10_PAY').val()) == ''){
+		   alert("근로자수를 입력해 주세요.");
+		   $('#KPI_FORM10_PAY').focus();
+		   return false;
+		  } 
+	  if($.trim($('#KPI_FORM11_PAY').val()) == ''){
+		   alert("매출액을 입력해 주세요.");
+		   $('#KPI_FORM11_PAY').focus();
+		   return false;
+		  } 
+	  if($.trim($('#KPI_FORM12_PAY').val()) == ''){
+		   alert("영업성과 입력해 주세요.");
+		   $('#KPI_FORM12_PAY').focus();
+		   return false;
+		  } 
+
+
+  }
+
+
+  
+  </script>
 <dom-module id="social-step6-form">
 <template>
     
@@ -85,7 +123,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 총 근로자수는 몇 명입니까?</p>
         <div class="inputArea mgt25">
-          유급근로자 수(명) : <input type="text" class="inputSt"  name="KPI_FORM10_PAY" value="{{_data.KPI_FORM10_PAY}}" />
+          유급근로자 수(명) : <input type="text" class="inputSt"  name="KPI_FORM10_PAY" id="KPI_FORM10_PAY" value="{{_data.KPI_FORM10_PAY}}" />
         </div>
       </div>
 
@@ -100,7 +138,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 총 매출액은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          매출액(원) : <input type="text" class="inputSt" name="KPI_FORM11_PAY" value="{{_data.KPI_FORM11_PAY}}" />
+          매출액(원) : <input type="text" class="inputSt" name="KPI_FORM11_PAY" id="KPI_FORM11_PAY" value="{{_data.KPI_FORM11_PAY}}" />
         </div>
       </div>
 
@@ -115,7 +153,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 영업이익(손실)은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}"/>
+          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" id="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}"/>
         </div>
       </div>
 
@@ -127,7 +165,7 @@
  
    <div class="btnArea mgt60">
  <a href="/app/social-step5/form/" name="social-step"  class="btn btn_prev" onclick="document.getElementById('stepback7').submit();">이전</a>
-  <a href="/app/social-step7/form/" name="social-step1" class="btn btn_next" onclick="document.getElementById('stepForm7').submit();">다음</a>
+   <button type="button"  name="social-step6" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
       </div>
       <!-- //btnArea end -->
     </div>

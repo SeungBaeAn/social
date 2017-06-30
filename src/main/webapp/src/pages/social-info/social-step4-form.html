@@ -37,7 +37,46 @@
   <script src="/src/js/TweenMax.min.js"></script>
   <script src="/src/js/ui.js"></script>
 </head> 
+<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
+<script>
 
+  $(document).ready(function() { 
+//	  alert("AAAAA");  
+ }) 
+ 
+  function fmCheck(){
+	  if(fnMemberValidation() == false) return;
+	  
+	    document.getElementById('stepForm5').submit();
+		location.href ="/app/social-step5/form/"; 
+	 }
+  
+  function fnMemberValidation(){ 
+	  
+	  var chk_radio1 = document.getElementsByName('KPI_FORM7');
+
+	  
+	  var sel_type = null;
+
+	  
+		for(var i=0;i<chk_radio1.length;i++){
+
+			if(chk_radio1[i].checked == true){ 
+
+				sel_type = chk_radio1[i].value;
+			}
+		}
+
+		if(sel_type == null){
+
+            alert("체크박스를 선택하세요."); 
+
+		return false;
+
+		}
+
+  }
+  </script>
 <dom-module id="social-step4-form">
 <template>
 
@@ -102,7 +141,7 @@
       <!-- //box_tip -->
  <div class="btnArea mgt60">
   <a href="/app/social-step3/form/" name="social-step3" class="btn btn_prev" onclick="document.getElementById('stepback5').submit();">이전<</a>
-  <a href="/app/social-step5/form/" name="social-step5" class="btn btn_next" onclick="document.getElementById('stepForm5').submit();">다음</a>
+    <button type="button"  name="social-step5" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
       </div>
       <!-- //btnArea end -->
     </div>

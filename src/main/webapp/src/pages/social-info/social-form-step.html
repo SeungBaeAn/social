@@ -48,11 +48,7 @@
 		   $('#COMPANY').focus();
 		   return false;
 		  }
-	  if($.trim($('#LICENSEE').val()) == ''){
-		   alert("사업자번호를 입력해 주세요.");
-		   $('#LICENSEE').focus();
-		   return false;
-		  } 
+	
 	  if($.trim($('#CEO_NAME').val()) == ''){
 		   alert("대표자명을 입력해 주세요.");
 		   $('#CEO_NAME').focus();
@@ -63,16 +59,7 @@
 		   $('#BS_TYPE').focus();
 		   return false;
 		  } 
-	  if($.trim($('#BS_FORM').val()) == ''){
-		   alert("형태를 선택해 주세요.");
-		   $('#BS_FORM').focus();
-		   return false;
-		  } 
-	  if($.trim($('#ZONE_TYPE').val()) == ''){
-		   alert("지역을 선택해 주세요.");
-		   $('#ZONE_TYPE').focus();
-		   return false;
-		  } 
+
 	
   }
    </script> 
@@ -137,10 +124,6 @@
             <td><input type="text" class="inputSt"  name="COMPANY" id="COMPANY"  required="required" value="{{_data.COMPANY}}"/></td>
           </tr>
           <tr>
-            <th><span class="bullet_blue">사업자번호</span></th>
-            <td><input type="text" class="inputSt" name="LICENSEE" id="LICENSEE" required="required" value="{{_data.LICENSEE}}"/></td>
-          </tr>
-          <tr>
              <th><span class="bullet_blue">대표자명</span></th>
             <td><input type="text" class="inputSt" name="CEO_NAME" id="CEO_NAME" required="required"  value="{{_data.CEO_NAME}}"/></td>
           </tr>
@@ -162,43 +145,8 @@
             </td>
             
           </tr>
-          <tr>
-            <th><span class="bullet_blue">형태</span></th>
-            <td>
-              <select class="ui-select" name="BS_FORM" id="BS_FORM" required="required">
-                <option value="">선택</option>
-                <option value="인증 사회적기업" >인증 사회적기업</option>
-                <option value="예비 사회적기업">예비 사회적기업</option>    
-                <option value="사회적기업가 육성사업 창업팀(소셜벤처 포함)">사회적기업가 육성사업 창업팀(소셜벤처 포함)</option>
-                <option value="기타 사회적경제조직">기타 사회적경제조직</option>
-                <option value="일반기업">일반기업</option>    
-             </select>                     
-            </td>
-          </tr>
-          <tr>
-            <th><span class="bullet_blue">지역</span></th>
-            <td>
-              <select class="ui-select" name="ZONE_TYPE"  id="ZONE_TYPE" required="required">
-                <option value="">선택</option>
-                <option value="서울">서울</option>
-                <option value="경기">경기</option>    
-                <option value="인천">인천</option>    
-                <option value="강원">강원</option>    
-                <option value="대구">대구</option>    
-                <option value="경북">경북</option>    
-                <option value="부산">부산</option>    
-                <option value="울산">울산</option>      
-                <option value="경남">경남</option>      
-                <option value="광주">광주</option>      
-                <option value="전북">전북</option>      
-                <option value="전남">전남</option>
-                <option value="전남">제주</option>  
-                <option value="대전·세종">대전·세종</option>  
-                <option value="충북">충북</option>  
-                <option value="충남">충남</option>            
-              </select>        
-            </td>
-          </tr>
+
+    
            <tr>
            
           
