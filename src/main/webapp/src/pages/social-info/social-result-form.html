@@ -100,7 +100,7 @@
    <body>
     	<header class="header">
 		      <div class="inner">
-		  	    <h1><strong class="txt_blue">사회적 가치 지표(SVI)</strong> 자가진단 Kit</h1>
+		  	    <h1><strong class="txt_blue">SE 자가진단 KIT</strong> </h1>
 		        <p><img src="/src/images/ico_social.gif" alt="한국사회적기업지흥원" /></p>
 		      </div>
 			</header>      	
@@ -143,25 +143,28 @@
         </tr>
       </table>
     <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
-      <table class="tbl_result_detail mgt30" style="text-align:center;">
+     <table class="tbl_result_detail mgt30" style="text-align:center;">
         <colgroup>
           <col style="width:115px;" />
           <col style="width:115px;" />
+          <col style="width:250px;" />
           <col />
           <col style="width:145px;" />
         </colgroup>
         <thead>
-          <tr style="text-align:center;">
-            <th style="text-align:center;">관점</th>
-            <th style="text-align:center;">범주</th>
-            <th style="text-align:center;">측정지표</th>
-            <th style="text-align:center;">점수/배점</th>
+          <tr>
+            <th>관점</th>
+            <th>범주</th>
+            <th>영역</th>
+            <th>측정지표</th>
+            <th>점수/배점</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+           <tr>
             <td class="first" rowspan="9">사회적가치</td>
             <td rowspan="2">조직미션</td>
+            <td rowspan="2">사회적 미션의 관리</td>
             <td class="alignLeft">사회적 가치 추구 여부</td>
             <td class="score"><strong>{{_data.KPI_FORM1}}</strong> / 5</td>
           </tr>
@@ -171,10 +174,12 @@
           </tr>
           <tr>
             <td rowspan="4">사업활동</td>
+            <td>주사업활동의 사회적 가치</td>
             <td class="alignLeft">사업활동의 사회적가치 지향성</td>
             <td class="score"><strong>{{_data.KPI_FORM3}}</strong> / 10</td>
           </tr>
           <tr>
+            <td rowspan="2">사회적 경제 생태계 구축 노력</td>
             <td class="alignLeft">사회적 경제 조직간의 협력 수준</td>
             <td class="score"><strong>{{_data.KPI_FORM4}}</strong> / 5</td>
           </tr>
@@ -183,15 +188,18 @@
             <td class="score"><strong>{{_data.KPI_FORM5}}</strong> / 5</td>
           </tr>
           <tr>
+            <td>이윤의 사회적 재투자</td>
             <td class="alignLeft">이윤의 사회적 환원 노력도</td>
             <td class="score"><strong>{{_data.KPI_FORM6}}</strong> / 10</td>
           </tr>
           <tr>
             <td rowspan="3">조직운영</td>
+            <td>운영의 민주성</td>
             <td class="alignLeft">참여적 의사결정 비율</td>
             <td class="score"><strong>{{_data.KPI_FORM7}}</strong> / 5</td>
           </tr>
           <tr>
+            <td rowspan="2">근로자 지향성</td>
             <td class="alignLeft">근로자 임금수준</td>
             <td class="score"><strong>{{_data.KPI_PAY_N}}</strong> / 10</td>
           </tr>
@@ -202,6 +210,7 @@
           <tr>
             <td class="first" rowspan="4">경제적가치</td>
             <td rowspan="4">재정성과</td>
+            <td rowspan="3">고용창출 및 재정성과</td>
             <td class="alignLeft">고용성과</td>
             <td class="score"><strong>{{_data.KPI_HERE_N}}</strong> / 10</td>
           </tr>
@@ -211,15 +220,17 @@
           </tr>
           <tr>
             <td class="alignLeft">영업성과</td>
-            <td class="score"><strong>{{_data.KPI_BS_N}}</strong> / 10</td>
+            <td class="score"><strong>{{_data.KPI_BS_N}}</strong> / 5</td>
           </tr>
           <tr>
+            <td>노동 성과</td>
             <td class="alignLeft">노동생산성</td>
             <td class="score"><strong>{{_data.KPI_WORK_N}}</strong> / 5</td>
           </tr>
           <tr>
             <td class="first">혁신성과</td>
             <td>기업혁신</td>
+            <td>기업활동에서의 혁신성</td>
             <td class="alignLeft">기업 운영 및 제품의 혁신성</td>
             <td class="score"><strong>{{_data.KPI_FORM13}}</strong> / 10</td>
           </tr>
@@ -229,7 +240,7 @@
       <div class="comment">
         <p class="tit">결과</p>
         <p class="txt">
-          귀사의 사회적 가치 지표 자가진단 결과는 <strong>‘{{_data3.SERVICE_PERCENT}}’</strong> 입니다.<br />
+          귀사의 사회적 가치 지표(SVI) 자가진단 결과는 <strong>‘{{_data3.SERVICE_PERCENT}}’</strong> 입니다.<br />
       {{_data3.SERVICE_NM}}<br />.
           세부적으로 14개 측정지표 중에서  <strong>{{_data2.TOP_LIST}}</strong> 지표가 상대적으로 높은 득점, <strong>{{_data1.LOW_LIST}}</strong> 지표가<br />
            상대적으로 낮은 득점으로 진단되었습니다.  지표별 세부 득점 결과를 참조하여 귀사의 조직운영, 사업활동에 참고하시기 바랍니다.<br />
@@ -241,9 +252,11 @@
       <!-- graph    <canvas id="barChart" ></canvas> -->
     <div class="wrap_graph mgt30">
         <div class="graph">
+        <h5 class="tit_graph" style="background-color:#FFFFFF;">관점별 점수비율</h5>
          <canvas id="barChart"></canvas>
         </div>
         <div class="graph">
+        <h5 class="tit_graph" style="background-color:#FFFFFF;">측정지표별 평가 점수</h5>
         <canvas id="barChart1"></canvas>
         </div>
       </div>
@@ -357,7 +370,6 @@ Polymer({
                 options: {
                     title:{
                         display:true,
-                        text: '관점별 점수비율'
                     },
                     tooltips: {
                         mode: 'index',
@@ -445,7 +457,6 @@ Polymer({
                 },
                 title: {
                     display: true,
-                    text: '측정지표별 평가 점수'
                 },
                 scale: {
                   ticks: {
