@@ -128,7 +128,7 @@ section, article, aside, footer, header, nav, hgroup {display:block;}
 
 /* contents */
 .contents{width:1355px; margin:0 auto; padding:60px 0;}
-.contents .inner{width:960px}
+.contents .inner{width:1010px}
 
 /* 회사 정보 입력 */
 .company_info{padding:70px 235px 50px; border:1px solid #cdcdcd;}

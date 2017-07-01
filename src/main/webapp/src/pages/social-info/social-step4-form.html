@@ -126,11 +126,13 @@
       <div class="box_question">
         <p class="question">귀사는 지난 한해 조직운영의 민주성을 제고하기 위해 이사회 등 주요 의사결정 과정에서 근로자대표, 사외이사 등의 실제 참여한 비율은 얼마나 됩니까?</p>
         <ul class="vertical mgt25">
-          <li><span class="ui_radio"><input type="radio" id="step06_q01" name="KPI_FORM7" value="5"/><label for="step06_q01">61 ~ 100 %</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step06_q02" name="KPI_FORM7" value="4" /><label for="step06_q02">41 ~ 60 %</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step06_q03" name="KPI_FORM7" value="3" /><label for="step06_q03">21 ~ 40 %</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step06_q04" name="KPI_FORM7" value="2" /><label for="step06_q04">1 ~ 20 %</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step06_q05" name="KPI_FORM7" value="1" /><label for="step06_q05">0 %</label></span></li>
+        			<paper-radio-group selected="{{_data.KPI_FORM7}}" attr-for-selected="value">
+						<paper-radio-button name="KPI_FORM7" value="5" >61 ~ 100 %</paper-radio-button>
+						<paper-radio-button name="KPI_FORM7" value="4" >41 ~ 60 %</paper-radio-button>
+						<paper-radio-button name="KPI_FORM7" value="3" >21 ~ 40 %</paper-radio-button>
+						<paper-radio-button name="KPI_FORM7" value="2" >1 ~ 20 %</paper-radio-button>
+						<paper-radio-button name="KPI_FORM7" value="1" >0 %</paper-radio-button>
+					</paper-radio-group>        
         </ul>
       </div>
 
