@@ -85,7 +85,28 @@
 	         $(this).val($(this).val().replace(/[^0-9]/g,""));
 	    }); 
 	}
+  function number_chk(obj){
+		var val = obj.value.replace(/,/g, "");
+		var val2 = val.substr(0, 1);
+		var val3 = val.length;
+		if(val2 == 0){
+		val = val.substr(1, val3);
+	}
+		obj.value = num_format(val);
+}
+  function inputNumberFormat(obj) { 
+	    obj.value = comma(uncomma(obj.value)); 
+	} 
 
+	function comma(str) { 
+	    str = String(str); 
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); 
+	} 
+
+	function uncomma(str) { 
+	    str = String(str); 
+	    return str.replace(/[^\d]+/g, ''); 
+	}
   
   </script>
 <dom-module id="social-step5-form">
@@ -135,7 +156,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 전체 직원의 1인당 월평균 임금은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          유급근로자 월평균 임금(원) : <input type="text" class="inputSt" name="KPI_FORM8_PAY" id="KPI_FORM8_PAY" value="{{_data.KPI_FORM8_PAY}}" onkeydown="onlyNumber(this)"/>
+          유급근로자 월평균 임금(원) : <input type="text" class="inputSt" name="KPI_FORM8_PAY" id="KPI_FORM8_PAY" value="{{_data.KPI_FORM8_PAY}}" onkeyup="inputNumberFormat(this)"/>
         </div>
       </div>
 
