@@ -130,8 +130,10 @@
       <div class="box_question">
         <p class="question">귀사는 현재 기업의 사회적 목적을 반영하는 미션 선언문 또는 경영원칙 등을 명시적으로 표현한 문서를 가지고 계십니까?</p>
         <ul class="horizon mgt25">
-          <li><span class="ui_radio"><input type="radio" id="step02_q01" name="KPI_FORM1"  value="5"/><label for="step02_q01">있음</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q02" name="KPI_FORM1"  value="1"/><label for="step02_q02">없음</label></span></li>
+					<paper-radio-group selected="{{_data.KPI_FORM1}}" attr-for-selected="value">
+						<paper-radio-button name="KPI_FORM1" value="5" >있음</paper-radio-button>
+						<paper-radio-button name="KPI_FORM1" value="1" >없음</paper-radio-button>
+					</paper-radio-group>
         </ul>
       </div>
 
@@ -147,11 +149,13 @@
         <p class="question">귀사는 현재 기업에서 창출하는 사회적 성과를 체계적으로 관리하기 위해 다음 중 몇 가지 사항을 갖추고 있습니까?</p>
         <p class="txt_choice">①측정기준,  ②담당인력,  ③평가보고서,  ④평가위원회,  ⑤평가결과의 사내공유</p>
         <ul class="horizon mgt25">
-          <li><span class="ui_radio"><input type="radio" id="step02_q03" name="KPI_FORM2"  value="5"/><label for="step02_q03">4개 이상</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q04" name="KPI_FORM2"  value="4" /><label for="step02_q04">3개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q05" name="KPI_FORM2"  value="3"/><label for="step02_q05">2개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q06" name="KPI_FORM2"  value="2"/><label for="step02_q06">1개</label></span></li>
-          <li><span class="ui_radio"><input type="radio" id="step02_q07" name="KPI_FORM2"  value="1"/><label for="step02_q07">없음</label></span></li>
+        			<paper-radio-group selected="{{_data.KPI_FORM2}}" attr-for-selected="value">
+						<paper-radio-button name="KPI_FORM2" value="5" >4개 이상</paper-radio-button>
+						<paper-radio-button name="KPI_FORM2" value="4" >3개</paper-radio-button>
+						<paper-radio-button name="KPI_FORM2" value="3" >2개</paper-radio-button>
+						<paper-radio-button name="KPI_FORM2" value="2" >1개</paper-radio-button>
+						<paper-radio-button name="KPI_FORM2" value="1" >없음</paper-radio-button>
+					</paper-radio-group>
         </ul>
       </div>
 

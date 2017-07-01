@@ -29,14 +29,17 @@
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html" />
 <link rel="import" href="/bower_components/iron-image/iron-image.html" />
 <link rel="import" href="/src/components/common/loading-spinner.html" />
+
 <link rel="import" href="styles/base/common.html" />
 <link rel="import" href="styles/components/header.html" />
+
 <link href="/src/css/common.css" rel="stylesheet">
 <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-  <script src="/src/js/jquery-1.12.0.min.js"></script>
-  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-  <script src="/src/js/TweenMax.min.js"></script>
-  <script src="/src/js/ui.js"></script>	
+<script src="/src/js/jquery-1.12.0.min.js"></script>
+<script src="/src/js/jquery.mCustomScrollbar.js"></script>
+<script src="/src/js/TweenMax.min.js"></script>
+<script src="/src/js/ui.js"></script>	
+  
 <dom-module id="self-app">
 
 	<template>
@@ -59,7 +62,7 @@
 			data="{{routeData}}"
 			tail="{{subroute}}">
 		</app-route>
-
+       <loading-spinner></loading-spinner>
 
 
 			<!-- Drawer content -->
@@ -84,24 +87,6 @@
                                                         <page-social-step6  name="social-step6" route="{{route}}"></page-social-step6>
                                                         <page-social-step7  name="social-step7" route="{{route}}"></page-social-step7>
                                                         <page-social-result  name="social-result" route="{{route}}"></page-social-result>
-														<page-social-info name="social-info" route="{{route}}"></page-social-info>
-														<page-cooperation-info name="cooperation-info" route="{{route}}"></page-cooperation-info>
-														<page-village-info name="village-info" route="{{route}}"></page-village-info>
-
-														<page-social-kpi name="social-kpi" route="{{route}}"></page-social-kpi>
-														<page-cooperation-kpi name="cooperation-kpi" route="{{route}}"></page-cooperation-kpi>
-														<page-village-kpi name="village-kpi" route="{{route}}"></page-village-kpi>
-														<page-analytics-corp name="analytics-corp" route="{{route}}"></page-analytics-corp>
-														<page-chart-sector name="chart-sector" route="{{route}}"></page-chart-sector>
-														<page-chart-all name="chart-all" route="{{route}}"></page-chart-all>
-
-														<page-chart-type name="chart-type" route="{{route}}"></page-chart-type>
-														<page-analytics-radar name="analytics-radar" route="{{route}}"></page-analytics-radar>
-														<page-chart-kpi name="chart-kpi" route="{{route}}"></page-chart-kpi>
-														<page-chart-region name="chart-region" route="{{route}}"></page-chart-region>
-														<page-all-corps name="all-corps" route="{{route}}" ></page-all-corps>
-														<page-center-mgm name="center-mgm" route="{{route}}"></page-center-mgm>
-
 													</iron-pages>
 											</div>
 									</div>
@@ -145,7 +130,7 @@
 
                         attached: function() {
                                 if (this.$.appLocation.path == '/')
-                                        this.$.appLocation.path = '/app/social-info/list/';
+                                        this.$.appLocation.path = '/app/social-self/form/';
                         },
 
                         _routePageChanged: function(page) {
