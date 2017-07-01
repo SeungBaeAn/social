@@ -104,8 +104,8 @@
                             'KPI_FORM12',
                             'KPI_FORM15',
                             'KPI_FORM13',
-                            'RESULT',
-                            'LOAD_DATE'
+                            'KPI_TOTAL',
+                            'END_DATE'
                         ];
                     }
                 },
@@ -174,7 +174,7 @@
                                 break;
                             case 'BUSINESS_TYPE':
                             case 'BS_TYPE':
-                            case 'LOAD_DATE':
+                            case 'END_DATE':
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);
                                 td.setAttribute('name', prefix + '_' + guide[attribute]);
@@ -194,7 +194,7 @@
                             case 'KPI_FORM12':
                             case 'KPI_FORM15':
                             case 'KPI_FORM13':
-                            case 'RESULT':
+                            case 'KPI_TOTAL':
                                 td.setAttribute("style", "padding-right: 15px !important; text-align: right");
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);
