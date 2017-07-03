@@ -13,7 +13,7 @@ public class IndexController {
     @RequestMapping(value={"/", "/index", "/app/*", "/app/*/*", "/app/*/*/*"})
     public String userId() {
         if (Security.userId() == null){
-            return "/login.html";
+            return "/selfmain.html";
         }else if(Security.userId().equals("self")) {
         	return "/selfmain.html";
         }else{ 	

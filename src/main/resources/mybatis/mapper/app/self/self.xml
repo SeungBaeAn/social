@@ -306,6 +306,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='1'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select>
     
@@ -351,6 +352,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='2'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}		 
 		 order by KPI_SEQ desc limit 1
     </select>  
       <!-- 자가진단 스템4 목록 -->
@@ -395,6 +397,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='3'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select>  
        <!-- 자가진단 스템5 목록 -->
@@ -439,6 +442,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='4'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select> 
          <!-- 자가진단 스템6 목록 -->
@@ -483,6 +487,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='5'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select> 
         <!-- 자가진단 스템7 목록 -->
@@ -528,6 +533,7 @@
 		WHERE 1=1
 		 AND KPI_STEP ='6'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select>
        <select id="findstepList8" resultType="hashmap">
@@ -674,6 +680,7 @@ SELECT
 		where 1=1
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
 		)cnt 
     </select>
@@ -826,6 +833,7 @@ SELECT
 		 where 1=1
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL
+		 AND KPI_SEQ  =  #{p.sequence}
 		 order by KPI_SEQ desc limit 1
     </select>   
   <select id="resultStepList" resultType="hashmap">
@@ -980,6 +988,7 @@ SELECT
 	   AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
 		AND KPI_AND ='N'
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
     </select>   
   
@@ -1011,7 +1020,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
 		AND KPI_AND ='N'
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master order by KPI_SEQ desc limit 1)	
+		AND KPI_SEQ  =  #{p.sequence}	
 		)cnt
 		]]>		
    </select> 
@@ -1042,7 +1051,7 @@ SELECT
 	   AND KPI_STEP ='9'
 	   AND END_DATE IS NOT NULL
 	   AND KPI_AND ='N'
-	   AND KPI_SEQ = (select KPI_SEQ from social_info_master order by KPI_SEQ desc limit 1)
+	   AND KPI_SEQ  =  #{p.sequence}
 	   )cnt	
 	]]>	
   </select>
@@ -1063,7 +1072,7 @@ SELECT
 		where 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='9' order by KPI_SEQ desc limit 1)   
+		AND KPI_SEQ  =  #{p.sequence}  
 		order by KPI_SEQ desc limit 1
   </select>		
 	<!-- 참여기업 결과 리스트-->
@@ -1093,7 +1102,7 @@ SELECT
 	     KPI_STEP ='9'
 	    AND END_DATE IS NOT NULL
 	    AND KPI_AND ='N'
-		ORDER BY  LOAD_DATE DESC
+		ORDER BY  END_DATE DESC
 	</select>
 	<!-- 챠트 동종업계평균-->
   <select id="chartAllGradeSocial" resultType="hashmap">
@@ -1106,6 +1115,7 @@ SELECT
 		AND TOTAL_TYPE = b.BUSINESS_TYPE
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1118,6 +1128,7 @@ SELECT
 		AND TOTAL_TYPE = b.BUSINESS_TYPE
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1130,6 +1141,7 @@ SELECT
 		AND TOTAL_TYPE = b.BUSINESS_TYPE
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1142,6 +1154,7 @@ SELECT
 		AND TOTAL_TYPE = b.BUSINESS_TYPE
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
    </select>
@@ -1180,6 +1193,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1190,6 +1204,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1200,6 +1215,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1210,6 +1226,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt  
   
@@ -1224,6 +1241,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1234,6 +1252,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1244,6 +1263,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1254,6 +1274,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1264,6 +1285,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1274,6 +1296,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1284,6 +1307,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1294,6 +1318,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1304,6 +1329,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1314,6 +1340,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1324,6 +1351,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1334,6 +1362,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt
 		UNION ALL
@@ -1344,6 +1373,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1 
 		)cnt
 		UNION ALL
@@ -1354,6 +1384,7 @@ SELECT
 		WHERE 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
+		AND KPI_SEQ  =  #{p.sequence}
 		order by KPI_SEQ desc limit 1
 		)cnt  
     </select>

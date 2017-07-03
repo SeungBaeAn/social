@@ -264,95 +264,98 @@ public class SelfSocialController {
 //	@RequestMapping(value="/findStep2", method= RequestMethod.GET)
 //	public Map<String, Object>findstepList2(@RequestParam Map<String, Object> params){
 //		return service.findstepList2(params);
-//	}	
-	
-	@RequestMapping(value="/findStep2")
-    public Map<String, Object> findstepList2(){
-		return service.findstepList2();
-//	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/findStep3")
-    public Map<String, Object> findstepList3(){
-		return service.findstepList3();
-//	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/findStep4")
-    public Map<String, Object> findstepList4(){
-		return service.findstepList4();
-//	return service.findstepList2(RequestParams.map());
-   }
-//	@RequestMapping(value="/findStep4")
-//	public Map<String, Object> findstepList4(@PathVariable("KPI_SEQ") Integer kpiSeq){
-//		return service.findstepList4(kpiSeq);
 //	}
+	@RequestMapping(value="/findStep2" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList2(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList2(RequestParams.map());
+	}
 	
-	
-//	@RequestMapping(value="/findStep4",method= RequestMethod.GET)
- //   public Map<String, Object> findstepList4(@RequestParam (name = "KPI_SEQ") int KPI_SEQ){
+//@RequestMapping(value="/findStep2/", method= RequestMethod.GET)
+//  public Map<String, Object> findstepList4(@RequestParam Map<String, Object> params){
+//		System.out.println("=========sequence======"); 
+//		System.out.println("get방식 parameter 값:"+sequence); 
+//		System.out.println("========sequence=======");
 //		return service.findstepList4();
-//	return service.findstepList4(RequestParams.map());
-//   }
-	@RequestMapping(value="/findStep5")
-    public Map<String, Object> findstepList5(){
-		return service.findstepList5();
 //	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/findStep6")
-    public Map<String, Object> findstepList6(){
-		return service.findstepList6();
+ //}	
+//	@RequestMapping(value="/findStep2")
+//    public Map<String, Object> findstepList2(){
+//		return service.findstepList2();
 //	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/findStep7")
-    public Map<String, Object> findstepList7(){
-		return service.findstepList7();
-//	return service.findstepList2(RequestParams.map());
-   }
-	
-	@RequestMapping(value="/findStep8")
-    public Map<String, Object> findstepList8(){
-		return service.findstepList8();
-//	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/findStep9")
-    public Map<String, Object> findstepList9(){
-		return service.findstepList9();
-//	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/resultStep")
-    public Map<String, Object> resultStepList(){
-		return service.resultStepList();
-//	return service.findstepList2(RequestParams.map());
-   }	
-	@RequestMapping(value="/resultSteplow")
-    public Map<String, Object> resultSteplow(){
-		return service.resultSteplow();
-//	return service.findstepList2(RequestParams.map());
-   }		
-	@RequestMapping(value="/resultSteptop")
-    public Map<String, Object> resultSteptop(){
-		return service.resultSteptop();
-//	return service.findstepList2(RequestParams.map());
-   }
-	@RequestMapping(value="/resultMent")
-    public Map<String, Object> resultMent(){
-		return service.resultMent();
-//	return service.findstepList2(RequestParams.map());
-   }
+ //  }
+	@RequestMapping(value="/findStep3" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList3(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList3(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep4" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList4(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList4(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep5" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList5(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList5(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep6" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList6(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList6(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep7" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList7(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList7(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep8" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList8(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList8(RequestParams.map());
+	}
+	@RequestMapping(value="/findStep9" , method= RequestMethod.GET)
+	public Map<String, Object> findstepList9(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.findstepList9(RequestParams.map());
+	}	
+	@RequestMapping(value="/resultStep" , method= RequestMethod.GET)
+	public Map<String, Object> resultStepList(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.resultStepList(RequestParams.map());
+	}		
+	@RequestMapping(value="/resultSteplow" , method= RequestMethod.GET)
+	public Map<String, Object> resultSteplow(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.resultSteplow(RequestParams.map());
+	}	
+	@RequestMapping(value="/resultSteptop" , method= RequestMethod.GET)
+	public Map<String, Object> resultSteptop(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.resultSteptop(RequestParams.map());
+	}	
+	@RequestMapping(value="/resultMent" , method= RequestMethod.GET)
+	public Map<String, Object> resultMent(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.resultMent(RequestParams.map());
+	}		
+	@RequestMapping(value="/chart-all/grade" , method= RequestMethod.GET)
+	public Map<String, Object> chartAllGrade(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.chartAllGrade(RequestParams.map());
+	}
+	@RequestMapping(value="/chart-all/rader" , method= RequestMethod.GET)
+	public Map<String, Object> chartAllrader(@RequestParam("sequence") Integer sequence){
+		System.out.println("get방식 parameter 값:"+sequence); 
+		return service.chartAllrader(RequestParams.map());
+	}
+
 	// 참여기업 결과 리스트
 	@RequestMapping(value="/corplist", method= RequestMethod.GET)
 	public List<Map<String, Object>>gridCorp(){
 		return service.gridCorp();
 	}
 	
-	// 관련별 점수비율
-	@RequestMapping(value="/chart-all/grade", method= RequestMethod.GET)
-	public Map<String, Object> chartAllGrade(){
-		return service.chartAllGrade();
-	}
-	// 측정지표별 평가점수
-	@RequestMapping(value="/chart-all/rader", method= RequestMethod.GET)
-	public Map<String, Object> chartAllrader(){
-		return service.chartAllrader();
-	}
+
 		
 }

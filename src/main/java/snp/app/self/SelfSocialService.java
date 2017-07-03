@@ -244,118 +244,108 @@ public class SelfSocialService {
 	public Map<String, Object> findstepList1()
 	{
 		return repository.findstepList1(Security.user());
-	//	return repository.findstepList1();
+	
+	}
+	
+//	public Map<String, Object> findstepList1(Map<String, Object> params){
+//		return repository.findstepList1(params, Security.user());
+ //  }
+	
+	public Map<String, Object> findstepList2(Map<String, Object> params)
+   {
+	return repository.findstepList2(params, Security.user());
+    }
+	
+	public Map<String, Object> findstepList3(Map<String, Object> params)
+	   {
+		return repository.findstepList3(params, Security.user());
+	    }
+			
+
+	public Map<String, Object> findstepList4(Map<String, Object> params)
+	{
+		return repository.findstepList4(params, Security.user());
+	
 	}
 
-	
-//	public Map<String, Object> findstepList2(Map<String, Object> params)
- //  {
-//	return repository.findstepList2(params, Security.user());
- //   }
-	
-	
-	public Map<String, Object> findstepList2()
+	public Map<String, Object> findstepList5(Map<String, Object> params)
 	{
-		return repository.findstepList2(Security.user());
-	}
-	
-	public Map<String, Object> findstepList3()
-	{
-		return repository.findstepList3(Security.user());
+		return repository.findstepList5(params, Security.user());
 	
 	}
-	public Map<String, Object> findstepList4()
+	public Map<String, Object> findstepList6(Map<String, Object> params)
 	{
-		return repository.findstepList4(Security.user());
-	
-	}
-//	public Map<String, Object> findstepList4(int kpiSeq) {
-//		return repository.findstepList4(kpiSeq, Security.user());
-//	}
-	
-	
-//	public Map<String, Object> findstepList4(Map<String, Object> params)
-//	{
-//		return repository.findstepList4(params, Security.user());
-//		return repository.findstepList4(Security.user());
-	
-//	}
-	public Map<String, Object> findstepList5()
-	{
-		return repository.findstepList5(Security.user());
-	
-	}
-	public Map<String, Object> findstepList6()
-	{
-		return repository.findstepList6(Security.user());
+		return repository.findstepList6(params, Security.user());
 	
 	}	
-	public Map<String, Object> findstepList7()
+	public Map<String, Object> findstepList7(Map<String, Object> params)
 	{
-		return repository.findstepList7(Security.user());
+		return repository.findstepList7(params, Security.user());
 	
 	}	
-	public Map<String, Object> findstepList8()
+	public Map<String, Object> findstepList8(Map<String, Object> params)
 	{
-		return repository.findstepList8(Security.user());
+		return repository.findstepList8(params, Security.user());
 	
 	}	
-	public Map<String, Object> findstepList9()
+	public Map<String, Object> findstepList9(Map<String, Object> params)
 	{
-		return repository.findstepList9(Security.user());
+		return repository.findstepList9(params, Security.user());
 	
 	}	
 	
 	// 결과조회 화면
-	public Map<String, Object> resultStepList()
+	public Map<String, Object> resultStepList(Map<String, Object> params)
 	{
-		return repository.resultStepList(Security.user());
+		return repository.resultStepList(params, Security.user());
 	
 	}		
 	// 결과조회 화면
-	public Map<String, Object> resultSteplow()
+	public Map<String, Object> resultSteplow(Map<String, Object> params)
 	{
-		return repository.resultSteplow(Security.user());
+		return repository.resultSteplow(params, Security.user());
 	
 	}	
 	// 결과조회 화면
-	public Map<String, Object> resultSteptop()
+	public Map<String, Object> resultSteptop(Map<String, Object> params)
 	{
-		return repository.resultSteptop(Security.user());
+		return repository.resultSteptop(params, Security.user());
 	
 	}	
 	// 결과조회 화면
-	public Map<String, Object> resultMent()
+	public Map<String, Object> resultMent(Map<String, Object> params)
 	{
-		return repository.resultMent(Security.user());
+		return repository.resultMent(params, Security.user());
 	
 	}		
 	
 			// 
-		public Map<String, Object> chartAllGrade() {
+		public Map<String, Object> chartAllGrade(Map<String, Object> params) {
 		Map<String, Object> nestedData = new HashMap<>();
 		
-		nestedData.put("socialData", chartAllGradeSocial());
+		nestedData.put("socialData", chartAllGradeSocial(params));
 		nestedData.put("totalData", chartAllGradeTotal());
-		nestedData.put("mytotalData", chartAllGradeMyTotal());
+		nestedData.put("mytotalData", chartAllGradeMyTotal(params));
 		
 		return nestedData;
 		}
-		public Map<String, Object> chartAllrader() {
+		
+		
+		public Map<String, Object> chartAllrader(Map<String, Object> params) {
 		Map<String, Object> nestedData = new HashMap<>();
 		
-		nestedData.put("radersocialData", chartAllraderSocial());
+		nestedData.put("radersocialData", chartAllraderSocial(params));
 
 		
 		return nestedData;
 		}
 		//
-		public List<Map<String, Object>> chartAllraderSocial() {
-			return repository.chartAllraderSocial(Security.user());
+		public List<Map<String, Object>> chartAllraderSocial(Map<String, Object> params) {
+			return repository.chartAllraderSocial(params, Security.user());
 		}
 		// 
-		public List<Map<String, Object>> chartAllGradeSocial() {
-			return repository.chartAllGradeSocial(Security.user());
+		public List<Map<String, Object>> chartAllGradeSocial(Map<String, Object> params) {
+			return repository.chartAllGradeSocial(params, Security.user());
 		}
 
 		// 
@@ -364,8 +354,8 @@ public class SelfSocialService {
 		}		
 
 		// 
-		public List<Map<String, Object>> chartAllGradeMyTotal() {
-			return repository.chartAllGradeMyTotal(Security.user());
+		public List<Map<String, Object>> chartAllGradeMyTotal(Map<String, Object> params) {
+			return repository.chartAllGradeMyTotal(params,Security.user());
 		}	
 //	public Map<String, Object> findstepList2(Map<String, Object> params)
 //	{

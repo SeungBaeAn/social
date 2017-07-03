@@ -1,101 +1,18 @@
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/src/components/common/normal-table.html">
-<link rel="import" href="/src/components/common/normal-input.html">
-<link rel="import" href="/src/components/behaviors/behavior-loader.html">
-<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
-<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
-<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="/bower_components/iron-form/iron-form.html">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/bower_components/iron-input/iron-input.html">
-<link rel="import" href="/src/components/common/normal-input.html" />
-<link rel="import" href="/src/components/common/number-input.html" />
-<link rel="import" href="/src/components/common/normal-select.html" />
-<link rel="import" href="/src/components/common/date-input.html" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGREtrRTljTlQ3OTg"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
+<!doctype html>
 <html lang="ko">
 <head>
   <title>SE 자가진단 KIT</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- css -->
-  <link href="/src/css/common.css" rel="stylesheet">
-  <link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-
-  <!--[if lt IE 9]>
-  <script src="./js/html5shiv.min.js"></script>
-  <![endif]-->
-
-  <script src="/src/js/jquery-1.12.0.min.js"></script>
-  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-  <script src="/src/js/TweenMax.min.js"></script>
-  <script src="/src/js/ui.js"></script>
 </head>
-<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
 <script>
 
-  $(document).ready(function() { 
-//	  alert("AAAAA");  
- }) 
- 
-  function fmCheck(){
-	  if(fnMemberValidation() == false) return;
-	  
-	    document.getElementById('stepForm7').submit();
-		location.href ="/app/social-step7/form/"; 
-	 }
-  
-  function fnMemberValidation(){ 
-	  
-	  if($.trim($('#KPI_FORM10_PAY').val()) == ''){
-		   alert("근로자수를 입력해 주세요.");
-		   $('#KPI_FORM10_PAY').focus();
-		   return false;
-		  } 
-	  if($.trim($('#KPI_FORM11_PAY').val()) == ''){
-		   alert("매출액을 입력해 주세요.");
-		   $('#KPI_FORM11_PAY').focus();
-		   return false;
-		  } 
-	  if($.trim($('#KPI_FORM12_PAY').val()) == ''){
-		   alert("영업성과 입력해 주세요.");
-		   $('#KPI_FORM12_PAY').focus();
-		   return false;
-		  } 
-
-
-  }
-
-  function onlyNumber(obj) {
-	    $(obj).keyup(function(){
-	         $(this).val($(this).val().replace(/[^0-9]/g,""));
-	    }); 
-	}
-  function inputNumberFormat(obj) { 
-	    obj.value = comma(uncomma(obj.value)); 
-	} 
-
-	function comma(str) { 
-	    str = String(str); 
-	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); 
-	} 
-
-	function uncomma(str) { 
-	    str = String(str); 
-	    return str.replace(/[^\d]+/g, ''); 
-	}
-  
   </script>
 <dom-module id="social-step6-form">
 <template>
     
-    <iron-ajax  auto id="getStepList8"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+    <iron-ajax   id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
 		       url="/api/self/findStep8"
 	 	       on-request="_startLoader"
 	  	       on-response="_stopLoader"
@@ -122,13 +39,13 @@
       .is-complete :완료된 페이지
     -->
     <ol class="tab">
-      <li><a href="/app/social-form/step/" style="text-decoration:none" onclick="document.getElementById('stepback1').submit();">회사 기본정보</a></li>
-      <li><a href="/app/social-step/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback2').submit();">사회적<br />미션의 관리</a></li>
-      <li><a href="/app/social-step1/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback3').submit();">주사업활동의<br />사회적 가치</a></li>
-      <li><a href="/app/social-step2/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback4').submit();">사회적경제<br />생태계 구축노력</a></li>
-      <li><a href="/app/social-step3/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback5').submit();">이윤의<br />사회목적 재투자</a></li>
-      <li><a href="/app/social-step4/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback6').submit();">운영의<br />민주성</a></li>
-      <li><a href="/app/social-step5/form/" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback7').submit();">근로자<br />지향성</a></li>
+      <li><a href="/app/social-form/step/{{_data.KPI_SEQ}}" style="text-decoration:none" onclick="document.getElementById('stepback1').submit();">회사 기본정보</a></li>
+      <li><a href="/app/social-step/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback2').submit();">사회적<br />미션의 관리</a></li>
+      <li><a href="/app/social-step1/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback3').submit();">주사업활동의<br />사회적 가치</a></li>
+      <li><a href="/app/social-step2/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback4').submit();">사회적경제<br />생태계 구축노력</a></li>
+      <li><a href="/app/social-step3/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback5').submit();">이윤의<br />사회목적 재투자</a></li>
+      <li><a href="/app/social-step4/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback6').submit();">운영의<br />민주성</a></li>
+      <li><a href="/app/social-step5/form/{{_data.KPI_SEQ}}" style="text-decoration:none" class="is-complete" onclick="document.getElementById('stepback7').submit();">근로자<br />지향성</a></li>
       <li><a  href="#" style="text-decoration:none" class="is-current">고용창출 및<br />재정성과</a></li>
       <li><a  href="#" style="text-decoration:none">기업활동에서의<br />혁신성</a></li>
     </ol>
@@ -181,7 +98,7 @@
       <!-- //box_tip -->   
  
    <div class="btnArea mgt60">
- <a href="/app/social-step5/form/" name="social-step"  class="btn btn_prev" onclick="document.getElementById('stepback7').submit();">이전</a>
+ <a href="/app/social-step5/form/{{_data.KPI_SEQ}}" name="social-step"  class="btn btn_prev" onclick="document.getElementById('stepback7').submit();">이전</a>
    <button type="button"  name="social-step6" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
       </div>
       <!-- //btnArea end -->
@@ -266,7 +183,7 @@
                <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
                <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="6"></input>
               </form>
-  
+     <form id="stepforward" name="stepforward" enctype="multipart/form-data" action="/app/social-step7/form/{{_data.KPI_SEQ}}"> </form>
 </template>
 
 <script>
@@ -310,7 +227,15 @@ Polymer({
 	            this.$.alert2.classList.add('hide');
 	        }, 2000);
 	    },
-
+	    attached: function() {
+	    	this.fire("page-activated");
+	    },
+	    
+	    query: function() {
+	    	this.$.getStepList2.params = {sequence: this.sequence};
+	    	this.$.getStepList2.generateRequest();
+	    	
+	    }
 
 });
 var $target = $(".motion");
@@ -318,5 +243,64 @@ var $tab = $(".is-current");
 $tab.animate({"top":100});
 TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
 TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
+
+
+//$(document).ready(function() { 
+//	  alert("AAAAA");  
+//}) 
+
+function fmCheck(){
+	  if(fnMemberValidation() == false) return;
+	  
+	    document.getElementById('stepForm7').submit();
+		fmform();
+	 }
+function fmform(){ 
+	   document.getElementById('stepforward').submit(); 
+}
+
+function fnMemberValidation(){ 
+	  
+	  if($.trim($('#KPI_FORM10_PAY').val()) == ''){
+		   alert("근로자수를 입력해 주세요.");
+		   $('#KPI_FORM10_PAY').focus();
+		   return false;
+		  } 
+	  if($.trim($('#KPI_FORM11_PAY').val()) == ''){
+		   alert("매출액을 입력해 주세요.");
+		   $('#KPI_FORM11_PAY').focus();
+		   return false;
+		  } 
+	  if($.trim($('#KPI_FORM12_PAY').val()) == ''){
+		   alert("영업성과 입력해 주세요.");
+		   $('#KPI_FORM12_PAY').focus();
+		   return false;
+		  } 
+
+
+}
+
+function onlyNumber(obj) {
+	    $(obj).keyup(function(){
+	         $(this).val($(this).val().replace(/[^0-9]/g,""));
+	    }); 
+	}
+function inputNumberFormat(obj) { 
+	    obj.value = comma(uncomma(obj.value)); 
+	} 
+
+	function comma(str) { 
+	    str = String(str); 
+	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); 
+	} 
+
+	function uncomma(str) { 
+	    str = String(str); 
+	    return str.replace(/[^\d]+/g, ''); 
+	}
+
+
+
+
 </script>
 </dom-module>

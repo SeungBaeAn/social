@@ -4,29 +4,9 @@
   <title>SE 자가진단 KIT</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/src/components/common/normal-table.html">
-<link rel="import" href="/src/components/common/normal-input.html">
-<link rel="import" href="/src/components/behaviors/behavior-loader.html">
-<link rel="import" href="/bower_components/paper-radio-group/paper-radio-group.html">
-<link rel="import" href="/bower_components/paper-radio-button/paper-radio-button.html">
-<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="/bower_components/iron-form/iron-form.html">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="/bower_components/iron-input/iron-input.html">
-<link rel="import" href="/src/components/common/normal-input.html" />
-<link rel="import" href="/src/components/common/number-input.html" />
-<link rel="import" href="/src/components/common/normal-select.html" />
-<link rel="import" href="/src/components/common/date-input.html" />
-<link href="/src/css/common.css" rel="stylesheet">
-<link href="/src/css/jquery.mCustomScrollbar.css" rel="stylesheet">
-<script src="/src/js/jquery-1.12.0.min.js"></script>
-  <script src="/src/js/jquery.mCustomScrollbar.js"></script>
-  <script src="/src/js/TweenMax.min.js"></script>
-  <script src="/src/js/ui.js"></script>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ </head> 
 
-<script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
 <script>
 
   $(document).ready(function() { 
@@ -36,12 +16,13 @@
   function fmCheck(){
 	  if(fnMemberValidation() == false) return;
 	    document.getElementById('socialForms').submit();
-		location.href = "/app/social-step/form/";
+	//	location.href = "/app/social-step/form/";
 		///submit();
+		fmform();
 	 }
-
-	
-	  
+  function fmform(){ 
+	   document.getElementById('stepforward').submit(); 
+  }  
 	  function fnMemberValidation(){ 
 	  if($.trim($('#COMPANY').val()) == ''){
 		   alert("회사명을 입력해 주세요.");
@@ -65,7 +46,6 @@
 	  
 	  
    </script> 
-   </head> 
 <dom-module id="social-form-step">
 <template>
    
@@ -76,14 +56,7 @@
 	  	       on-response="_stopLoader"
 		       last-response="{{_data}}">
 	</iron-ajax>
-	  <app-location id="appLocation" route="{{route}}"></app-location>
-		<app-route
-			route="{{route}}"
-			pattern="/app/:page"
-			data="{{routeData}}"
-			tail="{{subroute}}">
-		</app-route>
-  
+    
 	       <form id="socialForms" is="iron-form"
               content-type="application/json"
               method="post"
@@ -251,8 +224,8 @@
 
     						
 </form>
-<form></form>
  </body>
+              <form id="stepforward" name="stepforward" enctype="multipart/form-data" action="/app/social-step/form/{{_data.KPI_SEQ}}"> </form>
 <!-- 모달 팝업 -->   
 </template>
 <script>
@@ -296,6 +269,7 @@ Polymer({
 	        }, 2000);
 	    }, 
 
+	    
 });
 
 $(".js-openPop").on("click",function(e){
