@@ -281,6 +281,17 @@ public class SelfSocialController {
 		return service.findstepList4();
 //	return service.findstepList2(RequestParams.map());
    }
+//	@RequestMapping(value="/findStep4")
+//	public Map<String, Object> findstepList4(@PathVariable("KPI_SEQ") Integer kpiSeq){
+//		return service.findstepList4(kpiSeq);
+//	}
+	
+	
+//	@RequestMapping(value="/findStep4",method= RequestMethod.GET)
+ //   public Map<String, Object> findstepList4(@RequestParam (name = "KPI_SEQ") int KPI_SEQ){
+//		return service.findstepList4();
+//	return service.findstepList4(RequestParams.map());
+//   }
 	@RequestMapping(value="/findStep5")
     public Map<String, Object> findstepList5(){
 		return service.findstepList5();

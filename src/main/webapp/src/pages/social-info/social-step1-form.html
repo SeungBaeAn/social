@@ -19,7 +19,7 @@
 <script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script> 
 <html lang="ko">
 <head>
-  <title>사회적 가치 지표(SVI) 자가진단</title>
+  <title>SE 자가진단 KIT</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +48,15 @@
 	  if(fnMemberValidation() == false) return;
 	  
 	    document.getElementById('stepForm2').submit();
-		location.href ="/app/social-step2/form/"; 
+		//location.href ="/app/social-step2/form/"; 
+		fmCheck3();
+	 }
+  function fmCheck3(){
+	//    alert("mm");
+	  
+	    document.getElementById('stepforward2').submit();
+		//location.href ="/app/social-step2/form/"; 
+		
 	 }
   
   function fnMemberValidation(){ 
@@ -234,7 +242,9 @@
                <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
                <input id="KPI_STEPS" type="hidden" name="KPI_STEPS"  value="1"></input>
               </form>
-  
+              <form id="stepforward2" name="stepforward2" enctype="multipart/form-data" action="/app/social-step2/form/"> 
+               <input id="KPI_SEQ" type="hidden" name="KPI_SEQ"  value="{{_data.KPI_SEQ}}"></input>
+              </form>
 </template>
 
 <script>

@@ -63,6 +63,8 @@ public interface SelfSocialRepository {
 	Map<String, Object> findstepList6(@Param("u") User user);
 	Map<String, Object> findstepList5(@Param("u") User user);
 	Map<String, Object> findstepList4(@Param("u") User user);
+//	Map<String, Object> findstepList4(@Param("u") Map<String, Object> params, @Param("u") User user);
+//	Map<String, Object> findstepList4(@Param("KPI_SEQ") int kpiSeq, @Param("u") User user);
 	Map<String, Object> findstepList3(@Param("u") User user);
 //	Map<String, Object> findstepList2(@Param("p") Map<String, Object> params, @Param("u") User user);
 

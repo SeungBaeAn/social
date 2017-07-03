@@ -269,6 +269,17 @@ public class SelfSocialService {
 		return repository.findstepList4(Security.user());
 	
 	}
+//	public Map<String, Object> findstepList4(int kpiSeq) {
+//		return repository.findstepList4(kpiSeq, Security.user());
+//	}
+	
+	
+//	public Map<String, Object> findstepList4(Map<String, Object> params)
+//	{
+//		return repository.findstepList4(params, Security.user());
+//		return repository.findstepList4(Security.user());
+	
+//	}
 	public Map<String, Object> findstepList5()
 	{
 		return repository.findstepList5(Security.user());
