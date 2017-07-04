@@ -633,17 +633,17 @@ SELECT
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='7' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}  		
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY))  limit 1
 		) AS KPI_WORK_N
 		,(select SERVICE_NUM
 		from social_info_master a,
 		serviceinfo_code_standard b
 		where 1=1
-		 AND KPI_STEP ='8'
+		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ =#{p.sequence} 		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY)  limit 1
 		) AS KPI_PAY_N
 		,(select SERVICE_NUM
@@ -653,7 +653,7 @@ SELECT
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='7' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY)  limit 1
 		) AS KPI_HERE_N
 		,(select SERVICE_NUM
@@ -663,7 +663,7 @@ SELECT
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='7' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ =#{p.sequence}  		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY)  limit 1
 		) AS KPI_SALES_N
 		,(select SERVICE_NUM
@@ -673,7 +673,7 @@ SELECT
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='7' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY)  limit 1
 		) AS KPI_BS_N
 		from social_info_master
@@ -681,7 +681,7 @@ SELECT
 		 AND KPI_STEP ='7'
 		 AND END_DATE IS NULL
 		 AND KPI_SEQ  =  #{p.sequence}
-		 order by KPI_SEQ desc limit 1
+		 order by KPI_SEQ desc 
 		)cnt 
     </select>
        <select id="findstepList9" resultType="hashmap">
@@ -781,7 +781,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ =#{p.sequence}  		
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY))  limit 1
 		) AS KPI_WORK_N
 		,(select SERVICE_NUM
@@ -791,7 +791,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ =#{p.sequence} 		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY)  limit 1
 		) AS KPI_PAY_N
 		,(select SERVICE_NUM
@@ -801,7 +801,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}	
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY)  limit 1
 		) AS KPI_HERE_N
 		,(select SERVICE_NUM
@@ -811,7 +811,7 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}  		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY)  limit 1
 		) AS KPI_SALES_N
 		,(select SERVICE_NUM
@@ -821,20 +821,20 @@ SELECT
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='8' order by KPI_SEQ desc limit 1)  		
+		AND KPI_SEQ = #{p.sequence}  		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY)  limit 1
 		) AS KPI_BS_N
 		from social_info_master
 		where 1=1
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL
-		 order by KPI_SEQ desc limit 1
+		 order by KPI_SEQ desc 
 		)cnt 
 		 where 1=1
 		 AND KPI_STEP ='8'
 		 AND END_DATE IS NULL
 		 AND KPI_SEQ  =  #{p.sequence}
-		 order by KPI_SEQ desc limit 1
+		 order by KPI_SEQ desc 
     </select>   
   <select id="resultStepList" resultType="hashmap">
    select 
@@ -935,7 +935,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_WORK_SALES ' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where  KPI_STEP ='9' order by KPI_SEQ desc limit 1)
+		AND KPI_SEQ = #{p.sequence}
 		order by abs(b.SERVICE_STANDARD - (a.KPI_FORM11_PAY DIV a.KPI_FORM10_PAY))   limit 1
 		) AS KPI_WORK_NUM
 		,(select SERVICE_NUM
@@ -945,7 +945,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_PAY' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where  KPI_STEP ='9' order by KPI_SEQ desc limit 1)
+		AND KPI_SEQ = #{p.sequence}
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM8_PAY)  limit 1
 		) AS KPI_PAY_NUM
 		,(select SERVICE_NUM
@@ -955,7 +955,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_HIRE' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where  KPI_STEP ='9' order by KPI_SEQ desc limit 1)
+		AND KPI_SEQ =#{p.sequence}
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM10_PAY)  limit 1
 		) AS KPI_HERE_NUM
 		,(select SERVICE_NUM
@@ -965,7 +965,7 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where  KPI_STEP ='9' order by KPI_SEQ desc limit 1)		
+		AND KPI_SEQ = #{p.sequence}		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM11_PAY)  limit 1
 		) AS KPI_SALES_NUM
 		,(select SERVICE_NUM
@@ -975,21 +975,21 @@ SELECT
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL		
 		and (b.GRP_CD ='SERVICE_BS_SALES' and a.BUSINESS_TYPE = b.SERVICE_TYPE)
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where  KPI_STEP ='9' order by KPI_SEQ desc limit 1)		
+		AND KPI_SEQ = #{p.sequence}		
 		order by abs(b.SERVICE_STANDARD - a.KPI_FORM12_PAY)  limit 1
 		) AS KPI_BS_NUM	
 		from social_info_master
 		where 1=1
 		 AND KPI_STEP ='9'
 		 AND END_DATE IS NOT NULL
-		 order by KPI_SEQ desc limit 1
+		 order by KPI_SEQ desc 
 		)cnt
 		where 1=1 
 	   AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
 		AND KPI_AND ='N'
 		AND KPI_SEQ  =  #{p.sequence}
-		order by KPI_SEQ desc limit 1
+		order by KPI_SEQ desc
     </select>   
   
    
@@ -1066,14 +1066,14 @@ SELECT
 		and b.GRP_CD ='SERVICE_POINT'
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
-		AND KPI_SEQ = (select KPI_SEQ from social_info_master where KPI_STEP ='9' order by KPI_SEQ desc limit 1)     
+		AND KPI_SEQ = #{p.sequence}     
 		order by abs(b.SERVICE_NUM - a.KPI_TOTAL)   limit 1
 		)cnt
 		where 1=1
 		AND KPI_STEP ='9'
 		AND END_DATE IS NOT NULL
 		AND KPI_SEQ  =  #{p.sequence}  
-		order by KPI_SEQ desc limit 1
+		order by KPI_SEQ desc 
   </select>		
 	<!-- 참여기업 결과 리스트-->
 	<select id="gridCorp" resultType="hashmap">

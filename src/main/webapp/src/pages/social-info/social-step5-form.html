@@ -1,16 +1,4 @@
-<!doctype html>
-<html lang="ko">
-<head>
-  <title>SE 자가진단 KIT</title>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-</head>
-<script>
 
- 
-  
-  </script>
 <dom-module id="social-step5-form">
 <template>
   
@@ -20,6 +8,7 @@
 	  	       on-response="_stopLoader"
 		       last-response="{{_data}}">
 	</iron-ajax>
+	   <body>
 	       <form id="stepForm6" is="iron-form"
               content-type="application/json"
               method="post"
@@ -27,7 +16,7 @@
               on-iron-form-presubmit="_parseDataBeforeSubmit"
               on-iron-form-response="_submitResponse"
               class="form-horizontal">
-   <body>
+
    			<header class="header">
 		      <div class="inner">
 		  	    <h1><strong class="txt_blue">SE 자가진단 KIT</strong> </h1>
@@ -225,9 +214,9 @@ TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
 TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
 
 
-//$(document).ready(function() { 
+$(document).ready(function() { 
 //	  alert("AAAAA");  
-//}) 
+}) 
 
 function fmCheck(){
 	  if(fnMemberValidation() == false) return;
