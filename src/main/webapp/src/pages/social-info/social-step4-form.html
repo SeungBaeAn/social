@@ -1,4 +1,59 @@
+  <!doctype html>
+<html lang="ko">
+<head>
+  <title>SE 자가진단 KIT</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Enter" />
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Exit" /> 
+</head>
+<script>
 
+ $(document).ready(function() { 
+//	  alert("AAAAA");  
+}); 
+
+function fmCheck5(){
+	  if(fnMemberValidation5() == false) return false;
+	  
+	    document.getElementById('stepForm5').submit();
+	//	fmform();
+	 }
+//function fmform(){ 
+//	   document.getElementById('stepforward').submit(); 
+//}
+
+function fnMemberValidation5(){ 
+	  
+	  var chk_radio1 = document.getElementsByName('KPI_FORM7');
+
+	  
+	  var sel_type = null;
+
+	  
+		for(var i=0;i<chk_radio1.length;i++){
+
+			if(chk_radio1[i].checked == true){ 
+
+				sel_type = chk_radio1[i].value;
+			}
+		}
+
+		if(sel_type == null){
+
+         alert("참여적 의사결정 비율을 선택하세요."); 
+
+		return false;
+
+		}
+
+}
+
+
+
+
+ </script>
 <dom-module id="social-step4-form">
 <template>
 
@@ -66,7 +121,7 @@
       <!-- //box_tip -->
  <div class="btnArea mgt60">
   <a href="/app/social-step3/form/{{_data.KPI_SEQ}}" name="social-step3" class="btn btn_prev" onclick="document.getElementById('stepback5').submit();">이전</a>
-    <button type="button"  name="social-step5" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
+   <a href="/app/social-step5/form/{{_data.KPI_SEQ}}"  class="btn btn_next" onclick="return fmCheck5();">다음</a>
       </div>
       <!-- //btnArea end -->
     </div>
@@ -191,48 +246,6 @@ var $tab = $(".is-current");
 $tab.animate({"top":100});
 TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
 TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
-
-
-
-$(document).ready(function() { 
-//	  alert("AAAAA");  
-}) 
-
-function fmCheck(){
-	  if(fnMemberValidation() == false) return;
-	  
-	    document.getElementById('stepForm5').submit();
-		fmform();
-	 }
-function fmform(){ 
-	   document.getElementById('stepforward').submit(); 
- }
-
-function fnMemberValidation(){ 
-	  
-	  var chk_radio1 = document.getElementsByName('KPI_FORM7');
-
-	  
-	  var sel_type = null;
-
-	  
-		for(var i=0;i<chk_radio1.length;i++){
-
-			if(chk_radio1[i].checked == true){ 
-
-				sel_type = chk_radio1[i].value;
-			}
-		}
-
-		if(sel_type == null){
-
-          alert("참여적 의사결정 비율을 선택하세요."); 
-
-		return false;
-
-		}
-
-}
 
 
 

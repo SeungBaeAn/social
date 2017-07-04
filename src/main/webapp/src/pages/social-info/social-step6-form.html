@@ -1,4 +1,59 @@
+<script>
 
+ $(document).ready(function() { 
+// 	  alert("AAAAA");  
+ }); 
+
+ function fmCheck7(){
+ 	  if(fnMemberValidation7() == false) return false;
+ 	  
+ 	    document.getElementById('stepForm7').submit();
+// 		fmform();
+ 	 }
+ // function fmform(){ 
+// 	   document.getElementById('stepforward').submit(); 
+ // }
+
+ function fnMemberValidation7(){ 
+ 	  
+ 	  if($.trim($('#KPI_FORM10_PAY').val()) == ''){
+ 		   alert("근로자수를 입력해 주세요.");
+ 		   $('#KPI_FORM10_PAY').focus();
+ 		   return false;
+ 		  } 
+ 	  if($.trim($('#KPI_FORM11_PAY').val()) == ''){
+ 		   alert("매출액을 입력해 주세요.");
+ 		   $('#KPI_FORM11_PAY').focus();
+ 		   return false;
+ 		  } 
+ 	  if($.trim($('#KPI_FORM12_PAY').val()) == ''){
+ 		   alert("영업성과 입력해 주세요.");
+ 		   $('#KPI_FORM12_PAY').focus();
+ 		   return false;
+ 		  } 
+
+
+ }
+
+ function onlyNumber(obj) {
+ 	    $(obj).keyup(function(){
+ 	         $(this).val($(this).val().replace(/[^0-9]/g,""));
+ 	    }); 
+ 	}
+ function inputNumberFormat(obj) { 
+ 	    obj.value = comma(uncomma(obj.value)); 
+ 	} 
+
+ 	function comma(str) { 
+ 	    str = String(str); 
+ 	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); 
+ 	} 
+
+ 	function uncomma(str) { 
+ 	    str = String(str); 
+ 	    return str.replace(/[^\d]+/g, ''); 
+ 	}
+ </script>
 <dom-module id="social-step6-form">
 <template>
     
@@ -90,7 +145,7 @@
  
    <div class="btnArea mgt60">
  <a href="/app/social-step5/form/{{_data.KPI_SEQ}}" name="social-step"  class="btn btn_prev" onclick="document.getElementById('stepback7').submit();">이전</a>
-   <button type="button"  name="social-step6" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
+  <a href="/app/social-step7/form/{{_data.KPI_SEQ}}"  class="btn btn_next" onclick="return fmCheck7();">다음</a>
       </div>
       <!-- //btnArea end -->
     </div>
@@ -234,63 +289,6 @@ var $tab = $(".is-current");
 $tab.animate({"top":100});
 TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
 TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
-
-
-$(document).ready(function() { 
-//	  alert("AAAAA");  
-}) 
-
-function fmCheck(){
-	  if(fnMemberValidation() == false) return;
-	  
-	    document.getElementById('stepForm7').submit();
-		fmform();
-	 }
-function fmform(){ 
-	   document.getElementById('stepforward').submit(); 
-}
-
-function fnMemberValidation(){ 
-	  
-	  if($.trim($('#KPI_FORM10_PAY').val()) == ''){
-		   alert("근로자수를 입력해 주세요.");
-		   $('#KPI_FORM10_PAY').focus();
-		   return false;
-		  } 
-	  if($.trim($('#KPI_FORM11_PAY').val()) == ''){
-		   alert("매출액을 입력해 주세요.");
-		   $('#KPI_FORM11_PAY').focus();
-		   return false;
-		  } 
-	  if($.trim($('#KPI_FORM12_PAY').val()) == ''){
-		   alert("영업성과 입력해 주세요.");
-		   $('#KPI_FORM12_PAY').focus();
-		   return false;
-		  } 
-
-
-}
-
-function onlyNumber(obj) {
-	    $(obj).keyup(function(){
-	         $(this).val($(this).val().replace(/[^0-9]/g,""));
-	    }); 
-	}
-function inputNumberFormat(obj) { 
-	    obj.value = comma(uncomma(obj.value)); 
-	} 
-
-	function comma(str) { 
-	    str = String(str); 
-	    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,'); 
-	} 
-
-	function uncomma(str) { 
-	    str = String(str); 
-	    return str.replace(/[^\d]+/g, ''); 
-	}
-
-
 
 
 </script>

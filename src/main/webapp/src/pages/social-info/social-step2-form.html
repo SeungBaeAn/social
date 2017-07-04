@@ -1,4 +1,69 @@
+  <!doctype html>
+<html lang="ko">
+<head>
+  <title>SE 자가진단 KIT</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Enter" />
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Exit" /> 
 
+<script type="text/javascript">
+
+ $(document).ready(function() { 
+//	  alert("AAAAA");  
+ }); 
+
+ function fmCheck3(){
+ 	  if(fnMemberValidation3() == false) return false;
+ 	  
+ 	    document.getElementById('stepForm3').submit();
+ 		//fmform();
+ 	 }
+ //function fmform(){ 
+// 	   document.getElementById('stepforward').submit(); 
+// 	}
+
+ function fnMemberValidation3(){ 
+ 	  
+ 	  var chk_radio1 = document.getElementsByName('KPI_FORM4');
+ 	  var chk_radio2 = document.getElementsByName('KPI_FORM5');
+
+ 	  
+ 	  var sel_type = null;
+ 	  var sel_type1 = null;
+
+ 	  
+ 		for(var i=0;i<chk_radio1.length;i++){
+
+ 			if(chk_radio1[i].checked == true){ 
+
+ 				sel_type = chk_radio1[i].value;
+ 			}
+ 		}
+ 		for(var i=0;i<chk_radio2.length;i++){
+
+ 			if(chk_radio2[i].checked == true){ 
+
+ 				sel_type1 = chk_radio2[i].value;
+ 			}
+ 		} 
+ 		if(sel_type == null){
+
+           alert("사회적 경제 조직간의 협력 수준을 선택하세요."); 
+
+ 		return false;
+
+ 		}
+ 		if(sel_type1 == null){
+
+           alert("사회적 경제 조직간의 협력 수준을 선택하세요."); 
+
+ 		return false;
+ 		}
+ }
+ </script>
+ </head>
 <dom-module id="social-step2-form">
 <template>
     <iron-ajax  id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
@@ -86,7 +151,7 @@
       
   <div class="btnArea mgt60">
   <a href="/app/social-step1/form/{{_data.KPI_SEQ}}" name="social-step1" class="btn btn_prev" onclick="document.getElementById('stepback3').submit();">이전</a>
-  <button type="button"  name="social-step3" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
+   <a href="/app/social-step3/form/{{_data.KPI_SEQ}}"  name="social-step3" class="btn btn_next" onclick="return fmCheck3();">다음</a>
       </div>
       <!-- //btnArea end -->
     </div>
@@ -190,59 +255,6 @@ TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
 TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
 
 
-
-$(document).ready(function() { 
-//	  alert("AAAAA");  
-}) 
-
-function fmCheck(){
-	  if(fnMemberValidation() == false) return;
-	  
-	    document.getElementById('stepForm3').submit();
-		fmform();
-	 }
-function fmform(){ 
-	   document.getElementById('stepforward').submit(); 
-	}
-
-function fnMemberValidation(){ 
-	  
-	  var chk_radio1 = document.getElementsByName('KPI_FORM4');
-	  var chk_radio2 = document.getElementsByName('KPI_FORM5');
-
-	  
-	  var sel_type = null;
-	  var sel_type1 = null;
-
-	  
-		for(var i=0;i<chk_radio1.length;i++){
-
-			if(chk_radio1[i].checked == true){ 
-
-				sel_type = chk_radio1[i].value;
-			}
-		}
-		for(var i=0;i<chk_radio2.length;i++){
-
-			if(chk_radio2[i].checked == true){ 
-
-				sel_type1 = chk_radio2[i].value;
-			}
-		} 
-		if(sel_type == null){
-
-          alert("사회적 경제 조직간의 협력 수준을 선택하세요."); 
-
-		return false;
-
-		}
-		if(sel_type1 == null){
-
-          alert("사회적 경제 조직간의 협력 수준을 선택하세요."); 
-
-		return false;
-		}
-}
 
 </script>
 </dom-module>

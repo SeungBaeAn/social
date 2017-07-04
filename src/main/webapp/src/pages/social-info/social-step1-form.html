@@ -1,4 +1,96 @@
+  <!doctype html>
+<html lang="ko">
+<head>
+  <title>SE 자가진단 KIT</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Enter" />
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Exit" /> 
+<script type="text/javascript">
+$(document).ready(function() { 
 
+});
+
+
+
+
+function fmBack2(){
+	  
+		document.getElementById('stepback2').submit();
+}
+
+ 
+
+function fmCheck2(){
+	  if(fnMemberValidation2() == false) return false;
+	  
+	    document.getElementById('stepForm2').submit();
+		//location.href ="/app/social-step2/form/"; 
+		//fmCheck3();
+	 }
+//function fmCheck3(){
+	//    alert("mm");
+	  
+//	    document.getElementById('stepforward2').submit();
+		//location.href ="/app/social-step2/form/"; 
+		
+//	 }
+
+function fnMemberValidation2(){ 
+	  
+	  var chk_radio1 = document.getElementsByName('KPI_FORM3_1');
+	  var chk_radio2 = document.getElementsByName('KPI_FORM3_2');
+	  var chk_radio3 = document.getElementsByName('KPI_FORM3_3');
+	  
+	  var sel_type = null;
+	  var sel_type1 = null;
+	  var sel_type2 = null;
+	  
+		for(var i=0;i<chk_radio1.length;i++){
+
+			if(chk_radio1[i].checked == true){ 
+
+				sel_type = chk_radio1[i].value;
+			}
+		}
+		for(var i=0;i<chk_radio2.length;i++){
+
+			if(chk_radio2[i].checked == true){ 
+
+				sel_type1 = chk_radio2[i].value;
+			}
+		}
+		for(var i=0;i<chk_radio3.length;i++){
+
+			if(chk_radio3[i].checked == true){ 
+
+				sel_type2 = chk_radio3[i].value;
+			}
+		}
+		if(sel_type == null){
+
+          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
+
+		return false;
+
+		}
+		if(sel_type1 == null){
+
+          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
+
+		return false;
+		}
+		if(sel_type2 == null){
+
+          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
+
+		return false;
+		}
+}
+
+ </script>
+ </head>
 <dom-module id="social-step1-form">
 <template>
 
@@ -96,8 +188,9 @@
         <strong class="txt_orange">제품·이용자의 사회적 가치</strong>란 주된 사업 영역에서 결과적인 제품·서비스의 사회가치, 이용자의 사회가치 실현을 위한 질적 노력을 의미합니다.<br />
       </div>
      <div class="btnArea mgt60">
-  <a href="/app/social-step/form/{{_data.KPI_SEQ}}" name="social-step" class="btn btn_prev" onclick="document.getElementById('stepback2').submit();"> 이전</a>
-   <button type="button"  name="social-step1" class="btn btn_next" onclick="javascript:fmCheck();"> 다음</button>
+  <a href="/app/social-step/form/{{_data.KPI_SEQ}}" name="social-step" class="btn btn_prev" onclick="javascript:fmBack2()"> 이전</a>
+    <a href="/app/social-step2/form/{{_data.KPI_SEQ}}"  name="social-step1" class="btn btn_next" onclick="return fmCheck2();">다음</a>
+
       </div>
       <!-- //btnArea end -->
     </div>
@@ -146,7 +239,7 @@ Polymer({
 				return [];
 			}
 		},
-
+ 
 
 	},
 	  _submitForm: function(e) {
@@ -183,8 +276,8 @@ Polymer({
 	    	this.$.getStepList2.params = {sequence: this.sequence};
 	    	this.$.getStepList2.generateRequest();
 	    	
-	    }	    
-	    
+	    }
+
 });
 var $target = $(".motion");
 var $tab = $(".is-current");
@@ -194,75 +287,5 @@ TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
 
 
 
-$(document).ready(function() { 
-//	  alert("AAAAA");  
-}) 
-
-function fmCheck(){
-	  if(fnMemberValidation() == false) return;
-	  
-	    document.getElementById('stepForm2').submit();
-		//location.href ="/app/social-step2/form/"; 
-		fmCheck3();
-	 }
-function fmCheck3(){
-	//    alert("mm");
-	  
-	    document.getElementById('stepforward2').submit();
-		//location.href ="/app/social-step2/form/"; 
-		
-	 }
-
-function fnMemberValidation(){ 
-	  
-	  var chk_radio1 = document.getElementsByName('KPI_FORM3_1');
-	  var chk_radio2 = document.getElementsByName('KPI_FORM3_2');
-	  var chk_radio3 = document.getElementsByName('KPI_FORM3_3');
-	  
-	  var sel_type = null;
-	  var sel_type1 = null;
-	  var sel_type2 = null;
-	  
-		for(var i=0;i<chk_radio1.length;i++){
-
-			if(chk_radio1[i].checked == true){ 
-
-				sel_type = chk_radio1[i].value;
-			}
-		}
-		for(var i=0;i<chk_radio2.length;i++){
-
-			if(chk_radio2[i].checked == true){ 
-
-				sel_type1 = chk_radio2[i].value;
-			}
-		}
-		for(var i=0;i<chk_radio3.length;i++){
-
-			if(chk_radio3[i].checked == true){ 
-
-				sel_type2 = chk_radio3[i].value;
-			}
-		}
-		if(sel_type == null){
-
-          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
-
-		return false;
-
-		}
-		if(sel_type1 == null){
-
-          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
-
-		return false;
-		}
-		if(sel_type2 == null){
-
-          alert("사업활동의 사회적 가치 지향성을 선택하세요."); 
-
-		return false;
-		}
-}
 </script>
 </dom-module>

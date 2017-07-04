@@ -1,28 +1,29 @@
-<!DOCTYPE html>
+  <!doctype html>
 <html lang="ko">
 <head>
   <title>SE 자가진단 KIT</title>
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
- </head> 
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Enter" />
+  <meta content="blendTrans(Duration=0.0)" http-equiv="Page-Exit" /> 
+</head>
 <script>
 
-  $(document).ready(function() { 
+$(document).ready(function() { 
 //	  alert("AAAAA");  
- }) 
- 
-  function fmCheck(){
-	  if(fnMemberValidation() == false) return;
+}); 
+
+function fmCheck(){
+	  if(fnMemberValidation() == false) return false;
 	    document.getElementById('socialForms').submit();
 	//	location.href = "/app/social-step/form/";
 		///submit();
-		fmform();
+	//	fmform();
 	 }
-  function fmform(){ 
-	   document.getElementById('stepforward').submit(); 
-  }  
+//function fmform(){ 
+//	   document.getElementById('stepforward').submit(); 
+// }  
 	  function fnMemberValidation(){ 
 	  if($.trim($('#COMPANY').val()) == ''){
 		   alert("회사명을 입력해 주세요.");
@@ -41,11 +42,9 @@
 		   return false;
 		  } 
 	
-  }
+}
 
-	  
-	  
-   </script> 
+ </script>
 <dom-module id="social-form-step">
 <template>
    
@@ -140,7 +139,8 @@
       <!-- //company_info end -->
 
       <div class="btnArea mgt60"  style="text-align:center;">
-      <button type="button"  name="social-step1" class="btn btn_next" onclick="javascript:fmCheck();">다음</button>
+    
+        <a href="/app/social-step/form/{{_data.KPI_SEQ}}"  name="social-step1" class="btn btn_next" onclick="return fmCheck();">다음</a>
         
       </div>
       <!-- //btnArea end -->
@@ -225,7 +225,7 @@
     						
 </form>
  </body>
-              <form id="stepforward" name="stepforward" enctype="multipart/form-data" action="/app/social-step/form/{{_data.KPI_SEQ}}"> </form>
+              <form id="stepforward"  name="stepforward" enctype="multipart/form-data" action="/app/social-step/form/{{_data.KPI_SEQ}}"> </form>
 <!-- 모달 팝업 -->   
 </template>
 <script>
@@ -293,8 +293,7 @@ $(".js-openPop").on("click",function(e){
   TweenMax.from($target,0.5,{y:50, autoAlpha:0, ease:Power1.easeInOut});
   TweenMax.fromTo($tab,0.8,{x:-5},{x:0, ease:Power1.easeInOut, repeat:5});
   
- 
-  
+
   
 </script>
 </dom-module>
