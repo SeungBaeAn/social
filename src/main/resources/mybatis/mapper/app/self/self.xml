@@ -1164,7 +1164,7 @@ SELECT
             END)KPI_STEP_NM
 		FROM SOCIAL_INFO_MASTER
 	    WHERE
-	     KPI_STEP between '1' and '9'
+	     KPI_STEP = '9'
 	     AND EVENT_USE ='Y'
 	    ORDER BY  LOAD_DATE DESC
 	</select>	
