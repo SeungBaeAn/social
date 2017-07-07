@@ -54,14 +54,13 @@
       <div>Three</div>
    </iron-pages>
     <div class="row">
-       <div class="col-xs-2">
-			<normal-select name="SERVICE_CODE" items="{{_bsType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_CODE}}"></normal-select>
-         </div>
-		<div class="col-xs-2">
-			<normal-input id="keyword" placeholder="기업명" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
-		</div>
-		<div class="col-xs-1">
-			<button type="button" on-tap="_onSearch"  class="btn btn-sm btn-normal">검색</button>
+       <div class="col-xs-3">
+             <select class="" name="STEP_USE" id="STEP_USE" required="required" value="{{_data.BS_TYPE}}" selected >
+                <option value="">선택</option>
+                <option value="1">완료 기업</option>    
+                <option value="9">참여 기업</option>    
+             </select> 
+            &nbsp; <button type="button" on-tap="_onSearch"  class="btn btn-sm btn-normal">조회</button>  	
 		</div>
 	</div><br />  
    
@@ -73,6 +72,7 @@
                 <th>업종</th>
                 <th>조직형태</th>                
                 <th>진행단계</th>
+                <th>이벤트 참여여부</th>
                 <th>평가점수</th>
                 <th>참여일자</th>
             </tr>
@@ -114,6 +114,7 @@
                             'BUSINESS_TYPE',
                             'BS_TYPE',
                             'KPI_STEP_NM',
+                            'EVENT_USE_YN',
                             'KPI_TOTAL_NUM',
                             'LOAD_DATE'
                         ];
@@ -192,6 +193,7 @@
                             case 'BS_TYPE':
                             case 'LOAD_DATE':
                             case 'KPI_STEP_NM':
+                            case 'EVENT_USE_YN':
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);
                                 td.setAttribute('name', prefix + '_' + guide[attribute]);

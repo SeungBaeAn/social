@@ -24,7 +24,7 @@
          )
         VALUES
         (
-        DATE_FORMAT(now(),'%Y-%m-%d')
+        DATE_FORMAT(now(),'%Y-%m-%d.%H:%i')
         ,'0'
         )
     </insert>
@@ -752,8 +752,8 @@ SELECT
 		,KPI_SALES_N
 		,KPI_BS_N
 ,(KPI_FORM1+KPI_FORM2+KPI_FORM3+KPI_FORM4+KPI_FORM5+KPI_FORM6+KPI_FORM7+KPI_PAY_N+KPI_FORM9+KPI_HERE_N+KPI_SALES_N+KPI_BS_N+KPI_WORK_N)AS TOTAL_POINT  
-FROM(
-SELECT
+	FROM(
+	SELECT
 		KPI_SEQ
 		,COMPANY
 		,LICENSEE
@@ -895,7 +895,7 @@ SELECT
 		,cnt.KPI_FORM13_3 
 		,cnt.KPI_FORM13_4 		
 		,cnt.KPI_STEP
-		,cnt.LOAD_DATE
+		,DATE_FORMAT(cnt.LOAD_DATE,'%Y-%m-%d')LOAD_DATE
 		,cnt.END_DATE
 		,(cnt.KPI_FORM11_PAY DIV cnt.KPI_FORM10_PAY) AS hier_num
 		,KPI_WORK_NUM
@@ -905,8 +905,8 @@ SELECT
 		,KPI_BS_NUM
 		,KPI_AND
 ,(KPI_FORM1+KPI_FORM2+KPI_FORM3+KPI_FORM4+KPI_FORM5+KPI_FORM6+KPI_FORM7+KPI_PAY_NUM+KPI_FORM9+KPI_HERE_NUM+KPI_SALES_NUM+KPI_BS_NUM+KPI_WORK_NUM+KPI_FORM13)AS TOTAL_POINT  
-FROM(
-SELECT
+	FROM(
+	SELECT
 		KPI_SEQ
 		,COMPANY
 		,LICENSEE
@@ -1101,16 +1101,18 @@ SELECT
 		   KPI_STEP,
 			COMPANY,
 			(SELECT GRP_NM FROM SERVICEINFO_CODE_STANDARD WHERE GRP_CD = 'SERVICE_CODE' AND CD = BUSINESS_TYPE) AS BUSINESS_TYPE,
-			BS_TYPE,
-			KPI_TOTAL,
-			IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
+		 BS_TYPE,
+		 KPI_TOTAL,
+		 LOAD_DATE,
+		 IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
          EVENT_ADDR,
          EVENT_USE,
          EVENT_NAME,
          EVENT_ADDR,
          EVENT_HP,
 		 END_DATE,
-		 LOAD_DATE,
+		 EVENT_USE,
+		 IFNULL(EVENT_USE, "N")EVENT_USE_YN,
          IFNULL(END_DATE, "-")END_DT,
          EVENT_ADDR,		    
 		    ( CASE KPI_STEP  
@@ -1119,16 +1121,16 @@ SELECT
                 WHEN 3 THEN  '3.주사업활동의 사회적 가치' 
 				WHEN 4 THEN  '4.사회적경제 생태계 구축노력' 
 				WHEN 5 THEN  '5.이윤의 사회목적 재투자'  
-			    WHEN 6 THEN  '6.운영의 민주성'  
+				WHEN 6 THEN  '6.운영의 민주성'  
 				WHEN 7 THEN  '7.근로자 지향성' 
 				WHEN 8 THEN  '8.기업활동에서의 혁신성' 
-				WHEN 9 THEN  '9.고용창출 및 재정성과' 	 							 					 				 					 					 
+				WHEN 9 THEN  '완료' 	 							 					 				 					 					 
                 ELSE 0 
             END)KPI_STEP_NM
 		FROM SOCIAL_INFO_MASTER
 	    WHERE
 	     KPI_STEP between '1' and '9'
-	    ORDER BY  END_DATE DESC
+	    ORDER BY  LOAD_DATE DESC
 	</select>
 	
 	<!-- 참여기업 결과 리스트-->
@@ -1157,14 +1159,14 @@ SELECT
 				WHEN 6 THEN  '6.운영의 민주성'  
 				WHEN 7 THEN  '7.근로자 지향성' 
 				WHEN 8 THEN  '8.기업활동에서의 혁신성' 
-				WHEN 9 THEN  '9.고용창출 및 재정성과' 	 							 					 				 					 					 
+				WHEN 9 THEN  '완료' 	 							 					 				 					 					 
                 ELSE 0 
             END)KPI_STEP_NM
 		FROM SOCIAL_INFO_MASTER
 	    WHERE
 	     KPI_STEP between '1' and '9'
 	     AND EVENT_USE ='Y'
-	    ORDER BY  END_DATE DESC
+	    ORDER BY  LOAD_DATE DESC
 	</select>	
 	<!-- 챠트 동종업계평균-->
   <select id="chartAllGradeSocial" resultType="hashmap">

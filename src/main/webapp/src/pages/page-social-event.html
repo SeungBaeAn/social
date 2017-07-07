@@ -53,20 +53,7 @@
       <div>Two</div>
       <div>Three</div>
    </iron-pages>
-    <div class="row">
-          <div class="col-xs-2">
-			<normal-select name="SERVICE_STEP" items="{{_stepType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_STEP}}"></normal-select>
-         </div>
-       <div class="col-xs-2">
-			<normal-select name="SERVICE_CODE" items="{{_bsType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_CODE}}"></normal-select>
-         </div>
-		<div class="col-xs-2">
-			<normal-input id="keyword" placeholder="기업명" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
-		</div>
-		<div class="col-xs-1">
-			<button type="button" on-tap="_onSearch"  class="btn btn-sm btn-normal">검색</button>
-		</div>
-	</div><br />  
+ 
    
         <table id="corp_list" class="table table-bordered">
             <thead>
