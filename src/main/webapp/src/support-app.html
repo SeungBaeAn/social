@@ -73,7 +73,10 @@
 								<iron-icon icon="assignment"></iron-icon>
 								참여기업 결과조회
 							</a>
-
+							<a href="/app/social-event" name="social-event" class="menu submenu">
+								<iron-icon icon="assignment"></iron-icon>
+								이벤트 참여기업 
+							</a>
 				</iron-selector>
 			</app-drawer>
 
@@ -101,6 +104,7 @@
 											<div class="card">
 													<iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                                                         <page-social-corp  name="social-corp" route="{{route}}"></page-social-corp>
+                                                        <page-social-event  name="social-event" route="{{route}}"></page-social-event>
 
 													</iron-pages>
 											</div>

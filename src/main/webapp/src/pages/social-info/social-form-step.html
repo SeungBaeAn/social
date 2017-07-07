@@ -40,10 +40,39 @@ function fmCheck(){
 		   alert("조직형태를 선택해 주세요.");
 		   $('#BS_FORM').focus();
 		   return false;
-		  } 
-	
-}
+		  }
+	  
+	  var chk_radio1 = document.getElementsByName('EVENT_USE');
+	  var sel_type = null;
+	  
+		for(var i=0;i<chk_radio1.length;i++){
 
+			if(chk_radio1[i].checked == true){ 
+
+				sel_type = chk_radio1[i].value;
+
+			}
+
+		}
+	  if(sel_type =="Y"){			  
+		   if($.trim($('#EVENT_NAME').val()) == ''){
+			   alert("성명을 입력해 주세요.");
+			   $('#EVENT_NAME').focus();
+			   return false;
+			  }
+		
+		  if($.trim($('#EVENT_HP').val()) == ''){
+			   alert("연락처를 입력해 주세요.");
+			   $('#EVENT_HP').focus();
+			   return false;
+			  } 
+		  if($.trim($('#EVENT_ADDR').val()) == ''){
+			   alert("주소를 입력해 주세요.");
+			   $('#EVENT_ADDR').focus();
+			   return false;
+			  }
+	     }
+    }
  </script>
 <dom-module id="social-form-step">
 <template>
@@ -146,16 +175,22 @@ function fmCheck(){
           </colgroup>
           <tr>
             <th><span class="bullet_blue">성명</span></th>
-            <td><input type="text" class="inputSt" name="EVENT_NAME" value="{{_data.EVENT_NAME}}"/></td>
+            <td><input type="text" class="inputSt" name="EVENT_NAME" id="EVENT_NAME" value="{{_data.EVENT_NAME}}"/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">연락처</span></th>
-            <td><input type="text" class="inputSt" name="EVENT_HP" value="{{_data.EVENT_HP}}"/></td>
+            <td><input type="text" class="inputSt" name="EVENT_HP" id="EVENT_HP" value="{{_data.EVENT_HP}}"/></td>
           </tr>
           <tr>
             <th><span class="bullet_blue">주소</span></th>
             <td>
-              <input type="text" class="inputSt w100p" name="EVENT_ADDR" value="{{_data.EVENT_ADDR}}"/>
+              <input type="text" class="inputSt w100p" name="EVENT_ADDR" id="EVENT_ADDR" value="{{_data.EVENT_ADDR}}"/>
+             
+            </td>
+           <tr>
+            <th></th>
+            <td>
+             
               <p class="txt_info mgt30"><strong>* 상기 정보는 이벤트 이외의 목적으로 사용하지 않습니다.</strong></p>
             </td>
           </tr>

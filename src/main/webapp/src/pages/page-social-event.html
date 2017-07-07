@@ -19,7 +19,7 @@
       });
     </script>
 
-<dom-module id="page-social-corp">
+<dom-module id="page-social-event">
     <style>
         :host {
             --paper-checkbox-vertical-align: bottom;
@@ -32,16 +32,16 @@
       <slot></slot>
     <template>
         <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_CODE/code/" last-response="{{_bsType}}"></iron-ajax>
+        <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_STEP/code/" last-response="{{_stepType}}"></iron-ajax>
         <iron-ajax id="getData" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
-                   on-request="_startLoader"
-                   url="/api/self/corplist"
+                   url="/api/self/corpeventlist"
                    on-response="_assignData">
         </iron-ajax>
 
         <div class="horizontal-margin-20"></div>
 
         <div class="page-header">
-            <h2>자가진단 참여기업 리스트<small>  Corporation List</small></h2>
+            <h2>자가진단 이벤트 참여기업 리스트<small>  Corporation List</small></h2>
         </div>
 
         <div class="horizontal-margin-20"></div>
@@ -54,6 +54,9 @@
       <div>Three</div>
    </iron-pages>
     <div class="row">
+          <div class="col-xs-2">
+			<normal-select name="SERVICE_STEP" items="{{_stepType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_STEP}}"></normal-select>
+         </div>
        <div class="col-xs-2">
 			<normal-select name="SERVICE_CODE" items="{{_bsType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_CODE}}"></normal-select>
          </div>
@@ -72,8 +75,10 @@
                 <th>기업명</th>
                 <th>업종</th>
                 <th>조직형태</th>                
+                <th>성명</th>
+                <th>주소</th>
+                <th>전화번호</th>
                 <th>진행단계</th>
-                <th>평가점수</th>
                 <th>참여일자</th>
             </tr>
             </thead>
@@ -87,7 +92,7 @@
     <script>
 
         Polymer({
-            is: 'page-social-corp',
+            is: 'page-social-event',
 
             behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior,
 		                Polymer.IronResizableBehavior,
@@ -113,9 +118,11 @@
                             'COMPANY',
                             'BUSINESS_TYPE',
                             'BS_TYPE',
+                            'EVENT_NAME_NM',
+                            'EVENT_ADDR_NM',
+                            'EVENT_HP_NM',
                             'KPI_STEP_NM',
-                            'KPI_TOTAL_NUM',
-                            'LOAD_DATE'
+                            'LOAD_DATE',
                         ];
                     }
                 },
@@ -191,13 +198,16 @@
                             case 'BUSINESS_TYPE':
                             case 'BS_TYPE':
                             case 'LOAD_DATE':
+                            case 'EVENT_NAME_NM':
+                            case 'EVENT_ADDR_NM':
+                            case 'EVENT_HP_NM':
                             case 'KPI_STEP_NM':
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);
                                 td.setAttribute('name', prefix + '_' + guide[attribute]);
                                 td.setAttribute("style", "text-align:center;");
                                 break;
-                            case 'KPI_TOTAL_NUM':
+                            case 'KPI_TOTAL':
                                 td.setAttribute("style", "padding-right: 15px !important; text-align: right");
                                 td.innerHTML = value;
                                 td.setAttribute('id', prefix + '_' + guide[attribute] + i);

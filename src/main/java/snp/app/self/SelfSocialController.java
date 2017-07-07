@@ -365,6 +365,10 @@ public class SelfSocialController {
 		return service.gridCorp();
 	}
 	
+	// 이벤트 참여기업  리스트
 
-		
+	@RequestMapping(value="/corpeventlist")
+    public List<Map<String, Object>> eventCorp(){
+	    return service.eventCorp();
+   }		
 }

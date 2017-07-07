@@ -1097,33 +1097,75 @@ SELECT
   </select>		
 	<!-- 참여기업 결과 리스트-->
 	<select id="gridCorp" resultType="hashmap">
-		SELECT
+	   SELECT
+		   KPI_STEP,
 			COMPANY,
 			(SELECT GRP_NM FROM SERVICEINFO_CODE_STANDARD WHERE GRP_CD = 'SERVICE_CODE' AND CD = BUSINESS_TYPE) AS BUSINESS_TYPE,
 			BS_TYPE,
-			KPI_FORM1,
-			KPI_FORM2,
-			KPI_FORM3,
-			KPI_FORM4,
-			KPI_FORM5,
-			KPI_FORM6,
-			KPI_FORM7,
-			KPI_FORM8,
-			KPI_FORM9,
-			KPI_FORM10,
-			KPI_FORM11,
-			KPI_FORM12,
-			KPI_FORM13,
-			KPI_FORM15,
 			KPI_TOTAL,
-		    END_DATE
+			IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
+         EVENT_ADDR,
+         EVENT_USE,
+         EVENT_NAME,
+         EVENT_ADDR,
+         EVENT_HP,
+		 END_DATE,
+		 LOAD_DATE,
+         IFNULL(END_DATE, "-")END_DT,
+         EVENT_ADDR,		    
+		    ( CASE KPI_STEP  
+                WHEN 1 THEN  '1.회사 기본정보'
+                WHEN 2 THEN  '2.사회적 미션의 관리'  
+                WHEN 3 THEN  '3.주사업활동의 사회적 가치' 
+				WHEN 4 THEN  '4.사회적경제 생태계 구축노력' 
+				WHEN 5 THEN  '5.이윤의 사회목적 재투자'  
+			    WHEN 6 THEN  '6.운영의 민주성'  
+				WHEN 7 THEN  '7.근로자 지향성' 
+				WHEN 8 THEN  '8.기업활동에서의 혁신성' 
+				WHEN 9 THEN  '9.고용창출 및 재정성과' 	 							 					 				 					 					 
+                ELSE 0 
+            END)KPI_STEP_NM
 		FROM SOCIAL_INFO_MASTER
 	    WHERE
-	     KPI_STEP ='9'
-	    AND END_DATE IS NOT NULL
-	    AND KPI_AND ='N'
-		ORDER BY  END_DATE DESC
+	     KPI_STEP between '1' and '9'
+	    ORDER BY  END_DATE DESC
 	</select>
+	
+	<!-- 참여기업 결과 리스트-->
+	<select id="eventCorp" resultType="hashmap">
+		SELECT
+		   KPI_STEP,
+			COMPANY,
+			(SELECT GRP_NM FROM SERVICEINFO_CODE_STANDARD WHERE GRP_CD = 'SERVICE_CODE' AND CD = BUSINESS_TYPE) AS BUSINESS_TYPE,
+			BS_TYPE,
+			KPI_TOTAL,
+			LOAD_DATE,
+            EVENT_USE,
+            EVENT_NAME,
+            IFNULL(EVENT_NAME, "-")EVENT_NAME_NM,
+            EVENT_ADDR,
+            IFNULL(EVENT_ADDR, "-")EVENT_ADDR_NM,
+            EVENT_HP,
+            IFNULL(EVENT_HP, "-")EVENT_HP_NM,            
+		      END_DATE,
+		    (CASE KPI_STEP  
+                WHEN 1 THEN  '1.회사 기본정보'
+                WHEN 2 THEN  '2.사회적 미션의 관리'  
+                WHEN 3 THEN  '3.주사업활동의 사회적 가치' 
+				WHEN 4 THEN  '4.사회적경제 생태계 구축노력' 
+				WHEN 5 THEN  '5.이윤의 사회목적 재투자'  
+				WHEN 6 THEN  '6.운영의 민주성'  
+				WHEN 7 THEN  '7.근로자 지향성' 
+				WHEN 8 THEN  '8.기업활동에서의 혁신성' 
+				WHEN 9 THEN  '9.고용창출 및 재정성과' 	 							 					 				 					 					 
+                ELSE 0 
+            END)KPI_STEP_NM
+		FROM SOCIAL_INFO_MASTER
+	    WHERE
+	     KPI_STEP between '1' and '9'
+	     AND EVENT_USE ='Y'
+	    ORDER BY  END_DATE DESC
+	</select>	
 	<!-- 챠트 동종업계평균-->
   <select id="chartAllGradeSocial" resultType="hashmap">
 	select STATUS,RESULT

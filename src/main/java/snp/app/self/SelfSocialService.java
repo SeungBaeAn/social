@@ -369,7 +369,7 @@ public class SelfSocialService {
 //		return repository.findstepList2(params, Security.user());
 //	}	
 
-
+		
 	// 참여기업 결과 리스트
 	public List<Map<String, Object>>gridCorp() {
 		List<Map<String, Object>> result;
@@ -378,5 +378,11 @@ public class SelfSocialService {
 
 		return result;
 	}
-	
+
+	// 이벤트 참여기업 결과 리스트
+
+	public List<Map<String, Object>> eventCorp()
+	{
+		return repository.eventCorp();
+	}	
 }
