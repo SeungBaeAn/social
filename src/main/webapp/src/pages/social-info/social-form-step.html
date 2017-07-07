@@ -129,13 +129,39 @@ function fmCheck(){
              </select>                     
             </td>
           </tr>
+
     
-           <tr>
-           
-          
-           </tr>
         </table>
-      </div>
+                <!-- 2017.07.06 추가 -->
+        <div class="mgt30">
+          <span class="ui_radio event">
+            <input type="checkbox" id="event" name="EVENT_USE" onclick="chkEvent()" value="Y" value="{{_data.EVENT_USE}}" selected>
+            <label for="event" class="txt_event">이벤트 참여하기</label>
+          </span>
+        </div>
+        <table class="tbl_write tbl_hidden mgt25">
+          <colgroup>
+            <col style="width:145px;" />
+            <col />
+          </colgroup>
+          <tr>
+            <th><span class="bullet_blue">성명</span></th>
+            <td><input type="text" class="inputSt" name="EVENT_NAME" value="{{_data.EVENT_NAME}}"/></td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">연락처</span></th>
+            <td><input type="text" class="inputSt" name="EVENT_HP" value="{{_data.EVENT_HP}}"/></td>
+          </tr>
+          <tr>
+            <th><span class="bullet_blue">주소</span></th>
+            <td>
+              <input type="text" class="inputSt w100p" name="EVENT_ADDR" value="{{_data.EVENT_ADDR}}"/>
+              <p class="txt_info mgt30"><strong>* 상기 정보는 이벤트 이외의 목적으로 사용하지 않습니다.</strong></p>
+            </td>
+          </tr>
+        </table>
+        <!-- //2017.07.06 추가 end -->
+ 
       <!-- //company_info end -->
 
       <div class="btnArea mgt60"  style="text-align:center;">

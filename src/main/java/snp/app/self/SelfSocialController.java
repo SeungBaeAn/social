@@ -2,6 +2,7 @@
 package snp.app.self;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import snp.infra.helper.RequestParams;
@@ -77,6 +78,14 @@ public class SelfSocialController {
 	{
 		return service.deleteUser(RequestParams.map());
 	}
+	
+	@PreAuthorize("isAuthenticated()")
+    @RequestMapping(value="/{grpCd}/code", method= RequestMethod.GET)
+   public List<Map<String, Object>> findCodes(@PathVariable("grpCd") String grpCd)
+   {
+	return service.findCodes(grpCd); 
+   }
+	
 	/**
 	 * 자가진단 최초 저장
 	 * @return

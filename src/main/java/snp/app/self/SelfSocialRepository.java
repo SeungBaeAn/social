@@ -55,7 +55,8 @@ public interface SelfSocialRepository {
 	Map<String, Object> resultStepList(@Param("p") Map<String, Object> params, @Param("u") User user);
 	Map<String, Object> resultSteplow(@Param("p") Map<String, Object> params, @Param("u") User user);
 	Map<String, Object> resultSteptop(@Param("p") Map<String, Object> params, @Param("u") User user);
-		
+	//업종코드
+	List<Map<String, Object>> findCodes(String grpCd);
 //	List<Map<String, Object>> findstepList1();
 	Map<String, Object> findstepList9(@Param("p") Map<String, Object> params, @Param("u") User user);
 	Map<String, Object> findstepList8(@Param("p") Map<String, Object> params, @Param("u") User user);

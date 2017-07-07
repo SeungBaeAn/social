@@ -56,7 +56,7 @@
 	<!-- contents -->
 	<section class="contents">
 
-	  <div class="inner motion">
+	  <div class="inner motion full_width">
       <div class="result_tit">
         <h2 class="tit_page">SE 자가진단 KIT 결과</h2>
         <a href="#" class="btn bg_orange btn_print" onclick="javascript:window.print()">인쇄</a>
@@ -85,7 +85,7 @@
               point4 : 별 4
                <span class='{{_data.GRADE_P}}'><img src="/src/images/bg_grade.png" alt="" /></span>
             -->
-            <strong>{{_data3.SERVICE_PERCENT}}</strong>
+           <strong>{{_data3.SERVICE_PERCENT}}</strong>
           </td>
           <th>측정일</th>
           <td>{{_data.LOAD_DATE}}</td>
@@ -316,21 +316,27 @@ Polymer({
                 labels: [ '경영공시 평균점수','동종업계 평균점수','귀사 자가진단 점수'],
                 datasets: [
                     {
-                  
+                    	 type: 'bar',
                         label: '사회적가치',
-                        backgroundColor: 'rgba(54, 162, 235, 0.9)',
+                        backgroundColor: 'rgba(0, 174, 230, 3)',
+                        boderColor : 'rgba(255, 255, 255, 3)',
+                        borderWidth: 3,
                         data: [this._totalData[1].RESULT,this._socialData[1].RESULT,this._mytotalData[1].RESULT]
                     },
                     {
-              
+                    	 type: 'bar',
                         label: '경제적 가치',
-                        backgroundColor: 'rgba(255, 206, 86, 0.9)',
+                        backgroundColor: 'rgba(246, 130, 31, 3)',
+                        boderColor : 'rgba(255, 255, 255, 3)', 
+                        borderWidth: 3,
                         data: [this._totalData[2].RESULT,this._socialData[2].RESULT,this._mytotalData[2].RESULT]
                     },
                     {
-	         
+                    	 type: 'bar',
 	                    label: '혁신 성과',
-                        backgroundColor: 'rgba(255, 159, 64, 0.9)',
+                        backgroundColor: 'rgba(57, 181, 74, 3)',
+                        boderColor : 'rgba(255, 255, 255, 3)',  
+                        borderWidth: 3,
 	                    data: [this._totalData[3].RESULT,this._socialData[3].RESULT,this._mytotalData[3].RESULT]
 	                },  	                
 
@@ -338,7 +344,8 @@ Polymer({
             };
 
             this._myBarChart = new Chart(this.$.barChart, {
-                type: 'bar',
+
+            	type: 'bar',
                 data: data,
                 options: {
                     title:{
@@ -351,11 +358,22 @@ Polymer({
                     responsive: true,                    
                     scales: {
                         xAxes: [{
-                            stacked: true,
+                        	
+                        	barThickness: 60,
+                        	stacked: true,
+                           
+                            ticks: {
+                                beginAtZero: true,
+                              
+                              }
                         }],
                         yAxes: [{
-                            stacked: true,
+                        	
+                        	
+                        	stacked: true,
+                           
                             ticks: {
+                            beginAtZero: true,
                             max: 100,
                             }
                         }]
@@ -366,7 +384,7 @@ Polymer({
                         labels: {
                         }
                     },
-
+  
                     maintainAspectRatio: false
                 }
             });
@@ -390,8 +408,8 @@ Polymer({
             datasets: [
                     {
                     	label: '평가점수 ',                   
-                        backgroundColor: 'rgba(54, 162, 235, 0.9)',
-                        borderColor: 'rgba(255, 159, 64, 0.9)',
+                        backgroundColor: 'rgba(0, 174, 230, 0.5)',
+                       
                         pointBackgroundColor: 'color(rgba(153, 102, 255, 0.9).alpha(0.2).rgbString()',
                         data: [this._radersocialData[0].RESULT,this._radersocialData[1].RESULT,this._radersocialData[2].RESULT,this._radersocialData[3].RESULT,
                         	this._radersocialData[4].RESULT,this._radersocialData[5].RESULT,this._radersocialData[6].RESULT,this._radersocialData[7].RESULT,this._radersocialData[8].RESULT,
@@ -414,20 +432,10 @@ Polymer({
                   ticks: {
                     beginAtZero: true,
                     max: 100,
+                    radarThickness: 300,
                   }
                 },
-                animation: {
-                    duration: 500,
-                    easing: "easeOutQuart",
-                    onComplete: function () {
-                        var ctx = this.chart.ctx;
-                        ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontFamily, 'normal', Chart.defaults.global.defaultFontFamily);
-                        ctx.textAlign = 'center';
-                        ctx.textBaseline = 'bottom';
 
-
-                    }
-                },
                 maintainAspectRatio: false            
         }
             });

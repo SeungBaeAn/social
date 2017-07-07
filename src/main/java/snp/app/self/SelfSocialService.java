@@ -105,6 +105,13 @@ public class SelfSocialService {
 		return repository.findCenterMgm(Security.user());
 	}
 
+	// 업종코드
+
+	public List<Map<String, Object>> findCodes(String grpCd)
+	{
+	return repository.findCodes(grpCd);
+	}
+
 	
 	// 자가진단 최초등록
 	public int saveStepForm(Map<String, Object> params) {

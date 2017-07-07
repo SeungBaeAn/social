@@ -53,6 +53,52 @@
  	    str = String(str); 
  	    return str.replace(/[^\d]+/g, ''); 
  	}
+ 	
+ 	
+ 	function Numberchk() { 
+ 		if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false; 
+ 		} 
+
+ 		function vComma(obj) { 
+ 		var str    = "" + obj.value.replace(/,/gi,''); // 콤마 제거 
+ 		var regx    = new RegExp(/(-?\d+)(\d{3})/); 
+ 		var bExists = str.indexOf(".",0); 
+ 		var strArr  = str.split('.'); 
+ 		while(regx.test(strArr[0])){ 
+ 		strArr[0] = strArr[0].replace(regx,"$1,$2"); 
+ 		} 
+ 		if (bExists > -1) 
+ 		obj.value = strArr[0] + "." + strArr[1]; 
+ 		else 
+ 		obj.value = strArr[0]; 
+ 		} 
+
+ 		function trim(str) { 
+ 		return str.replace(/(^\s*)|(\s*$)/g, ""); 
+ 		} 
+
+ 		function getNumber(str) { 
+ 		str = "" + str.replace(/,/gi,''); // 콤마 제거 
+ 		str = str.replace(/(^\s*)|(\s*$)/g, ""); // trim 
+ 		return (new Number(str)); 
+ 		} 
+
+ 		function Send() { 
+ 		var objBox = document.getElementById("text1"); 
+ 		var num = getNumber(objBox.value); 
+ 		if (!trim(objBox.value)) { 
+ 		alert("입력해 주세요."); 
+ 		objBox.value=""; 
+ 		objBox.focus(); 
+ 		} else if (isNaN(num)) { 
+ 		alert("숫자만 입력해 주세요."); 
+ 		objBox.value=""; 
+ 		objBox.focus(); 
+ 		} else { 
+ 		alert(num + "\n\n이용해 주셔서 감사합니다."); 
+ 		} 
+ 		} 	
+ 	
  </script>
 <dom-module id="social-step6-form">
 <template>
@@ -133,7 +179,7 @@
       <div class="box_question">
         <p class="question">귀사의 지난 한해 영업이익(손실)은 얼마입니까?</p>
         <div class="inputArea mgt25">
-          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" id="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}" />
+          영업이익(원) : <input type="text" class="inputSt" name="KPI_FORM12_PAY" id="KPI_FORM12_PAY" value="{{_data.KPI_FORM12_PAY}}" onkeypress="Numberchk()" onkeyup="vComma(this)" />
         </div>
       </div>
 

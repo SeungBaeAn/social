@@ -3,6 +3,18 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="snp.app.self.SelfSocialRepository">
+   <!-- 업종코드 -->  
+   <select id="findCodes" resultType="hashmap">
+		/* slef.xml findCodes */
+		SELECT
+			GRP_CD,
+			CD,
+			GRP_NM
+		FROM SERVICEINFO_CODE_STANDARD
+		WHERE GRP_CD = #{p}
+		order by CD asc
+	</select>
+  
   
   <insert id="insertStepForm">
         INSERT INTO SOCIAL_INFO_MASTER
@@ -21,12 +33,16 @@
     <update id="updateStepForm">
           UPDATE SOCIAL_INFO_MASTER
         SET
-         COMPANY           = #{p.COMPANY}
-        ,LICENSEE           = #{p.LICENSEE}
-        ,CEO_NAME           = #{p.CEO_NAME}
-        ,BUSINESS_TYPE      = #{p.BS_TYPE}
-        ,BS_TYPE           = #{p.BS_FORM}
-        ,CITY_ZONE         = #{p.ZONE_TYPE}
+         COMPANY          = #{p.COMPANY}
+        ,LICENSEE         = #{p.LICENSEE}
+        ,CEO_NAME         = #{p.CEO_NAME}
+        ,BUSINESS_TYPE    = #{p.BS_TYPE}
+        ,BS_TYPE          = #{p.BS_FORM}
+        ,CITY_ZONE        = #{p.ZONE_TYPE}
+        ,EVENT_NAME       = #{p.EVENT_NAME}
+        ,EVENT_ADDR       = #{p.EVENT_ADDR}
+        ,EVENT_HP         = #{p.EVENT_HP}
+        ,EVENT_USE        = #{p.EVENT_USE}
         ,KPI_STEP           = '1'
         WHERE KPI_SEQ  = #{p.KPI_SEQ}
         AND END_DATE IS NULL
@@ -257,6 +273,10 @@
 		,KPI_STEP
 		,LOAD_DATE
 		,END_DATE
+		,EVENT_NAME
+		,EVENT_ADDR
+		,EVENT_HP
+		,EVENT_USE
 	FROM  SOCIAL_INFO_MASTER
 		WHERE 1=1
 		AND KPI_STEP ='0'

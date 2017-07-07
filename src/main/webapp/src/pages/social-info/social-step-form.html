@@ -1,4 +1,4 @@
-  <!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <title>SE 자가진단 KIT</title>
@@ -78,7 +78,7 @@ function fnMemberValidation1(){
  </head>
 <dom-module id="social-step-form">
 <template>
-    <iron-ajax id="getStepList2"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
+    <iron-ajax id="getStepList0"  method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
 		       url="/api/self/findStep2"
 	 	       on-request="_startLoader"
 	  	       on-response="_stopLoader"
@@ -227,8 +227,8 @@ Polymer({
 	    },
 	    
 	    query: function() {
-	    	this.$.getStepList2.params = {sequence: this.sequence};
-	    	this.$.getStepList2.generateRequest();
+	    	this.$.getStepList0.params = {sequence: this.sequence};
+	    	this.$.getStepList0.generateRequest();
 	    	
 	    }
 	    
@@ -250,3 +250,4 @@ Polymer({
 </script>
 </dom-module>
 
+</html>

@@ -8,6 +8,16 @@
 <link rel="import" href="/src/components/common/date-input.html">
 <link rel="import" href="/src/components/behaviors/behavior-grid.html">
 <link rel="import" href="/src/components/behaviors/behavior-loader.html">
+<link rel="import" href="/bower_components/iron-selector/iron-selectable.html">
+<link rel="import" href="/bower_components/iron-resizable-behavior/iron-resizable-behavior.html"/>
+<link rel="import" href="/bower_components/polymer/polymer.html" />
+
+    <script>
+      document.addEventListener('click', function(e) {
+        var pages = document.querySelector('iron-pages');
+        pages.selectNext();
+      });
+    </script>
 
 <dom-module id="page-social-corp">
     <style>
@@ -17,8 +27,11 @@
             --paper-checkbox-unchecked-color: #ccc;
             --paper-checkbox-checked-color: #FD7400;
         }
+      
     </style>
+      <slot></slot>
     <template>
+        <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_CODE/code/" last-response="{{_bsType}}"></iron-ajax>
         <iron-ajax id="getData" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
                    on-request="_startLoader"
                    url="/api/self/corplist"
@@ -35,7 +48,23 @@
 
         <div class="horizontal-margin-20"></div>
 
-
+   <iron-pages selected="4">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+   </iron-pages>
+    <div class="row">
+       <div class="col-xs-2">
+			<normal-select name="SERVICE_CODE" items="{{_bsType}}" name-from="GRP_NM" value-from="CD" value="{{_data.SERVICE_CODE}}"></normal-select>
+         </div>
+		<div class="col-xs-2">
+			<normal-input id="keyword" placeholder="기업명" on-keypress="_runFind" value="{{_keyword}}"></normal-input>
+		</div>
+		<div class="col-xs-1">
+			<button type="button" on-tap="_onSearch"  class="btn btn-sm btn-normal">검색</button>
+		</div>
+	</div><br />  
+   
         <table id="corp_list" class="table table-bordered">
             <thead>
             <tr>
@@ -69,10 +98,14 @@
 
     </template>
     <script>
+
         Polymer({
             is: 'page-social-corp',
 
-            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior],
+            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior,
+		                Polymer.IronResizableBehavior,
+		                Polymer.IronSelectableBehavior
+            	],
 
             properties: {
 
@@ -82,7 +115,10 @@
                         return [];
                     }
                 },
-
+                activateEvent: {
+                    type: String,
+                    value: null
+                  },
                 _guideTop: {
                     type: Array,
                     value: function () {
@@ -110,6 +146,12 @@
                     }
                 },
             },
+            observers: [
+                '_selectedPageChanged(selected)'
+              ],
+              _selectedPageChanged: function(selected, old) {
+                  this.async(this.notifyResize);
+                },
             _fetchData: function() {
 
                 this.$.getData.generateRequest();
@@ -213,5 +255,7 @@
             },
 
         });
+        
+ 
     </script>
 </dom-module>
