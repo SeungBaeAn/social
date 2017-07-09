@@ -360,9 +360,10 @@ public class SelfSocialController {
 	}
 
 	// 참여기업 결과 리스트
+
 	@RequestMapping(value="/corplist", method= RequestMethod.GET)
-	public List<Map<String, Object>>gridCorp(){
-		return service.gridCorp();
+	public List<Map<String, Object>>gridCorp(@RequestParam(name = "CORP_KIND") String corpKind){
+		return service.gridCorp(RequestParams.map(),corpKind);
 	}
 	
 	// 이벤트 참여기업  리스트

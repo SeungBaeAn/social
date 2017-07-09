@@ -75,13 +75,24 @@ public interface SelfSocialRepository {
 	Map<String, Object> findstepList1(@Param("u") User user);
 //	Map<String, Object> findstepList1(@Param("p") Map<String, Object> params, @Param("u") User user);	
 	// 참여기업 결과 리스트
-	List<Map<String, Object>>gridCorp(@Param("u") User user);
+	List<Map<String, Object>>gridCorpAll(@Param("p") Map<String, Object> params,@Param("u") User user);
+	List<Map<String, Object>>gridCorpEnd(@Param("p") Map<String, Object> params,@Param("u") User user);
+	List<Map<String, Object>>gridCorpStop(@Param("p") Map<String, Object> params,@Param("u") User user);
 	//이벤트참여기업
 //	List<Map<String, Object>>eventCorp(@Param("u") User user);
 //	List<Map<String, Object>>eventCorp(@Param("p") Map<String, Object> params,@Param("u") User user);
 	List<Map<String, Object>> eventCorp();
 	
 	List<Map<String, Object>> chartAllraderSocial(@Param("p") Map<String, Object> params, @Param("u") User user);
+
+
+
+
+
+
+
+
+
 	// 성과지표 사회적경제조직 유형별 분석 - 등급항목 통계
 	List<Map<String, Object>> chartAllGradeSocial(@Param("p") Map<String, Object> params, @Param("u") User user);
 	List<Map<String, Object>> chartAllGradeTotal(@Param("u") User user);

@@ -1094,9 +1094,10 @@ SELECT
 		AND END_DATE IS NOT NULL
 		AND KPI_SEQ  =  #{p.sequence}  
 		order by KPI_SEQ desc 
-  </select>		
-	<!-- 참여기업 결과 리스트-->
-	<select id="gridCorp" resultType="hashmap">
+  </select>
+
+	<!-- 참여기업 결과 리스트 - 전체 -->
+	<select id="gridCorpAll" resultType="hashmap">
 	   SELECT
 		   KPI_STEP,
 			COMPANY,
@@ -1105,12 +1106,6 @@ SELECT
 		 KPI_TOTAL,
 		 LOAD_DATE,
 		 IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
-         EVENT_ADDR,
-         EVENT_USE,
-         EVENT_NAME,
-         EVENT_ADDR,
-         EVENT_HP,
-		 END_DATE,
 		 EVENT_USE,
 		 IFNULL(EVENT_USE, "N")EVENT_USE_YN,
          IFNULL(END_DATE, "-")END_DT,
@@ -1132,7 +1127,72 @@ SELECT
 	     KPI_STEP between '1' and '9'
 	    ORDER BY  LOAD_DATE DESC
 	</select>
-	
+
+	<!-- 참여기업 결과 리스트 - 완료기업만 -->
+	<select id="gridCorpEnd" resultType="hashmap">
+		SELECT
+		KPI_STEP,
+		COMPANY,
+		(SELECT GRP_NM FROM SERVICEINFO_CODE_STANDARD WHERE GRP_CD = 'SERVICE_CODE' AND CD = BUSINESS_TYPE) AS BUSINESS_TYPE,
+		BS_TYPE,
+		KPI_TOTAL,
+		LOAD_DATE,
+		IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
+		EVENT_USE,
+		IFNULL(EVENT_USE, "N")EVENT_USE_YN,
+		IFNULL(END_DATE, "-")END_DT,
+		EVENT_ADDR,
+		( CASE KPI_STEP
+		WHEN 1 THEN  '1.회사 기본정보'
+		WHEN 2 THEN  '2.사회적 미션의 관리'
+		WHEN 3 THEN  '3.주사업활동의 사회적 가치'
+		WHEN 4 THEN  '4.사회적경제 생태계 구축노력'
+		WHEN 5 THEN  '5.이윤의 사회목적 재투자'
+		WHEN 6 THEN  '6.운영의 민주성'
+		WHEN 7 THEN  '7.근로자 지향성'
+		WHEN 8 THEN  '8.기업활동에서의 혁신성'
+		WHEN 9 THEN  '완료'
+		ELSE 0
+		END)KPI_STEP_NM
+		FROM SOCIAL_INFO_MASTER
+		WHERE
+		KPI_STEP = '9'
+		ORDER BY  LOAD_DATE DESC
+	</select>
+
+	<!-- 참여기업 결과 리스트 - 미완료기업-->
+	<select id="gridCorpStop" resultType="hashmap">
+		SELECT
+		KPI_STEP,
+		COMPANY,
+		(SELECT GRP_NM FROM SERVICEINFO_CODE_STANDARD WHERE GRP_CD = 'SERVICE_CODE' AND CD = BUSINESS_TYPE) AS BUSINESS_TYPE,
+		BS_TYPE,
+		KPI_TOTAL,
+		LOAD_DATE,
+		IFNULL(KPI_TOTAL, "-")KPI_TOTAL_NUM,
+		EVENT_USE,
+		IFNULL(EVENT_USE, "N")EVENT_USE_YN,
+		IFNULL(END_DATE, "-")END_DT,
+		EVENT_ADDR,
+		( CASE KPI_STEP
+		WHEN 1 THEN  '1.회사 기본정보'
+		WHEN 2 THEN  '2.사회적 미션의 관리'
+		WHEN 3 THEN  '3.주사업활동의 사회적 가치'
+		WHEN 4 THEN  '4.사회적경제 생태계 구축노력'
+		WHEN 5 THEN  '5.이윤의 사회목적 재투자'
+		WHEN 6 THEN  '6.운영의 민주성'
+		WHEN 7 THEN  '7.근로자 지향성'
+		WHEN 8 THEN  '8.기업활동에서의 혁신성'
+		WHEN 9 THEN  '완료'
+		ELSE 0
+		END)KPI_STEP_NM
+		FROM SOCIAL_INFO_MASTER
+		WHERE
+		KPI_STEP between '1' and '8'
+		ORDER BY  LOAD_DATE DESC
+	</select>
+
+
 	<!-- 참여기업 결과 리스트-->
 	<select id="eventCorp" resultType="hashmap">
 		SELECT
@@ -1166,7 +1226,7 @@ SELECT
 	    WHERE
 	     KPI_STEP = '9'
 	     AND EVENT_USE ='Y'
-	    ORDER BY  LOAD_DATE DESC
+	    ORDER BY  END_DATE DESC
 	</select>	
 	<!-- 챠트 동종업계평균-->
   <select id="chartAllGradeSocial" resultType="hashmap">

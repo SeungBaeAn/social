@@ -12,13 +12,6 @@
 <link rel="import" href="/bower_components/iron-resizable-behavior/iron-resizable-behavior.html"/>
 <link rel="import" href="/bower_components/polymer/polymer.html" />
 
-    <script>
-      document.addEventListener('click', function(e) {
-        var pages = document.querySelector('iron-pages');
-        pages.selectNext();
-      });
-    </script>
-
 <dom-module id="page-social-event">
     <style>
         :host {
@@ -29,10 +22,8 @@
         }
       
     </style>
-      <slot></slot>
+
     <template>
-        <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_CODE/code/" last-response="{{_bsType}}"></iron-ajax>
-        <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_STEP/code/" last-response="{{_stepType}}"></iron-ajax>
         <iron-ajax id="getData" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
                    url="/api/self/corpeventlist"
                    on-response="_assignData">
@@ -41,18 +32,10 @@
         <div class="horizontal-margin-20"></div>
 
         <div class="page-header">
-            <h2>자가진단 이벤트 참여기업 리스트<small>  Corporation List</small></h2>
+            <h2>자가진단 이벤트 참여기업 리스트<small>  Event Corporation List</small></h2>
         </div>
 
         <div class="horizontal-margin-20"></div>
-
-        <div class="horizontal-margin-20"></div>
-
-   <iron-pages selected="4">
-      <div>One</div>
-      <div>Two</div>
-      <div>Three</div>
-   </iron-pages>
  
    
         <table id="corp_list" class="table table-bordered">
@@ -81,10 +64,7 @@
         Polymer({
             is: 'page-social-event',
 
-            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior,
-		                Polymer.IronResizableBehavior,
-		                Polymer.IronSelectableBehavior
-            	],
+            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior],
 
             properties: {
 
@@ -94,10 +74,7 @@
                         return [];
                     }
                 },
-                activateEvent: {
-                    type: String,
-                    value: null
-                  },
+
                 _guideTop: {
                     type: Array,
                     value: function () {
@@ -114,19 +91,10 @@
                     }
                 },
             },
-            observers: [
-                '_selectedPageChanged(selected)'
-              ],
-              _selectedPageChanged: function(selected, old) {
-                  this.async(this.notifyResize);
-                },
+
             _fetchData: function() {
-
                 this.$.getData.generateRequest();
-
             },
-
-
 
             attached: function() {
                 this._fetchData();

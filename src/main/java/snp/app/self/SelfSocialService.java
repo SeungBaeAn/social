@@ -371,13 +371,22 @@ public class SelfSocialService {
 
 		
 	// 참여기업 결과 리스트
-	public List<Map<String, Object>>gridCorp() {
+	public List<Map<String, Object>>gridCorp(Map<String, Object> params,String corpKind) {
 		List<Map<String, Object>> result;
-
-		result = repository.gridCorp(Security.user()); //전체
-
+		switch (corpKind) {
+			case "0":
+				result = repository.gridCorpAll(params, Security.user()); //전체
+				break;
+			case "1":
+				result = repository.gridCorpEnd(params, Security.user()); // 자가진단 완료기업
+				break;
+			default:
+				result = repository.gridCorpStop(params, Security.user()); //자가진단 미완료기업
+				break;
+		}
 		return result;
 	}
+
 
 	// 이벤트 참여기업 결과 리스트
 

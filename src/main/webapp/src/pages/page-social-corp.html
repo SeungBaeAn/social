@@ -1,7 +1,6 @@
 <link rel="import" href="/bower_components/iron-form/iron-form.html">
 <link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
-
 <link rel="import" href="/src/components/common/number-input.html">
 <link rel="import" href="/src/components/common/normal-input.html">
 <link rel="import" href="/src/components/common/normal-select.html">
@@ -12,12 +11,6 @@
 <link rel="import" href="/bower_components/iron-resizable-behavior/iron-resizable-behavior.html"/>
 <link rel="import" href="/bower_components/polymer/polymer.html" />
 
-    <script>
-      document.addEventListener('click', function(e) {
-        var pages = document.querySelector('iron-pages');
-        pages.selectNext();
-      });
-    </script>
 
 <dom-module id="page-social-corp">
     <style>
@@ -29,9 +22,8 @@
         }
       
     </style>
-      <slot></slot>
+
     <template>
-        <iron-ajax auto headers='{"X-Requested-With": "XMLHttpRequest"}' method="get" url="/api/self/SERVICE_CODE/code/" last-response="{{_bsType}}"></iron-ajax>
         <iron-ajax id="getData" method="get" headers='{"X-Requested-With": "XMLHttpRequest"}'
                    on-request="_startLoader"
                    url="/api/self/corplist"
@@ -46,23 +38,13 @@
 
         <div class="horizontal-margin-20"></div>
 
-        <div class="horizontal-margin-20"></div>
+        <div class="row">
+            <div class="col-xs-2">
+                <normal-select id="year" on-change="_fetchData" value="{{_corpType}}" items="{{_corpTypeList}}"></normal-select>
+            </div>
+        </div>
 
-   <iron-pages selected="4">
-      <div>One</div>
-      <div>Two</div>
-      <div>Three</div>
-   </iron-pages>
-    <div class="row">
-       <div class="col-xs-3">
-             <select class="" name="STEP_USE" id="STEP_USE" required="required" value="{{_data.BS_TYPE}}" selected >
-                <option value="">선택</option>
-                <option value="1">완료 기업</option>    
-                <option value="9">참여 기업</option>    
-             </select> 
-            &nbsp; <button type="button" on-tap="_onSearch"  class="btn btn-sm btn-normal">조회</button>  	
-		</div>
-	</div><br />  
+        <div class="horizontal-margin-20"></div>
    
         <table id="corp_list" class="table table-bordered">
             <thead>
@@ -89,23 +71,32 @@
         Polymer({
             is: 'page-social-corp',
 
-            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior,
-		                Polymer.IronResizableBehavior,
-		                Polymer.IronSelectableBehavior
-            	],
+            behaviors: [Lunch.GridBehavior, Lunch.LoaderBehavior],
 
             properties: {
-
+                _corpTypeList: {
+                    type: Array,
+                    value: function() {
+                        return [
+                            {cdNm: '전체 기업', cd: 0},
+                            {cdNm: '완료 기업', cd: 1},
+                            {cdNm: '미완료 기업', cd: 2},
+                        ];
+                    }
+                },
+                _corpType: {
+                    type: Number,
+                    value: function() {
+                        return 0;
+                    }
+                },
                 _data: {
                     type: Array,
                     value: function () {
                         return [];
                     }
                 },
-                activateEvent: {
-                    type: String,
-                    value: null
-                  },
+
                 _guideTop: {
                     type: Array,
                     value: function () {
@@ -121,22 +112,18 @@
                     }
                 },
             },
-            observers: [
-                '_selectedPageChanged(selected)'
-              ],
-              _selectedPageChanged: function(selected, old) {
-                  this.async(this.notifyResize);
-                },
-            _fetchData: function() {
-
-                this.$.getData.generateRequest();
-
-            },
-
 
 
             attached: function() {
                 this._fetchData();
+            },
+
+            _fetchData: function() {
+                this.$.getData.params = {
+                    CORP_KIND: this._corpType
+                };
+                this.$.getData.generateRequest();
+
             },
 
             _assignData: function(e) {
